@@ -19,7 +19,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    @include row();
+    // @include row();
 
     // мобильный вид списка
     @media (max-width: ($menu-desktop-width - 1)) {
@@ -55,7 +55,7 @@
 
   &__item {
     position: relative;
-    @include width(2.4);
+    // @include width(2.4);
 
     &--active {
 
