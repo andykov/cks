@@ -1,0 +1,52 @@
+// В этом файле должны быть стили для БЭМ-блока guarantee, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.guarantee {
+  overflow: hidden;
+  
+  &__inner {
+    @include row();
+    justify-content: center;
+  }
+
+  &__item {
+    @include col();
+    @include col(md, 2);
+    max-width: 300px;
+    padding-top: 2px;
+    text-align: center;
+
+    &:hover {
+      color: #223a7a;
+
+      .guarantee__img {  
+        img {
+          padding: 9px;
+          border-color: #66a1c7;
+          box-shadow: 0 0 0 3px #66a1c7, -6px 7px 8px 0 rgba(0,0,0,.35);
+        }
+      }
+    }
+  }
+
+  &__img {
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    margin-bottom: $layout-vertical-line-height;
+
+    img {
+      vertical-align: top;
+      border-radius: 100%;
+      box-shadow: 0 0 0 1px;
+      transition: all 250ms;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__text {
+    font-size: $font-size-5;
+  }
+}

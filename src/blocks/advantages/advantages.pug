@@ -1,0 +1,49 @@
+//- Все примеси в этом файле должны начинаться c имени блока (advantages)
+
+mixin advantages(mods)
+
+  //- Принимает:
+  //-   imgURL    {string} - путь к картинке
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +advantages('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' advantages--' + modsList[i].trim();
+      }
+    }
+
+  .advantages(class=allMods)&attributes(attributes)
+    .container
+      .advantages__inner
+        block
+
+mixin advantages-item(props)
+
+  //- Принимает:
+  //-   imgURL    {string} - путь к картинке
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +advantages-item('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' advantages--' + modsList[i].trim();
+      }
+    }
+
+  .advantages__item
+    .advantages__img
+      img(src=props.imgURL, alt="")
+    .advantages__text= props.text

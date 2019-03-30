@@ -1,0 +1,119 @@
+extends ../pug/layout.pug
+
+block meta
+  title Главная
+  meta(name='description', content='')
+
+//- block append head
+//-   link(rel='stylesheet', href='css/some.css')
+
+block nav
+  +main-nav('10', 'vertical')
+  +main-banner()
+
+block content
+  section.section
+    h2.title Наши преимущества
+    +advantages()
+      +advantages-item({
+        imgURL: 'img/advantages-img-1.png',
+        text: 'Собственное производство',
+      })
+      +advantages-item({
+        imgURL: 'img/advantages-img-2.png',
+        text: 'Команда профессионалов',
+      })
+      +advantages-item({
+        imgURL: 'img/advantages-img-3.png',
+        text: 'Аккредитация ведущих поставщиков материала',
+      })
+      +advantages-item({
+        imgURL: 'img/advantages-img-4.png',
+        text: 'Индивидуальный подход',
+      })
+      +advantages-item({
+        imgURL: 'img/advantages-img-5.png',
+        text: 'Честность и порядочность',
+      })
+      +advantages-item({
+        imgURL: 'img/advantages-img-6.png',
+        text: 'Гарантированное высокое качество',
+      })
+
+  section.section
+    h2.title Нам доверяют
+    +clients()
+  
+  section.section
+    h2.title Этапы работы
+    +worksteps()
+  
+  section.section
+    h2.title Производители материала
+    +fabrics()
+
+  section.section
+    h2.title Наши гарантии
+    .guarantee
+      .guarantee__inner
+        .guarantee__item
+          .guarantee__img
+            img(src="https://ipsumimage.appspot.com/140x140,ff7700", alt="")
+          .guarantee__text
+            | Материалы для работы с продуктами питания), выданный Национальным фондом санитарной защиты и подтверждающий, что продукция компании безопасна для продуктов питания, для общественного здоровья и для окружающей среды при непосредственном контакте
+        .guarantee__item
+          .guarantee__img
+            img(src="https://ipsumimage.appspot.com/140x140,ff7700", alt="")
+          .guarantee__text
+            | Институтом окружающей среды. Данный сертификат признает, что в составе кварцевого камня отсутствует токсичность и продукция компании безопасна для использования в помещениях для детей
+        .guarantee__item
+          .guarantee__img
+            img(src="https://ipsumimage.appspot.com/140x140,ff7700", alt="")
+          .guarantee__text
+            | Стандарт качества и безопасности Европейского Союза, гарантирует соответствие обязательным требованиям и нормам Европейского Союза.
+        .guarantee__item
+          .guarantee__img
+            img(src="https://ipsumimage.appspot.com/140x140,ff7700", alt="")
+          .guarantee__text
+            | Это серия международных стандартов менеджмента окружающей среды, разработанная и утвержденная Международной Организацией по Стандартизации. Всегда использует и предоставляет продукцию и материалы, соответствующие нормам Европейского Союза.
+        .guarantee__item
+          .guarantee__img
+            img(src="https://ipsumimage.appspot.com/140x140,ff7700", alt="")
+          .guarantee__text
+            | Материалы для работы с продуктами питания), выданный Национальным фондом санитарной защиты и подтверждающий, что продукция компании безопасна для продуктов питания, для общественного здоровья и для окружающей среды при контакте
+
+  section.section
+    h2.title Наши сертификаты
+    +awards()
+
+  section.section
+    a.btn.btn--large(href="/") Оставить заявку
+
+  section.section
+    h2.title Информационные материалы
+    +info()
+      +info-item({
+        title: 'Акции',
+        subtitle: 'Замер столешницы БЕСПЛАТНО!',
+        imgURL: 'img/info-img-1.png',
+      })
+      +info-item({
+        title: 'Акции',
+        subtitle: 'Замер столешницы БЕСПЛАТНО!',
+        imgURL: 'img/info-img-2.png',
+      })
+      +info-item({
+        title: 'Акции',
+        subtitle: 'Замер столешницы БЕСПЛАТНО!',
+        imgURL: 'img/info-img-3.png',
+      })
+
+
+
+//- #[a(href='blocks-demo.html') Библиотека блоков]
+
+//- block footer
+//-   p footer
+
+//- block append page-bottom
+//-   script(src='js/some.js')

@@ -1,0 +1,32 @@
+// В этом файле должны быть стили для БЭМ-блока awards, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.awards {
+  overflow: hidden;
+
+  &__inner {
+    // @include row();
+    display: flex;
+    
+  }
+
+  &__item {
+    width: 140px;
+    flex: 0 0 140px;
+    height: 198px;
+    
+    // @include col();
+    // @include col(md, 1);
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  &__img {
+    img {
+      vertical-align: top;
+    }
+  }
+}

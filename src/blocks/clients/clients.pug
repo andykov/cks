@@ -1,0 +1,42 @@
+//- Все примеси в этом файле должны начинаться c имени блока (clients)
+
+mixin clients(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +clients('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' clients--' + modsList[i].trim();
+      }
+    }
+
+  .clients(class=allMods)&attributes(attributes)
+    .clients__inner
+      .clients__item
+        .clients__img
+          img(src="https://picsum.photos/140/126", alt="")
+        .clients__text
+          span кофейня «ктулху»
+          p В процессе эксплуатации столешница испытывает целую гамму специфических воздействий: механическое -  при разделке продуктов; термическое - от горячей посуды; химическое - от уксуса, острого соуса и т.д.
+      .clients__item
+        .clients__img
+          img(src="https://picsum.photos/140/126", alt="")
+        .clients__text
+          span кофейня «ктулху»
+          p В процессе эксплуатации столешница испытывает целую гамму специфических воздействий: механическое -  при разделке продуктов; термическое - от горячей посуды; химическое - от уксуса, острого соуса и т.д.
+      .clients__item
+        .clients__img
+          img(src="https://picsum.photos/140/126", alt="")
+        .clients__text
+          span кофейня «ктулху»
+          p В процессе эксплуатации столешница испытывает целую гамму специфических воздействий: механическое -  при разделке продуктов; термическое - от горячей посуды; химическое - от уксуса, острого соуса и т.д.
+
+      block

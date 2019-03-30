@@ -1,0 +1,29 @@
+//- Все примеси в этом файле должны начинаться c имени блока (main-banner)
+
+mixin main-banner(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +main-banner('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' main-banner--' + modsList[i].trim();
+      }
+    }
+
+  .main-banner(class=allMods)&attributes(attributes)
+    .main-banner__inner
+      .main-banner__item(style="background-image: url(https://picsum.photos/200/300?image=982);")
+        .main-banner__title Современные интерерные решения
+        .main-banner__text Среди многообразия строительных материалов, применяемых в отделке зданий, особое место занимает натуральный камень
+      .main-banner__item(style="background-image: url(https://picsum.photos/200/300?image=982);")
+        .main-banner__title Современные интерерные решения
+        .main-banner__text Среди многообразия строительных материалов, применяемых в отделке зданий, особое место занимает натуральный камень  
+      block  

@@ -1,0 +1,19 @@
+// В этом файле должны быть стили для БЭМ-блока main-banner, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.main-banner {
+
+  &-wrap {
+    position: relative;
+  }
+
+  &__inner {}
+
+  &__item {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 774px;
+  }
+}

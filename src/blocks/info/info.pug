@@ -1,0 +1,56 @@
+//- Все примеси в этом файле должны начинаться c имени блока (info)
+
+mixin info(mods)
+
+  //- Принимает:
+  //-   title     {string} - заголовок
+  //-   subtitle  {string} - подзаголовок
+  //-   imgURL    {string} - путь к картинке
+  //-   mods      {string} - список модификаторов
+  //- Вызов:
+        +info('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' info--' + modsList[i].trim();
+      }
+    }
+
+  .info(class=allMods)&attributes(attributes)
+    .info__inner
+      block
+
+mixin info-item(props)
+
+  //- Принимает:
+  //-   title     {string} - заголовок
+  //-   subtitle  {string} - подзаголовок
+  //-   imgURL    {string} - путь к картинке
+  //-   mods      {string} - список модификаторов
+  //- Вызов:
+        +info('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' info--' + modsList[i].trim();
+      }
+    }
+
+  .info__item(class=allMods)&attributes(attributes)
+    .info__item-inner
+      .info__head
+        span.info__name= props.title
+        span.info__date 06.07.2019
+        p= props.subtitle
+      .info__image
+        img(src=props.imgURL, alt="")
+      a.btn(href="/") Смотреть
+      

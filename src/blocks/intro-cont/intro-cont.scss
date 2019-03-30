@@ -1,0 +1,25 @@
+// В этом файле должны быть стили для БЭМ-блока intro-cont, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.intro-cont {
+
+  $block-name:                &; // #{$block-name}__element
+
+  &__inner {
+    max-width: 1260px;
+    margin: auto;
+    display: flex;
+  }
+
+  &__media {
+    max-width: 460px;
+    width: 100%;
+    margin-right: 20px;
+  }
+
+  &__text {
+    width: 100%;
+    font-size: 20px;
+  }
+}

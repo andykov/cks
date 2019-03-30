@@ -1,0 +1,60 @@
+//- Все примеси в этом файле должны начинаться c имени блока (card-about)
+
+mixin card-about(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +card-about('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' card-about--' + modsList[i].trim();
+      }
+    }
+
+  .card-about(class=allMods)&attributes(attributes)
+    .card-about__inner
+      .card-about__gallery 
+        img(src="https://picsum.photos/1260/522", alt="")
+        
+      .card-about__info
+        h4 Характеристики:
+        .card-about__list
+          ul
+            li 
+              b Материал:
+              span Лабрадорит
+            li 
+              b Формат:
+              span Сдэб
+            li 
+              b Обработка:
+              span Полированная
+            li 
+              b Цвет:
+              span Синий
+            li 
+              b Размер (мм):
+              span 3050x1440
+            li 
+              b Толщина:
+              span 12, 20, 30
+            li 
+              b Страна:
+              span Италия
+            li 
+              b Бренд:
+              span TECHNISTONE
+        h4 О камне:
+        .card-about__desc
+          p #[b Labrador Multicolor] – гранит итальянского происхождения с идеальной зеркальной полировкой.
+          p Поверхность минерала темно-зеленая настолько, что кажется черной. Украшение камня – многочисленные серебристые вкрапления, формирующие монотонный, насыщенный узор. Укладка плитки и гранита #[b Labrador Multicolor] – не составит проблемы.
+          p Колоритны подоконники и столешницы из гранита #[b Labrador Multicolor] в классических интерьерных решениях. Используется данный камень в составе художественных панно.
+          a(href="/") Подробнее
+      block

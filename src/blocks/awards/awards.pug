@@ -1,0 +1,60 @@
+//- Все примеси в этом файле должны начинаться c имени блока (awards)
+
+mixin awards(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +awards('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' awards--' + modsList[i].trim();
+      }
+    }
+
+  .awards(class=allMods)&attributes(attributes)
+    .awards__inner
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+      .awards__item
+        .awards__img
+          img(src="https://ipsumimage.appspot.com/140x198,ff7700", alt="")
+
+      block

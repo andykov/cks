@@ -1,0 +1,45 @@
+// В этом файле должны быть стили для БЭМ-блока worksteps, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.worksteps {
+  overflow: hidden;
+
+  &__inner {
+    @include row();
+  }
+
+  &__item {
+    @include col();
+    @include col(md, 2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__img {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 306px;
+    margin-bottom: $layout-vertical-line-height * 2;
+
+    img {
+      max-height: 100%;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #66a1c7;
+    min-height: 72px;
+    text-transform: uppercase;
+    margin-bottom: $layout-vertical-line-height * 2;
+  }
+
+  &__text {
+    font-size: $font-size-5;
+  }
+}

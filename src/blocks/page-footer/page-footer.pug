@@ -1,0 +1,48 @@
+//- Все примеси в этом файле должны начинаться c имени блока (page-footer)
+
+mixin page-footer(mods)
+
+  //- Принимает:
+  //-   mods  {string} - список модификаторов
+  //- Вызов:
+        +page-footer()
+          p «Подвал»
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' page-footer--' + modsList[i].trim();
+      }
+    }
+
+  footer.page-footer(class=allMods, role='contentinfo')&attributes(attributes)
+    .page-footer__inner
+      .page-footer__left
+      .page-footer__right
+        .page-footer__list
+          span Материалы
+          ul
+            li #[a(href='blocks-demo.html') Гранит]
+            li #[a(href='blocks-demo.html') Мрамор]
+            li #[a(href='blocks-demo.html') Кварцевый агломерат]
+            li #[a(href='blocks-demo.html') Кварц-керамика]
+        .page-footer__list
+          span Материалы
+          ul
+            li #[a(href='blocks-demo.html') Кухонные столешницы]
+            li #[a(href='blocks-demo.html') Столешницы для ванной комнаты]
+            li #[a(href='blocks-demo.html') Подоконники]
+            li #[a(href='blocks-demo.html') Ступени]
+            li #[a(href='blocks-demo.html') Столы]
+            li #[a(href='blocks-demo.html') Душевые поддоны]
+            li #[a(href='blocks-demo.html') Барные стойки]
+            li #[a(href='blocks-demo.html') Сопутствующие товары]
+    .page-footer__copy
+      ul
+        li © Центр кухонных столешниц 2019
+        li Все права защищены
+        li #[a(href='blocks-demo.html') Сопутствующие товары]
+  
+      block

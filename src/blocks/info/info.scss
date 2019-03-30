@@ -1,0 +1,95 @@
+// В этом файле должны быть стили для БЭМ-блока info, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.info {
+
+  overflow: hidden;
+
+  &__inner {
+    @include row();
+  }
+
+  &__item {
+    @include col();
+    @include col(md, 4);
+    
+
+    &:hover {
+      .info__head {
+        min-height: 108px;
+        p {
+          transform: translateY(100%);
+        }
+      }
+      .info__date {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 50ms;
+      }
+      .btn {
+        background-color: #223a7a;
+      }
+    }
+
+    .btn {
+      display: inline-block;
+      position: absolute;
+      bottom: 36px;
+      max-width: 300px;
+      background-color: #333333;
+      color: #fff;
+    }
+  }
+
+  &__item-inner {
+    position: relative;
+    padding-top: 90px;
+    // max-width: 620px;
+  }
+
+  &__head {
+    min-height: 90px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: -6px 7px 8px 0 rgba(0,0,0, 0.35);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition: min-height 250ms 0ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
+    p {
+      margin: 0;
+      margin-top: -24px;
+      transform: translateY(0);
+      transition: transform 250ms 0ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    }
+  }
+
+  &__name {
+    display: block;
+    font-size: $font-size-3;
+    text-transform: uppercase;
+    line-height: 24px;
+    margin-bottom: 12px;
+  }
+
+  &__date {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 250ms 0ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
+  }
+
+  &__image {
+    img {
+      width: 100%;
+      vertical-align: top;
+    }
+  }
+  
+
+}

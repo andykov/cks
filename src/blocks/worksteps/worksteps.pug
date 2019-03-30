@@ -1,0 +1,54 @@
+//- Все примеси в этом файле должны начинаться c имени блока (worksteps)
+
+mixin worksteps(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +worksteps('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' worksteps--' + modsList[i].trim();
+      }
+    }
+
+  .worksteps(class=allMods)&attributes(attributes)
+    .worksteps__inner
+      .worksteps__item
+        .worksteps__img
+          img(src="https://picsum.photos/206/180", alt="")
+        .worksteps__title Звонок заявка
+        .worksteps__text Палитра красок – от чисто белого до удивительных гармоничных сочетаний голубых, зеленых
+      .worksteps__item
+        .worksteps__img
+          img(src="https://picsum.photos/182/142", alt="")
+        .worksteps__title Вызов замерщика моделирование
+        .worksteps__text Палитра красок – от чисто белого до удивительных гармоничных сочетаний голубых, зеленых
+      .worksteps__item
+        .worksteps__img
+          img(src="https://picsum.photos/210/143", alt="")
+        .worksteps__title Договор оплата
+        .worksteps__text Палитра красок – от чисто белого до удивительных гармоничных сочетаний голубых, зеленых
+      .worksteps__item
+        .worksteps__img
+          img(src="https://picsum.photos/185/160", alt="")
+        .worksteps__title Изготовление
+        .worksteps__text Палитра красок – от чисто белого до удивительных гармоничных сочетаний голубых, зеленых
+      .worksteps__item
+        .worksteps__img
+          img(src="https://picsum.photos/197/250", alt="")
+        .worksteps__title Доставка и монтаж
+        .worksteps__text Палитра красок – от чисто белого до удивительных гармоничных сочетаний голубых, зеленых
+      .worksteps__item
+        .worksteps__img
+          img(src="https://picsum.photos/210/154", alt="")
+        .worksteps__title Гарантийное пост-гарантийное обслуживание
+        .worksteps__text Палитра красок – от чисто белого до удивительных гармоничных сочетаний голубых, зеленых
+      
+      block

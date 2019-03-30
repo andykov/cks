@@ -1,0 +1,50 @@
+// В этом файле должны быть стили для БЭМ-блока card-about, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.card-about {
+
+  $block-name:                &; // #{$block-name}__element
+  overflow: hidden;
+
+  &__inner {
+    display: flex;
+    @include row();
+  }
+
+  &__gallery {
+    // @include get-width(8);
+    // @include make-col(8, false);
+    @include col(md, 8);
+    // @include col(md, 8, $grid-columns);
+    // padding-right: 10px;
+  }
+  &__info {
+    // @include get-width(4);
+    // @include make-col(4, false);
+    @include col(md, 4);
+    // @include col(md, 4, $grid-columns);
+    // padding-left: 10px;
+  }
+
+  &__info {}
+
+  &__list {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      width: 50%;
+      display: flex;
+
+      b,span {
+        width: 50%;
+      }
+    }
+  }
+}

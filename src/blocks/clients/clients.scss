@@ -1,0 +1,49 @@
+// В этом файле должны быть стили для БЭМ-блока clients, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.clients {
+  overflow: hidden;
+
+  &__inner {
+    @include row();
+  }
+
+  &__item {
+    @include col();
+    @include col(md, 4);
+    display: flex;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 10px;
+      bottom: 0;
+      left: 10px;
+      background-color: rgba(0,0,0, 0.75);
+    }
+  }
+
+  &__img {
+    max-width: 140px;
+    width: 100%;
+
+    img {
+      display: block;
+    }
+  }
+
+  &__text {
+    position: relative;
+    color: #fff;
+
+    span {
+      font-size: $font-size-3;
+    }
+    p {
+      font-size: $font-size-5;
+    }
+  }
+}
