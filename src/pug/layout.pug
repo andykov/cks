@@ -29,6 +29,7 @@ html(class='page  no-js', lang='ru')
       title Home
 
     block head
+      //- link(rel='stylesheet', href='css/libs/simplebar.css')
       link(rel='stylesheet', href='css/style.css')
       script
         include ../js/head-script.js
@@ -69,8 +70,6 @@ html(class='page  no-js', lang='ru')
       .page__footer-wrapper
         +page-footer()
           block footer
-            p «Подвал»
-            p Контактный телефон: #[a(href='tel:+70000000000') +7 000 000 00 00]
 
     block page-bottom
       script(src='js/bundle.js')

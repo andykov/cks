@@ -1,0 +1,153 @@
+extends ../pug/layout.pug
+
+block meta
+  title Главная
+  meta(name='description', content='')
+
+//- block append head
+//-   link(rel='stylesheet', href='css/some.css')
+
+block nav
+  +main-nav('0')
+
+block content
+    .page__main-head
+        +breadcrumbs()
+            +breadcrumbs-item('Главная', '/index')
+            +breadcrumbs-item('Изделия')
+        h1.page__title Изделия
+    +products-list()
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/342',
+                name: 'супер-пупер-мега-ультра мойка ',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/252',
+                name: 'Ресторан «Адмирал Бенбоу»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/612',
+                name: 'барная стойка кафе «Сюси-смузи»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/342',
+                name: 'супер-пупер-мега-ультра мойка ',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/360',
+                name: 'супер-пупер-мега-ультра мойка ',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/396',
+                name: 'супер-пупер-мега-ультра мойка ',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/612',
+                name: 'барная стойка кафе «Сюси-смузи»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/342',
+                name: 'супер-пупер-мега-ультра мойка ',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/252',
+                name: 'Ресторан «Адмирал Бенбоу»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/252',
+                name: 'Ресторан «Адмирал Бенбоу»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/612',
+                name: 'барная стойка кафе «Сюси-смузи»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/342',
+                name: 'супер-пупер-мега-ультра мойка ',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/612',
+                name: 'барная стойка кафе «Сюси-смузи»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/450',
+                name: 'барная стойка кафе «Сюси-смузи»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/342',
+                name: 'супер-пупер-мега-ультра мойка ',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/612',
+                name: 'барная стойка кафе «Сюси-смузи»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/252',
+                name: 'Ресторан «Адмирал Бенбоу»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/342',
+                name: 'супер-пупер-мега-ультра мойка ',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/252',
+                name: 'Ресторан «Адмирал Бенбоу»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/270',
+                name: 'Ресторан «Адмирал Бенбоу»',
+            })
+        +products-list-item()
+            +card({
+                url: 'good01',
+                img: 'https://picsum.photos/460/252',
+                name: 'Ресторан «Адмирал Бенбоу»',
+            })
+
+//- #[a(href='blocks-demo.html') Библиотека блоков]
+
+//- block footer
+//-   p footer
+
+//- block append page-bottom
+//-   script(src='js/some.js')

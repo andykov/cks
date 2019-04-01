@@ -1,0 +1,42 @@
+//- Все примеси в этом файле должны начинаться c имени блока (products-list)
+
+mixin products-list(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +products-list('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' products-list--' + modsList[i].trim();
+      }
+    }
+
+  .products-list(class=allMods)&attributes(attributes)
+    .products-list__inner
+      block
+
+mixin products-list-item(mods)
+
+  //- Принимает:
+  //-   text   {string} - содержимое пункта
+  //-   href   {string} - ссылка этого пункта (если пустая, то это не ссылка, а span)
+  //-   mods   {string} - список модификаторов
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' products-list__item--' + modsList[i].trim();
+      }
+    }
+
+  .products-list__item(class=allMods)&attributes(attributes)
+    block

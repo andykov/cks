@@ -1,0 +1,24 @@
+// В этом файле должны быть стили для БЭМ-блока products-list, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.products-list {
+
+  $block-name:                &; // #{$block-name}__element
+
+  &__inner {
+    column-gap: 20px;
+    column-fill: initial;
+
+    @media (min-width: $screen-xl) {
+      column-count: 4;
+    }
+  }
+
+  &__item {
+    // margin-bottom: 30px;
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+  }
+}

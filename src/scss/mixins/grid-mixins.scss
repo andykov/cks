@@ -183,10 +183,20 @@ $grid-gutter-width:           20px !default;
 //  Возвращает width.
 //------------------------------------------------------------------------------
 
-@mixin width ($point, $columns: $grid-columns) {
-  $width: (100% / point);
+@mixin width (
+  $point,
+  $gutter: $grid-gutter-width
+) {
+  $width: (100% / $point);
   flex: 0 0 $width;
   max-width: $width;
+
+  // ВНИМАНИЕ!
+  // если $gutter == false, в CSS не попадут правила padding-left и padding-right
+  @if ($gutter != false) {
+    padding-left: ($gutter / 2);
+    padding-right: ($gutter / 2);
+  }
 }
 
 //------------------------------------------------------------------------------

@@ -2,6 +2,9 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
+// @import '../../../node_modules/simplebar/dist/simplebar.css';
+
+
 .card-about {
 
   $block-name:                &; // #{$block-name}__element
@@ -47,4 +50,8 @@
       }
     }
   }
+}
+
+.simplebar-content {
+  display: flex;
 }

@@ -18,6 +18,7 @@ mixin card(data, mods)
           url: 'good01',
           img: 'img/demo-product.jpg',
           name: 'Товар1',
+          subname: 'Название (меньше шрифт)',
           descr: 'Описание1',
           price: 7777,
           new: true,
@@ -64,8 +65,10 @@ mixin card(data, mods)
   article.card(class=allMods)&attributes(attributes)
     .card__inner
       span.card__img-wrap
-        img.card__img(src="https://picsum.photos/520/530", alt="")
+        img.card__img(src= data.img, alt="")
       h3.card__title= data.name
+        if (data.subname !== 'undefined' && data.subname)
+          span= data.subname
       if (data.desc !== 'undefined' && data.desc)
         .card__desc
           p= data.desc

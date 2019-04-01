@@ -11,10 +11,11 @@ block nav
   +main-nav('0')
 
 block content
-    +breadcrumbs()
-        +breadcrumbs-item('Главная', '/index')
-        +breadcrumbs-item('Материалы')
-    h1.page__title Материалы
+    .page__main-head
+        +breadcrumbs()
+            +breadcrumbs-item('Главная', '/index')
+            +breadcrumbs-item('Материалы')
+        h1.page__title Материалы
     +intro-cont()
     .container-fluid
         .columns
