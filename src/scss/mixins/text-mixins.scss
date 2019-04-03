@@ -7,3 +7,10 @@
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+@mixin pt-to-px($pt, $ptl) {
+  font-size: ($pt / 0.75)+px;
+  @if ($ptl != false) {
+    line-height: (($ptl / 0.75) / ($pt / 0.75));
+  }
+}

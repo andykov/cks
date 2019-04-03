@@ -79,6 +79,7 @@
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
+    "@types/slick-carousel": "^1.6.33",
     "autosize": "^4.0.2",
     "baron": "^3.0.3",
     "choices.js": "^6.0.0",

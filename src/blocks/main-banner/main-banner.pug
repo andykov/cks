@@ -18,12 +18,13 @@ mixin main-banner(text, mods)
       }
     }
 
-  .main-banner(class=allMods)&attributes(attributes)
-    .main-banner__inner
-      .main-banner__item(style="background-image: url(https://picsum.photos/200/300?image=982);")
-        .main-banner__title Современные интерерные решения
+  .js-main-banner.main-banner(class=allMods data-slick='{"slidesToShow": 1, "slidesToScroll": 1}')&attributes(attributes)
+    .main-banner__item(style="background-image: url(https://picsum.photos/200/300?image=982);")
+      .main-banner__cont
+        .main-banner__title Современные интерьерные решения
         .main-banner__text Среди многообразия строительных материалов, применяемых в отделке зданий, особое место занимает натуральный камень
-      .main-banner__item(style="background-image: url(https://picsum.photos/200/300?image=982);")
-        .main-banner__title Современные интерерные решения
+    .main-banner__item(style="background-image: url(https://picsum.photos/200/300?image=982);")
+      .main-banner__cont
+        .main-banner__title Современные интерьерные решения
         .main-banner__text Среди многообразия строительных материалов, применяемых в отделке зданий, особое место занимает натуральный камень  
-      block  
+    block  

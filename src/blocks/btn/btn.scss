@@ -2,6 +2,9 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
+$blue: #66a1c7;
+$blue-dark: #223a7a;
+
 .btn {
   box-sizing: border-box;
   display: inline-block;
@@ -62,7 +65,21 @@
   //   vertical-align: middle;
   // }
 
+  &--sm {
+    @include pt-to-px(13, 14);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 
+  &--blue {
+    background-color: $blue;
+    color: $white;
+  }
+
+  &--blue-dark {
+    background-color: $blue-dark;
+    color: $white;
+  }
 
   // &--main {
   //   color: #fff;

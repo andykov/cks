@@ -5,4 +5,42 @@
 .fabrics {
 
   $block-name:                &; // #{$block-name}__element
+
+  &__inner {
+    max-width: (1280px + (46px * 2));
+    margin: 0 auto;
+    padding: 0 46px;
+  }
+}
+
+.fabrics-logo {
+  // @include row();
+  display: flex;
+  margin: 0 -10px;
+
+  .slick-arrow {
+    z-index: 1;
+  }
+
+  .slick-slide {
+    // max-width: 160px;
+  }
+  .slick-next {
+    right: -46px;
+  }
+  .slick-prev {
+    left: -46px;
+  }
+
+  &__item {
+    // @include col();
+    // @include col(md, 1);
+    padding: 0 10px;
+    max-width: 160px;
+    width: 160px;
+    img {
+      // max-width: 140px;
+      margin: 0 auto;
+    }
+  }
 }

@@ -8,6 +8,8 @@
 
   display: inline-block;
   white-space: nowrap;
+  margin-top: 60px;
+  margin-bottom: ($layout-vertical-line-height * 2);
 
   img {
     display: block;

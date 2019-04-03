@@ -37,9 +37,11 @@
     min-height: 72px;
     text-transform: uppercase;
     margin-bottom: $layout-vertical-line-height * 2;
+    @include pt-to-px(15, 18);
   }
 
   &__text {
-    font-size: $font-size-5;
+    // font-size: $font-size-5;
+    @include pt-to-px(12, 15);
   }
 }

@@ -3,6 +3,7 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .page-header {
+    position: relative;
     &__inner {
         position: relative;
     }

@@ -35,38 +35,41 @@ html(class='page  no-js', lang='ru')
         include ../js/head-script.js
 
   body
-    noscript У вас отключен JavaScript. Это пугает.
+    noscript У вас отключен JavaScript.
 
     .page__inner
       .page__content
         +page-header()
-          .header-panel
-            .container
+          .container
+            .header-panel
               .header-panel__inner
                 +logo('/')
                   img(src='img/logo.png', alt='Logo', width='460', height='98')
                 .header-info
-                  .header-info__inner
-                    .header-info__col
-                      ul
-                        li +7 (812) 243-99-98
-                        li +7 (921) 938-98-53
-                    .header-info__col
-                      p 
-                        | г.Санкт-Петербург
-                        br
-                        | Студенческая ул. д.10
-                        br
-                        | ТЦ Ланской, 3 этаж
-                        br
-                        | секция С-12
-                    .header-info__col
-                      a(href="mailto:info@masterstone-spb.ru") info@masterstone-spb.ru
+                    .header-info__inner
+                      .header-info__col
+                        ul
+                          li #[b +7 (812) 243-99-98]
+                          li #[b +7 (921) 938-98-53]
+                      .header-info__col
+                        p 
+                          | г.Санкт-Петербург
+                          br
+                          | Студенческая ул. д.10
+                          br
+                          | ТЦ Ланской, 3 этаж
+                          br
+                          | секция С-12
+                      .header-info__col
+                        a(href="mailto:info@masterstone-spb.ru") info@masterstone-spb.ru
+                    ul.header-info__btn
+                      li #[a(href="javascript:void(0);" class="btn btn--sm btn--blue") Оставить заявку]
+                      li #[a(href="javascript:void(0);" class="btn btn--sm btn--blue-dark") Кабинет партнера]
               block nav
-            
+          block banner      
+
         .page__main-content(role="main")
           block content
-            p содержимое
       .page__footer-wrapper
         +page-footer()
           block footer
