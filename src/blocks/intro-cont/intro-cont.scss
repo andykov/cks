@@ -6,6 +6,8 @@
 
   $block-name:                &; // #{$block-name}__element
 
+  margin-bottom: $layout-vertical-line-height * 2;
+
   &__inner {
     max-width: 1260px;
     margin: auto;
@@ -20,6 +22,7 @@
 
   &__text {
     width: 100%;
-    font-size: 20px;
+    font-size: $font-size;
+    line-height: (18 / 15);
   }
 }

@@ -1,0 +1,71 @@
+//- Все примеси в этом файле должны начинаться c имени блока (product-detail)
+
+mixin product-detail(data, mods)
+
+  //- Принимает:
+  //-   data    {object} - набор свойств
+  //-   data.imgTypeView {string} - тип слайдера
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +product-detail('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' product-detail--' + modsList[i].trim();
+      }
+    }
+
+  .product-detail(class=allMods)&attributes(attributes)
+    .product-detail__inner
+      if data.imgTypeView == 'slider'
+        .product-detail__slider
+          .js-slider.slider
+            .slider__item
+              img(src="https://picsum.photos/1260/522", alt="")
+            //- .slider__item
+            //-   img(src="https://picsum.photos/1260/522", alt="")
+      
+      if data.imgTypeView == 'gallery' 
+        .product-detail__gallery
+          .js-gallery.gallery
+            .gallery__item
+              img(src="https://picsum.photos/1260/612", alt="")
+            //- .gallery__item
+            //-   img(src="https://picsum.photos/1260/612", alt="")
+
+      block
+
+
+mixin product-desc(data, mods)
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' product-detail--' + modsList[i].trim();
+      }
+    }
+
+  .product-desc
+    h4.product-desc__title Характеристики:
+    .product-desc__list
+        ul
+            li #[b Материал:] #[span Лабрадорит]
+            li #[b Формат:] #[span Сдэб]
+            li #[b Обработка:] #[span Полированная]
+            li #[b Цвет:] #[span Синий]
+            li #[b Размер (мм):] #[span 3050x1440]
+            li #[b Толщина:] #[span 12, 20, 30]
+            li #[b Страна:] #[span Италия]
+            li #[b Бренд:] #[span TECHNISTONE]
+    h4.product-desc__title О камне:
+    .product-desc__text
+        p #[b Labrador Multicolor] – гранит итальянского происхождения с идеальной зеркальной полировкой.
+        p Поверхность минерала темно-зеленая настолько, что кажется черной. Украшение камня – многочисленные серебристые вкрапления, формирующие монотонный, насыщенный узор. Укладка плитки и гранита #[b Labrador Multicolor] – не составит проблемы.
+        p Колоритны подоконники и столешницы из гранита #[b Labrador Multicolor] в классических интерьерных решениях. Используется данный камень в составе художественных панно.
+    a.btn(href="javascript:void(0);") Оставить заявку    

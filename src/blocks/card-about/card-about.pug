@@ -20,8 +20,13 @@ mixin card-about(text, mods)
 
   .card-about(class=allMods)&attributes(attributes)
     .card-about__inner
-      .card-about__gallery 
-        img(src="https://picsum.photos/1260/522", alt="")
+      .js-card-about-gallery.card-about__gallery(data-slick='{"slidesToShow": 1, "slidesToScroll": 1}')
+        .card-about__gallery-item
+          img(src="https://picsum.photos/1260/523", alt="")
+        .card-about__gallery-item
+          img(src="https://picsum.photos/1260/522", alt="")
+        .card-about__gallery-item
+          img(src="https://picsum.photos/1260/521", alt="")
         
       .card-about__info
         h4 Характеристики:

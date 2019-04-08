@@ -1,6 +1,6 @@
 //- Все примеси в этом файле должны начинаться c имени блока (post)
 
-mixin post(text, mods)
+mixin post(typePost, text, mods)
 
   //- Принимает:
   //-   text    {string} - текст
@@ -18,6 +18,56 @@ mixin post(text, mods)
       }
     }
 
-  .post(class=allMods)&attributes(attributes)
-    .post__inner
-      block
+  article.post(class=allMods)&attributes(attributes)
+    a.post__img-wrap(href="")
+      img(src="https://picsum.photos/620/252", alt="").post__img
+    .post__text
+      header.post__header
+        if (typePost == 'article')
+          h3.post__title Кварцевый агломерат – уникальный материал
+        if (typePost == 'sale')
+          h3.post__title Скидка 5 %
+        if (typePost == 'news')
+          time.post__date(datetime="2018-12-04") 04.12.2018
+      .post__cont
+        if (typePost == 'article')
+          time.post__date(datetime="2018-12-04") 04.12.2018
+        if (typePost == 'news')
+          h3.post__title Кварцевый агломерат – уникальный материал
+        p
+          | Основана в 2010 году в результате слияния нескольких компаний, специализирующихся
+          | в области работы с натуральным и искусственным камнем. Головной офис компании находится
+          | в Санкт-Петербурге.
+        p
+          | В компании работают высококлассные специалисты с большим опытом работы. Компания имеет собственное производство, оснащенное современным высокотехнологичным оборудованием
+          | по обработке камня, конструкторский и технологический отделы, подразделение
+          | аппаратно-цифровых замеров, монтажные, транспортные и сервисные подразделения.
+        if (typePost == 'sale')
+          p
+            span Акция проводится до 2020 года
+      footer.post__footer
+        a.btn.post__more-link(href="articles-item.html") Смотреть
+    block
+
+
+mixin post-list(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +post-list('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' post--' + modsList[i].trim();
+      }
+    }
+
+  .post-list(class=allMods)&attributes(attributes)
+    block
+

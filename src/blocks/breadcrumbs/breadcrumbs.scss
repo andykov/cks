@@ -4,15 +4,18 @@
 
 .breadcrumbs {
   list-style: none;
-  margin-top: $typo-margin-vertical;
-  margin-bottom: $typo-margin-vertical;
+  margin-top: $layout-vertical-line-height * 2;
+  margin-bottom: $layout-vertical-line-height * 2;
   padding: 0;
-  color: $text-color;
+  color: #223a7a;
+  font-size: $font-size-5;
+  font-weight: bold;
+  line-height: (13 / 14);
   // @include col(md, 7);
   // @include col-offset(md, 5);
 
   a {
-    color: $text-color;
+    color: #999999;
     text-decoration: none;
 
     &:hover,
@@ -28,7 +31,7 @@
     white-space: nowrap;
 
     &:not(:last-child):after {
-      content: '>';
+      content: '/';
       display: inline-block;
       margin-left: 0.8em;
       color: $gray;

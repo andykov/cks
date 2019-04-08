@@ -27,14 +27,16 @@
   }
 
   &__title {
-    @include pt-to-px(60, 72);
+    font-size: $font-size-1;
     font-weight: bold;
+    line-height: (72 / 60);
     color: #ccc;
     text-transform: uppercase;
   }
 
   &__text {
-    @include pt-to-px(18, 21.6);
+    font-size: $font-size-3;
+    line-height: (21.6 / 18);
     color: #fff;
   }
 

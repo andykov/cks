@@ -69,13 +69,16 @@
     }
     span {
       display: block;
-      @include pt-to-px(18, 18);
+      font-size: $font-size-3;
+      line-height: 1;
       margin-bottom: $layout-vertical-line-height;
       text-transform: uppercase;
     }
     p {
       // font-size: $font-size-5;
-      @include pt-to-px(15, 18);
+      font-size: $font-size;
+      line-height: (18 / 15);
+      letter-spacing: 0.01em;
       margin-bottom: 0;
     }
   }

@@ -6,6 +6,10 @@
 
   $block-name:                &; // #{$block-name}__element
 
+  &:not(&--vertical) {
+    padding-top: $layout-vertical-line-height;
+  }
+
   // первый уровень
   &__list {
     margin: 0;
@@ -92,12 +96,13 @@
 
   &__link {
     display: block;
-    padding: 0.625em 15px;
+    padding: 1.000em 15px;
     text-decoration: none;
     text-align: center;
     border-radius: 5px;
     color: #223a7a;
-    @include pt-to-px(18, 18);
+    font-size: $font-size-3;
+    line-height: 1;
     text-transform: uppercase;
     background-color: rgba(102, 161, 199, 0.2);
     box-shadow: inset 3.5px 6px 7px 0 rgba(34,58,122, 0.15);
@@ -219,6 +224,10 @@
 
     .main-nav__link {
       text-align: right;
+      background-color: rgba(255,255,255, .6);
+      &--lvl-2 {
+
+      }
     }
   }
 

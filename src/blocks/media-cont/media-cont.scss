@@ -1,0 +1,61 @@
+// В этом файле должны быть стили для БЭМ-блока media-cont, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.media-cont {
+  // max-width: 1280px;
+  max-width: 1372px;
+  margin: 0 auto;
+  padding-left: 56px;
+  padding-right: 56px;
+
+  $block-name:                &; // #{$block-name}__element
+  
+
+  &__inner {
+    // max-width: 1280px;
+    // margin: 0 auto;
+    // padding: 0 46px;
+    // margin-left: -10px;
+    // margin-right: -10px;
+  }
+
+  &__item {
+    
+  }
+
+  &__item-inner {
+    display: flex;
+    justify-content: center;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  &__video {
+    // max-width: 620px;
+    // width: 100%;
+    flex: 1;
+    padding: 0 10px;
+    .embed-responsive {
+      margin-bottom: 0;
+    }
+    // @include col(md, 4);
+  }
+
+  &__text {
+    // max-width: 620px;
+    // width: 100%;
+    flex: 1;
+    padding: 0 10px;
+    margin: auto 0;
+  }
+
+  .slick-arrow {
+    &.slick-prev {
+      left: 0;
+    }
+    &.slick-next {
+      right: 0;
+    }
+  }
+}

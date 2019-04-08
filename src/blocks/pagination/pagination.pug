@@ -1,6 +1,6 @@
 //- Все примеси в этом файле должны начинаться c имени блока (pagination)
 
-mixin pagination(mods)
+mixin pagination(arrows, mods)
 
   //- Принимает:
   //-   mods  {string} - список модификаторов
@@ -24,7 +24,11 @@ mixin pagination(mods)
     }
 
   .pagination(class=allMods, aria-label='Page navigation')&attributes(attributes)
+    if (arrows == 'true')
+      a.pagination__left(href="") <
     block
+    if (arrows == 'true')
+      a.pagination__right(href="") >
 
 
 

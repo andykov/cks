@@ -11,11 +11,12 @@ block nav
   +main-nav('0')
 
 block content
-    .page__main-head
-        +breadcrumbs()
-            +breadcrumbs-item('Главная', '/index')
-            +breadcrumbs-item('Изделия')
-        h1.page__title Изделия
+    .container
+        .page__main-head
+            +breadcrumbs()
+                +breadcrumbs-item('Главная', '/index')
+                +breadcrumbs-item('Изделия')
+            h1.page__title Изделия
     +products-list()
         +products-list-item()
             +card({

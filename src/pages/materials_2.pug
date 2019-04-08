@@ -8,14 +8,15 @@ block meta
 //-   link(rel='stylesheet', href='css/some.css')
 
 block nav
-  +main-nav('0')
+  +main-nav('0', '', 'true')
 
 block content
-    .page__main-head
-        +breadcrumbs()
-            +breadcrumbs-item('Главная', '/index')
-            +breadcrumbs-item('Материалы')
-        h1.page__title Материалы
+    .container
+        .page__main-head
+            +breadcrumbs()
+                +breadcrumbs-item('Главная', '/index')
+                +breadcrumbs-item('Материалы')
+            h1.page__title Материалы
     +intro-cont()
     .container-fluid
         .columns
@@ -37,7 +38,8 @@ block content
                 +card({
                     url: 'good01',
                     img: 'https://picsum.photos/520/530',
-                    name: 'Кварцевый агломерат (искусственный камень)',
+                    name: 'Кварцевый агломерат',
+                    subname: '(искусственный камень)',
                     desc: 'В процессе эксплуатации столешница испытываетцелую гамму специфических воздействий: механическое -  при разделке продуктов; термическое - от горячей посуды; химическое - от уксуса, острого соуса и т.д. При выборе материала для изготовления столешницы, следует учитывать все вышеперечисленные факторы. Выбор есть и он богат. Из чего выбирает будущий владелец современной кухни.'
                 },'indent')
             .col-md-3
@@ -48,83 +50,47 @@ block content
                     desc: 'В процессе эксплуатации столешница испытываетцелую гамму специфических воздействий: механическое -  при разделке продуктов; термическое - от горячей посуды; химическое - от уксуса, острого соуса и т.д. При выборе материала для изготовления столешницы, следует учитывать все вышеперечисленные факторы. Выбор есть и он богат. Из чего выбирает будущий владелец современной кухни.'
                 },'indent')
     
-    .container-fluid
-        .columns
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'EMERALD PEARL EXTRA',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'AA 493 Allegheny Amber',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MADAGASCAR BLUE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MULTICOLOR',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'BARDIGLIO IMPERIALE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'GALLOWAY Cambria',
-                })
-    +card-about
-    .container-fluid
-        .columns
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'EMERALD PEARL EXTRA',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'AA 493 Allegheny Amber',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MADAGASCAR BLUE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MULTICOLOR',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'BARDIGLIO IMPERIALE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'GALLOWAY Cambria',
-                })
+    .container
+        p Компании-производители:
+        .fabrics-logo
+            
+            .columns.flex-center
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/135/36", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/135/36", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/140/38", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/128/108", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/128/63", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/137/52", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/138/33", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/135/38", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/136/58", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/135/43", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/132/63", alt="")
+                .col-md-2
+                    a(href="javascript:void(0);").fabrics-logo__item
+                        img(src="https://picsum.photos/138/55", alt="")
 //- #[a(href='blocks-demo.html') Библиотека блоков]
 
 //- block footer

@@ -1,0 +1,72 @@
+extends ../pug/layout.pug
+
+block meta
+  title Главная
+  meta(name='description', content='')
+
+//- block append head
+//-   link(rel='stylesheet', href='css/some.css')
+
+block nav
+  +main-nav('0', '', 'true')
+
+block content
+    .container
+        .page__main-head
+            +breadcrumbs()
+                +breadcrumbs-item('Главная', '/index')
+                +breadcrumbs-item('Контакты')
+            h1.page__title Контакты
+
+    .container-half.container-half--narrow
+        .container-half__inner
+            .container-half__aside
+                img(src="img/post-img-3.jpg", alt="")
+            .container-half__main
+                p
+                    | Главная цель компании - создать цивилизованную отрасль искусственного камня, помогающую людям и бизнесу реализовывать свои идеи в виде
+                    | предметов интерьера и отделки. Стать компанией – флагманом отрасли,
+                    | использующую передовые технологии, инструменты и стандарты
+                    | производства и управления, производящую продукты безупречного качества по доступным ценам, объединяющую талантливых и профессиональных
+                    | людей с целью улучшения качества жизни населения земли. Я уверен, что наша команда достигнет своих целей. Искренне признателен клиентам
+                    | за доверие и благодарен партнёрам за сотрудничество.#[br]
+                    | Ждём вас в нашем шоуруме!
+                ul.contacts-info
+                    li
+                        span
+                            img(src="img/icon-mail.svg", width="36" height="36" alt="")
+                        | #[a(href="mailto:info@masterstone-spb.ru") info@masterstone-spb.ru]
+                    li 
+                        span
+                            img(src="img/icon-phone.svg", width="36" height="36" alt="")
+                        | #[a(href="tel:+78122439998") +7 (812) 243-99-98]#[br]
+                        | #[a(href="tel:+79219389853") +7 (921) 938-98-53]
+                    li 
+                        span
+                            img(src="img/icon-map.svg", width="36" height="36" alt="")
+                        | Производство: г.Гатчина #[br]
+                        | ул. 120 Гатчинской девизии, д.1
+                    li 
+                        span
+                            img(src="img/icon-map.svg", width="36" height="36" alt="")
+                        | Шоурум: г.Санкт-Петербург #[br]
+                        | Студенческая ул. д.10, ТЦ Ланской, 3 этаж, секция С-12 #[br]#[br]
+                        | ПН-ПТ 10:00-18:00 #[br]
+                        | СБ 12:00-16:00 #[br]
+                        | ВС - выходной
+            .container-half__full
+                .contacts-map
+                    | <iframe src="https://yandex.ru/map-widget/v1/-/CCBbrFz-" width="100%" height="630" frameborder="1" allowfullscreen="true"></iframe>
+
+
+    .container-half.container-half--narrow
+        .container-half__inner
+
+
+//- #[a(href='blocks-demo.html') Библиотека блоков]
+
+//- block footer
+//-   p footer
+
+//- block append page-bottom
+//-   script(src='js/some.js')

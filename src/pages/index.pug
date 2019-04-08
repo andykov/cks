@@ -8,7 +8,7 @@ block meta
 //-   link(rel='stylesheet', href='css/some.css')
 
 block nav
-  +main-nav('10', 'vertical')
+  +main-nav('', 'vertical', 'false')
 
 block banner
   +main-banner()
@@ -16,23 +16,9 @@ block banner
 block content
 
   section.section
-    .media-cont
-      .js-media-cont.media-cont__inner(data-slick='{"slidesToShow": 1, "slidesToScroll": 1}')
-        .media-cont__item
-          .media-cont__item-inner
-            .media-cont__video
-              +embed-responsive()
-                iframe(src='https://www.youtube.com/embed/7pOr3dBFAeY', frameborder='0', allowfullscreen='')
-            .media-cont__text
-              p If I struggle a lifetime, What would my body be? An empty shell, On what a demon fed Could be a heavy burden, To stay true to your words Speak up, I wanna silence everything If I got no plan, Doesn’t mean that I get what I want for free If I got no meaning, Would you force me to a place where I make sense? ‘Cause nothing lasts forever How do I get home? Everything revolves around you If I can’t find myself? As you’re so completely fake How do I get home? Everything revolves around you If even you can’t help? Dark night’s from my soul I deny failure, I ignite Woe is on my misery, She wins all their eyes Realise what they find’s not fate, This is not me, this is me So if I struggle a lifetime, What good would that do? If I got a plan, Doesn’t have to stop the feeling inside If I do make sense, Would you drag me down? ‘Cause nothing lasts forever How do I get home? Everything revolves around you! If I can’t find myself? As you’re so completely fake! How do I get home? Everything revolves around you! If even you can’t help? Dark night from my soul
-        .media-cont__item
-          .media-cont__item-inner
-            .media-cont__video
-              +embed-responsive()
-                iframe(src='https://www.youtube.com/embed/7pOr3dBFAeY', frameborder='0', allowfullscreen='')
-            .media-cont__text
-              p If I struggle a lifetime, What would my body be? An empty shell, On what a demon fed Could be a heavy burden, To stay true to your words Speak up, I wanna silence everything If I got no plan, Doesn’t mean that I get what I want for free If I got no meaning, Would you force me to a place where I make sense? ‘Cause nothing lasts forever How do I get home? Everything revolves around you If I can’t find myself? As you’re so completely fake How do I get home? Everything revolves around you If even you can’t help? Dark night’s from my soul I deny failure, I ignite Woe is on my misery, She wins all their eyes Realise what they find’s not fate, This is not me, this is me So if I struggle a lifetime, What good would that do? If I got a plan, Doesn’t have to stop the feeling inside If I do make sense, Would you drag me down? ‘Cause nothing lasts forever How do I get home? Everything revolves around you! If I can’t find myself? As you’re so completely fake! How do I get home? Everything revolves around you! If even you can’t help? Dark night from my soul
-  
+    .container
+      +media-cont()
+        
   section.section
     h2.title Наши преимущества
     +advantages()
@@ -108,7 +94,8 @@ block content
     +awards()
 
   section.section
-    a.btn.btn--large(href="/") Оставить заявку
+    .text-center
+      a.btn.btn--lg.btn--blue-dark(href="/") Оставить заявку
 
   section.section
     h2.title Информационные материалы
@@ -136,5 +123,5 @@ block content
 //- block footer
 //-   p footer
 
-block append page-bottom
+//- block append page-bottom
   //- script(src='js/libs/slick.min.js')

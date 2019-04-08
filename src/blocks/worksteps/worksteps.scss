@@ -36,12 +36,14 @@
     color: #66a1c7;
     min-height: 72px;
     text-transform: uppercase;
-    margin-bottom: $layout-vertical-line-height * 2;
-    @include pt-to-px(15, 18);
+    margin-bottom: $layout-vertical-line-height;
+    font-size: $font-size;
+    line-height: (18 / 15);
   }
 
   &__text {
-    // font-size: $font-size-5;
-    @include pt-to-px(12, 15);
+    min-height: $layout-vertical-line-height * 3;
+    font-size: $font-size-6;
+    line-height: (15 / 12);
   }
 }
