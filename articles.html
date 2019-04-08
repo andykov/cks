@@ -57,7 +57,20 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
               <nav class="main-nav" id="nav"><button class="burger main-nav__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav--open"><span>Показать главное меню</span></button>
                 <ul class="main-nav__list">
                   <li class="main-nav__item  main-nav__item--active"><a class="main-nav__link" href="/materials.html">Материалы</a></li>
-                  <li class="main-nav__item"><a class="main-nav__link" href="/products.html">Изделия</a></li>
+                  <li class="main-nav__item"><a class="main-nav__link" href="/products.html">Изделия</a>
+                    <div class="main-nav__sublist-wrapper  main-nav__sublist-wrapper--lvl-2">
+                      <ul class="main-nav__list  main-nav__list--lvl-2">
+                        <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/some.html">Кухонные столешницы</a></li>
+                        <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/some.html">Столешницы для ванной комнаты</a></li>
+                        <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/some.html">Подоконники</a></li>
+                        <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/some.html">Ступени</a></li>
+                        <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/some.html">Столы</a></li>
+                        <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/some.html">Душевые поддоны</a></li>
+                        <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/some.html">Барные стойки</a></li>
+                        <li class="main-nav__item  main-nav__item--lvl-2"><a class="main-nav__link  main-nav__link--lvl-2" href="pages/some.html">Сопутствующие товары</a></li>
+                      </ul>
+                    </div>
+                  </li>
                   <li class="main-nav__item"><a class="main-nav__link" href="/about.html">О компании</a></li>
                   <li class="main-nav__item"><a class="main-nav__link" href="/partners.html">Партнёрам</a></li>
                   <li class="main-nav__item"><a class="main-nav__link" href="/contacts.html">Контакты</a></li>
@@ -72,160 +85,99 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
           <div class="page__main-head">
             <ul class="breadcrumbs" aria-label="Breadcrumb" role="navigation">
               <li class="breadcrumbs__item"><a href="/index">Главная</a></li>
-              <li class="breadcrumbs__item"><span>Изделия</span></li>
+              <li class="breadcrumbs__item"><a href="/info">Информация</a></li>
+              <li class="breadcrumbs__item"><span>Статьи</span></li>
             </ul>
-            <h1 class="page__title">Изделия</h1>
+            <h1 class="page__title">СТАТЬИ</h1>
           </div>
         </div>
-        <div class="products-list">
-          <div class="products-list__inner">
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/342" alt=""/></span>
-                  <h3 class="card__title">супер-пупер-мега-ультра мойка </h3>
+        <div class="container">
+          <div class="container__partial">
+            <div class="post-list">
+              <article class="post"><a class="post__img-wrap" href=""><img class="post__img" src="https://picsum.photos/620/252" alt="" /></a>
+                <div class="post__text">
+                  <header class="post__header">
+                    <h3 class="post__title">Кварцевый агломерат – уникальный материал</h3>
+                  </header>
+                  <div class="post__cont"><time class="post__date" datetime="2018-12-04">04.12.2018</time>
+                    <p>Основана в 2010 году в результате слияния нескольких компаний, специализирующихся
+                      в области работы с натуральным и искусственным камнем. Головной офис компании находится
+                      в Санкт-Петербурге.</p>
+                    <p>В компании работают высококлассные специалисты с большим опытом работы. Компания имеет собственное производство, оснащенное современным высокотехнологичным оборудованием
+                      по обработке камня, конструкторский и технологический отделы, подразделение
+                      аппаратно-цифровых замеров, монтажные, транспортные и сервисные подразделения.</p>
+                  </div>
+                  <footer class="post__footer"><a class="btn post__more-link" href="articles-item.html">Смотреть</a></footer>
+                </div>
+              </article>
+              <article class="post"><a class="post__img-wrap" href=""><img class="post__img" src="https://picsum.photos/620/252" alt="" /></a>
+                <div class="post__text">
+                  <header class="post__header">
+                    <h3 class="post__title">Кварцевый агломерат – уникальный материал</h3>
+                  </header>
+                  <div class="post__cont"><time class="post__date" datetime="2018-12-04">04.12.2018</time>
+                    <p>Основана в 2010 году в результате слияния нескольких компаний, специализирующихся
+                      в области работы с натуральным и искусственным камнем. Головной офис компании находится
+                      в Санкт-Петербурге.</p>
+                    <p>В компании работают высококлассные специалисты с большим опытом работы. Компания имеет собственное производство, оснащенное современным высокотехнологичным оборудованием
+                      по обработке камня, конструкторский и технологический отделы, подразделение
+                      аппаратно-цифровых замеров, монтажные, транспортные и сервисные подразделения.</p>
+                  </div>
+                  <footer class="post__footer"><a class="btn post__more-link" href="articles-item.html">Смотреть</a></footer>
+                </div>
+              </article>
+              <article class="post"><a class="post__img-wrap" href=""><img class="post__img" src="https://picsum.photos/620/252" alt="" /></a>
+                <div class="post__text">
+                  <header class="post__header">
+                    <h3 class="post__title">Кварцевый агломерат – уникальный материал</h3>
+                  </header>
+                  <div class="post__cont"><time class="post__date" datetime="2018-12-04">04.12.2018</time>
+                    <p>Основана в 2010 году в результате слияния нескольких компаний, специализирующихся
+                      в области работы с натуральным и искусственным камнем. Головной офис компании находится
+                      в Санкт-Петербурге.</p>
+                    <p>В компании работают высококлассные специалисты с большим опытом работы. Компания имеет собственное производство, оснащенное современным высокотехнологичным оборудованием
+                      по обработке камня, конструкторский и технологический отделы, подразделение
+                      аппаратно-цифровых замеров, монтажные, транспортные и сервисные подразделения.</p>
+                  </div>
+                  <footer class="post__footer"><a class="btn post__more-link" href="articles-item.html">Смотреть</a></footer>
+                </div>
+              </article>
+              <article class="post"><a class="post__img-wrap" href=""><img class="post__img" src="https://picsum.photos/620/252" alt="" /></a>
+                <div class="post__text">
+                  <header class="post__header">
+                    <h3 class="post__title">Кварцевый агломерат – уникальный материал</h3>
+                  </header>
+                  <div class="post__cont"><time class="post__date" datetime="2018-12-04">04.12.2018</time>
+                    <p>Основана в 2010 году в результате слияния нескольких компаний, специализирующихся
+                      в области работы с натуральным и искусственным камнем. Головной офис компании находится
+                      в Санкт-Петербурге.</p>
+                    <p>В компании работают высококлассные специалисты с большим опытом работы. Компания имеет собственное производство, оснащенное современным высокотехнологичным оборудованием
+                      по обработке камня, конструкторский и технологический отделы, подразделение
+                      аппаратно-цифровых замеров, монтажные, транспортные и сервисные подразделения.</p>
+                  </div>
+                  <footer class="post__footer"><a class="btn post__more-link" href="articles-item.html">Смотреть</a></footer>
+                </div>
+              </article>
+              <article class="post"><a class="post__img-wrap" href=""><img class="post__img" src="https://picsum.photos/620/252" alt="" /></a>
+                <div class="post__text">
+                  <header class="post__header">
+                    <h3 class="post__title">Кварцевый агломерат – уникальный материал</h3>
+                  </header>
+                  <div class="post__cont"><time class="post__date" datetime="2018-12-04">04.12.2018</time>
+                    <p>Основана в 2010 году в результате слияния нескольких компаний, специализирующихся
+                      в области работы с натуральным и искусственным камнем. Головной офис компании находится
+                      в Санкт-Петербурге.</p>
+                    <p>В компании работают высококлассные специалисты с большим опытом работы. Компания имеет собственное производство, оснащенное современным высокотехнологичным оборудованием
+                      по обработке камня, конструкторский и технологический отделы, подразделение
+                      аппаратно-цифровых замеров, монтажные, транспортные и сервисные подразделения.</p>
+                  </div>
+                  <footer class="post__footer"><a class="btn post__more-link" href="articles-item.html">Смотреть</a></footer>
                 </div>
               </article>
             </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/252" alt=""/></span>
-                  <h3 class="card__title">Ресторан «Адмирал Бенбоу»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/612" alt=""/></span>
-                  <h3 class="card__title">барная стойка кафе «Сюси-смузи»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/342" alt=""/></span>
-                  <h3 class="card__title">супер-пупер-мега-ультра мойка </h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/360" alt=""/></span>
-                  <h3 class="card__title">супер-пупер-мега-ультра мойка </h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/396" alt=""/></span>
-                  <h3 class="card__title">супер-пупер-мега-ультра мойка </h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/612" alt=""/></span>
-                  <h3 class="card__title">барная стойка кафе «Сюси-смузи»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/342" alt=""/></span>
-                  <h3 class="card__title">супер-пупер-мега-ультра мойка </h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/252" alt=""/></span>
-                  <h3 class="card__title">Ресторан «Адмирал Бенбоу»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/252" alt=""/></span>
-                  <h3 class="card__title">Ресторан «Адмирал Бенбоу»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/612" alt=""/></span>
-                  <h3 class="card__title">барная стойка кафе «Сюси-смузи»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/342" alt=""/></span>
-                  <h3 class="card__title">супер-пупер-мега-ультра мойка </h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/612" alt=""/></span>
-                  <h3 class="card__title">барная стойка кафе «Сюси-смузи»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/450" alt=""/></span>
-                  <h3 class="card__title">барная стойка кафе «Сюси-смузи»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/342" alt=""/></span>
-                  <h3 class="card__title">супер-пупер-мега-ультра мойка </h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/612" alt=""/></span>
-                  <h3 class="card__title">барная стойка кафе «Сюси-смузи»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/252" alt=""/></span>
-                  <h3 class="card__title">Ресторан «Адмирал Бенбоу»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/342" alt=""/></span>
-                  <h3 class="card__title">супер-пупер-мега-ультра мойка </h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/252" alt=""/></span>
-                  <h3 class="card__title">Ресторан «Адмирал Бенбоу»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/270" alt=""/></span>
-                  <h3 class="card__title">Ресторан «Адмирал Бенбоу»</h3>
-                </div>
-              </article>
-            </div>
-            <div class="products-list__item">
-              <article class="card">
-                <div class="card__inner"><span class="card__img-wrap"><img class="card__img" src="https://picsum.photos/460/252" alt=""/></span>
-                  <h3 class="card__title">Ресторан «Адмирал Бенбоу»</h3>
-                </div>
-              </article>
-            </div>
+            <div class="pagination" aria-label="Page navigation"><a class="pagination__left" href="">
+                <</a> <a class="pagination__item" href="/1">1
+              </a><a class="pagination__item" href="/2">2</a><a class="pagination__item  pagination__item--active" href="/3">3</a><a class="pagination__item" href="/4">4</a><span class="pagination__item">...</span><a class="pagination__item" href="/8">8</a><a class="pagination__right" href="">></a></div>
           </div>
         </div>
       </div>
