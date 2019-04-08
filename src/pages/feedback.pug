@@ -1,7 +1,7 @@
 extends ../pug/layout.pug
 
 block meta
-  title Главная
+  title Обратная связь
   meta(name='description', content='')
 
 //- block append head
@@ -14,7 +14,7 @@ block content
     .container
         .page__main-head
             +breadcrumbs()
-                +breadcrumbs-item('Главная', '/index')
+                +breadcrumbs-item('Главная', '/index.html')
                 +breadcrumbs-item('Обратная связь')
             h1.page__title Обратная связь
     .container-half.container-half--narrow

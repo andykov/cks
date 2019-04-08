@@ -46,7 +46,7 @@
 
       &--lvl-2 {
         display: block;
-        box-shadow: inset 0 0 0 3px rgba(34,58,122,.5), -6px 7px 8px 0 rgba(0,0,0,.35);
+        box-shadow: inset 0 0 0 3px rgba(34, 58, 122, 0.5), -6px 7px 8px 0 rgba(0, 0, 0, 0.35);
       }
 
       &--lvl-3 {
@@ -85,18 +85,22 @@
         color: #223a7a;
         background-color: #fff;
         // rgba(102, 161, 199, 0.3)
-        box-shadow: inset 0 0 0 3px rgba(34,58,122, 0.5), inset 3.5px 6px 7px 0 rgba(34,58,122, 0.15), -6px 7px 8px 0 rgba(0,0,0,.35);
+        box-shadow: inset 0 0 0 3px rgba(34, 58, 122, 0.5), inset 3.5px 6px 7px 0 rgba(34, 58, 122, 0.15), -6px 7px 8px 0 rgba(0, 0, 0, 0.35);
       }
     }
 
     &--lvl-2 {
       max-width: 100%;
     }
+
+    &:hover {
+      z-index: 1;
+    }
   }
 
   &__link {
     display: block;
-    padding: 1.000em 15px;
+    padding: 1em 15px;
     text-decoration: none;
     text-align: center;
     border-radius: 5px;
@@ -111,7 +115,7 @@
     &:focus {
       text-decoration: none;
       background-color: #fff;
-      box-shadow: inset 0 0 0 3px rgba(34,58,122,.5), inset 3.5px 6px 7px 0 rgba(34,58,122,.15), -6px 7px 8px 0 rgba(0,0,0,.35);
+      box-shadow: inset 0 0 0 3px rgba(34, 58, 122, 0.5), inset 3.5px 6px 7px 0 rgba(34, 58, 122, 0.15), -6px 7px 8px 0 rgba(0, 0, 0, 0.35);
     }
 
     &--lvl-2 {
@@ -224,7 +228,7 @@
 
     .main-nav__link {
       text-align: right;
-      background-color: rgba(255,255,255, .6);
+      background-color: rgba(255, 255, 255, 0.6);
       &--lvl-2 {
 
       }

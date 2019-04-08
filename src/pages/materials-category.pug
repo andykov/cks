@@ -1,7 +1,7 @@
 extends ../pug/layout.pug
 
 block meta
-  title Главная
+  title Гранит
   meta(name='description', content='')
 
 //- block append head
@@ -14,30 +14,30 @@ block content
     .container
         .page__main-head
             +breadcrumbs()
-                +breadcrumbs-item('Главная', '/index')
-                +breadcrumbs-item('Материалы', '/materials_category')
-                +breadcrumbs-item('Производители')
-            h1.page__title Производители
+                +breadcrumbs-item('Главная', '/index.html')
+                +breadcrumbs-item('Материалы', '/materials.html')
+                +breadcrumbs-item('Гранит')
+            h1.page__title Гранит
     //- +intro-cont()
     //- .container-fluid
     //-     .columns
     //-         .col-md-3
     //-             +card({
-    //-                 url: 'good01',
+    //-           
     //-                 img: 'https://picsum.photos/520/530',
     //-                 name: 'Гранит',
     //-                 desc: 'В процессе эксплуатации столешница испытываетцелую гамму специфических воздействий: механическое -  при разделке продуктов; термическое - от горячей посуды; химическое - от уксуса, острого соуса и т.д. При выборе материала для изготовления столешницы, следует учитывать все вышеперечисленные факторы. Выбор есть и он богат. Из чего выбирает будущий владелец современной кухни.'
     //-             },'indent')
     //-         .col-md-3
     //-             +card({
-    //-                 url: 'good01',
+    //-           
     //-                 img: 'https://picsum.photos/520/530',
     //-                 name: 'Мрамор',
     //-                 desc: 'В процессе эксплуатации столешница испытываетцелую гамму специфических воздействий: механическое -  при разделке продуктов; термическое - от горячей посуды; химическое - от уксуса, острого соуса и т.д. При выборе материала для изготовления столешницы, следует учитывать все вышеперечисленные факторы. Выбор есть и он богат. Из чего выбирает будущий владелец современной кухни.'
     //-             },'indent')
     //-         .col-md-3
     //-             +card({
-    //-                 url: 'good01',
+    //-           
     //-                 img: 'https://picsum.photos/520/530',
     //-                 name: 'Кварцевый агломерат',
     //-                 subname: '(искусственный камень)',
@@ -45,7 +45,7 @@ block content
     //-             },'indent')
     //-         .col-md-3
     //-             +card({
-    //-                 url: 'good01',
+    //-           
     //-                 img: 'https://picsum.photos/520/530',
     //-                 name: 'Кварц-керамика',
     //-                 desc: 'В процессе эксплуатации столешница испытываетцелую гамму специфических воздействий: механическое -  при разделке продуктов; термическое - от горячей посуды; химическое - от уксуса, острого соуса и т.д. При выборе материала для изготовления столешницы, следует учитывать все вышеперечисленные факторы. Выбор есть и он богат. Из чего выбирает будущий владелец современной кухни.'
@@ -55,263 +55,125 @@ block content
         .columns.js-card
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'EMERALD PEARL EXTRA',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1002',
                     img: 'https://picsum.photos/520/530',
                     name: 'AA 493 Allegheny Amber',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1003',
                     img: 'https://picsum.photos/520/530',
                     name: 'MADAGASCAR BLUE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1004',
                     img: 'https://picsum.photos/520/530',
                     name: 'MULTICOLOR',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1005',
                     img: 'https://picsum.photos/520/530',
                     name: 'BARDIGLIO IMPERIALE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1006',
                     img: 'https://picsum.photos/520/530',
                     name: 'GALLOWAY Cambria',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1007',
                     img: 'https://picsum.photos/520/530',
                     name: 'EMERALD PEARL EXTRA',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1008',
                     img: 'https://picsum.photos/520/530',
                     name: 'AA 493 Allegheny Amber',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1009',
                     img: 'https://picsum.photos/520/530',
                     name: 'MADAGASCAR BLUE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1010',
                     img: 'https://picsum.photos/520/530',
                     name: 'MULTICOLOR',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1011',
                     img: 'https://picsum.photos/520/530',
                     name: 'BARDIGLIO IMPERIALE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1012',
                     img: 'https://picsum.photos/520/530',
                     name: 'GALLOWAY Cambria',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1013',
                     img: 'https://picsum.photos/520/530',
                     name: 'EMERALD PEARL EXTRA',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1014',
                     img: 'https://picsum.photos/520/530',
                     name: 'AA 493 Allegheny Amber',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1015',
                     img: 'https://picsum.photos/520/530',
                     name: 'MADAGASCAR BLUE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1016',
                     img: 'https://picsum.photos/520/530',
                     name: 'MULTICOLOR',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1017',
                     img: 'https://picsum.photos/520/530',
                     name: 'BARDIGLIO IMPERIALE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    url: 'good01',
+                    id: '1018',
                     img: 'https://picsum.photos/520/530',
                     name: 'GALLOWAY Cambria',
                 })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'EMERALD PEARL EXTRA',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'AA 493 Allegheny Amber',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MADAGASCAR BLUE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MULTICOLOR',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'BARDIGLIO IMPERIALE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'GALLOWAY Cambria',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'EMERALD PEARL EXTRA',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'AA 493 Allegheny Amber',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MADAGASCAR BLUE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MULTICOLOR',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'BARDIGLIO IMPERIALE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'GALLOWAY Cambria',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'EMERALD PEARL EXTRA',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'AA 493 Allegheny Amber',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MADAGASCAR BLUE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MULTICOLOR',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'BARDIGLIO IMPERIALE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'GALLOWAY Cambria',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'EMERALD PEARL EXTRA',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'AA 493 Allegheny Amber',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MADAGASCAR BLUE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'MULTICOLOR',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'BARDIGLIO IMPERIALE',
-                })
-            .col-md-6.col-lg-4.col-xl-2
-                +card({
-                    url: 'good01',
-                    img: 'https://picsum.photos/520/530',
-                    name: 'GALLOWAY Cambria',
-                })
-            .col-md-12.col-full(style="height: 0; visibility: hidden;")
-                .card-view
+            .col-md-12(style="height: 0; visibility: hidden;")
+                .card-preview
                     div
                         img(src="https://picsum.photos/1260/523", alt="")
-                    div TEST
-    +card-about
-
+                    div
+                        +product-desc()
+        +pagination('true')
+            +pagination-item('1', '/1')
+            +pagination-item('2', '/2')
+            +pagination-item('3', '/3', true)
+            +pagination-item('4', '/4')
+            +pagination-item('...')
+            +pagination-item('8', '/8')
 //- #[a(href='blocks-demo.html') Библиотека блоков]
 
 //- block footer

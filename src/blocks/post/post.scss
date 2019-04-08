@@ -8,6 +8,7 @@
 
   display: flex;
   padding-top: 36px;
+
   &:not(:last-child) {
     margin-bottom: $layout-vertical-line-height * 5;
   }
@@ -29,14 +30,17 @@
     background-color: #d1e3ee;
     padding: 7.5px 20px;
     margin-bottom: $layout-vertical-line-height;
+
     .post__date,
     .post__title {
       color: #333;
       margin-bottom: 0;
     }
+
     .post__date {
-      font-weight: bold;
+      font-weight: 700;
     }
+
     // .post__date {
     //   font-size: 17px;
     //   font-weight: bold;

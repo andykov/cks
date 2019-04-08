@@ -5,6 +5,7 @@ mixin card(data, mods)
 
   //- Принимает:
   //- data {
+  //-   id:    {string},  - id карточки
   //-   url:   {string},  - адрес для ссылки
   //-   img:   {string},  - адрес картинки товара
   //-   name:  {string},  - название
@@ -62,10 +63,15 @@ mixin card(data, mods)
   //-         p.card__descr!= data.descr
   //-       p.card__price!= price
 
-  article.card(class=allMods)&attributes(attributes)
+  if (data.id !== 'undefined' && data.id)
+  .card(id=data.id class=allMods)&attributes(attributes)
     .card__inner
-      span.card__img-wrap
-        img.card__img(src= data.img, alt="")
+      if (data.url !== 'undefined' && data.url)
+        a.card__img-wrap(href=data.url)
+          img.card__img(src= data.img, alt=data.name)
+      else
+        span.card__img-wrap
+          img.card__img(src= data.img, alt=data.name)
       h3.card__title= data.name
         if (data.subname !== 'undefined' && data.subname)
           span= data.subname

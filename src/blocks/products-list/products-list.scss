@@ -9,9 +9,11 @@
   &__inner {
     column-gap: 20px;
     column-fill: initial;
+
     @media (min-width: $screen-md) {
       column-count: 3;
     }
+
     @media (min-width: $screen-lg) {
       column-count: 4;
     }
@@ -19,12 +21,13 @@
 
   &__item {
     // margin-bottom: 30px;
-    width: 100%;
     display: inline-block;
+    width: 100%;
     vertical-align: top;
 
     .card {
       &__img {
+
         @media (max-width: $screen-md - 1) {
           max-height: 224px;
         }

@@ -1,0 +1,347 @@
+extends ../pug/layout.pug
+
+block meta
+  title Производители
+  meta(name='description', content='')
+
+//- block append head
+//-   link(rel='stylesheet', href='css/some.css')
+
+block nav
+  +main-nav('0', '', 'true')
+
+block content
+    .container
+        .page__main-head
+            +breadcrumbs()
+                +breadcrumbs-item('Главная', '/index.html')
+                +breadcrumbs-item('Материалы', '/materials.html')
+                +breadcrumbs-item('Производители')
+    
+    .container-half.container-half--narrow
+        .container-half__inner
+            .container-half__full
+            h3 Компании-производители:
+            .fabrics-logo
+                .columns.flex-center
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/135/36", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/135/36", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/140/38", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/128/108", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/128/63", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/137/52", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/138/33", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/135/38", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/136/58", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/135/43", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/132/63", alt="")
+                    .col-md-2
+                        a(href="javascript:void(0);").fabrics-logo__item
+                            img(src="https://picsum.photos/138/55", alt="")
+                            
+    .container-half
+        .container-half__inner
+            .container-half__aside
+                img(src="img/post-img-1.jpg", alt="")
+            .container-half__main
+                h1 VICOSTONE (ВЬЕТНАМ) 
+                p 
+                    | Основана в 2010 году в результате слияния нескольких компаний, специализирующихся
+                    | в области работы с натуральным и искусственным камнем. Головной офис компании находится
+                    | в Санкт-Петербурге.    
+                p 
+                    | В компании работают высококлассные специалисты с большим опытом работы. Компания имеет
+                    | собственное производство, оснащенное современным высокотехнологичным оборудованием
+                    | по обработке камня, конструкторский и технологический отделы, подразделение аппаратноцифровых
+                    | замеров, монтажные, транспортные и сервисные подразделения.
+    
+    .container-fluid
+        .columns.js-card
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'EMERALD PEARL EXTRA',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'AA 493 Allegheny Amber',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MADAGASCAR BLUE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MULTICOLOR',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'BARDIGLIO IMPERIALE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'GALLOWAY Cambria',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'EMERALD PEARL EXTRA',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'AA 493 Allegheny Amber',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MADAGASCAR BLUE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MULTICOLOR',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'BARDIGLIO IMPERIALE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'GALLOWAY Cambria',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'EMERALD PEARL EXTRA',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'AA 493 Allegheny Amber',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MADAGASCAR BLUE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MULTICOLOR',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'BARDIGLIO IMPERIALE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'GALLOWAY Cambria',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'EMERALD PEARL EXTRA',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'AA 493 Allegheny Amber',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MADAGASCAR BLUE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MULTICOLOR',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'BARDIGLIO IMPERIALE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'GALLOWAY Cambria',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'EMERALD PEARL EXTRA',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'AA 493 Allegheny Amber',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MADAGASCAR BLUE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MULTICOLOR',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'BARDIGLIO IMPERIALE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'GALLOWAY Cambria',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'EMERALD PEARL EXTRA',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'AA 493 Allegheny Amber',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MADAGASCAR BLUE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MULTICOLOR',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'BARDIGLIO IMPERIALE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'GALLOWAY Cambria',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'EMERALD PEARL EXTRA',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'AA 493 Allegheny Amber',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MADAGASCAR BLUE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MULTICOLOR',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'BARDIGLIO IMPERIALE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    url: 'good01',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'GALLOWAY Cambria',
+                })
+            .col-md-12(style="height: 0; visibility: hidden;")
+                .card-preview
+                    div
+                        img(src="https://picsum.photos/1260/523", alt="")
+                    div
+                        +product-desc()
+
+//- #[a(href='blocks-demo.html') Библиотека блоков]
+
+//- block footer
+//-   p footer
+
+//- block append page-bottom
+//-   script(src='js/some.js')

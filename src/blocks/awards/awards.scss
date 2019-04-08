@@ -9,6 +9,9 @@
     // @include row();
     display: flex;
     
+    .simplebar-content {
+      display: flex;
+    }
   }
 
   &__item {

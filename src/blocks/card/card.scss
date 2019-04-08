@@ -18,6 +18,7 @@
   min-width: 150px;
   // padding: 0 15px;
   margin-bottom: 20px;
+  overflow: hidden;
   // @include get-width();
   // @include col(md, 3);
   // max-width: 460px;
@@ -39,14 +40,23 @@
     width: 100%;
     position: relative;
 
-    &::before {
+    &::before,
+    &::after {
       content: '';
-      background-color: rgba(34, 58, 122, 0);
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
+    }
+
+    &::before {
+      background-color: rgba(34, 58, 122, 0);
+      transition: background-color $transition-time ease-in-out;
+    }
+
+    &::after {
+      z-index: 1;
     }
   }
 
@@ -107,6 +117,9 @@
     line-height: (18 / 14);
     color: #fff;
     padding: ($layout-vertical-line-height * 2) ($layout-vertical-line-height / 2) 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility $transition-time ease-in-out, opacity $transition-time ease-in-out;
   }
 
   &__price {
@@ -122,22 +135,37 @@
   }
 
   &:hover {
+    // cursor: pointer;
+
     .card__title {
       background-color: #223a7a;
     }
+    .card__desc {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    // bottom: -1px;
+    // height: 50%;
+    bottom: -2px;
+    height: 18%;
+    background: url('../img/card-arrow-active.svg') no-repeat center bottom / 100% auto;
+    background-size: 100% 100%;
+    transform: translateY(100%);
+    transition: transform ($transition-time - 0.020) cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &.active {
     position: relative;
 
     &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -1px;
-      height: 50%;
-      background: url('../img/card-arrow-active.svg') no-repeat center bottom / 100% auto;
+      transform: translateY(0);
     }
   }
 
@@ -163,7 +191,6 @@
       .card__img-wrap {
         &::before {
           background-color: rgba(34, 58, 122, 0.8);
-          transition: background-color 300ms;
         }
       }
     }
@@ -182,18 +209,9 @@
   }
 }
 
-.card-view {
+.card-preview {
   display: flex;
 
   &:first-child {flex: 4;}
   &:last-child {flex: 2;}
-}
-
-.col-full {
-  // &.hide {
-  //   height: 0;
-  // }
-  // &.show {
-  //   height: auto;
-  // }
 }

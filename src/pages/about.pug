@@ -1,20 +1,20 @@
 extends ../pug/layout.pug
 
 block meta
-  title Главная
+  title О компании
   meta(name='description', content='')
 
 //- block append head
 //-   link(rel='stylesheet', href='css/some.css')
 
 block nav
-  +main-nav('0')
+  +main-nav('2', '', 'true')
 
 block content
     .container
         .page__main-head
             +breadcrumbs()
-                +breadcrumbs-item('Главная', '/index')
+                +breadcrumbs-item('Главная', '/index.html')
                 +breadcrumbs-item('О компании')
             h1.page__title О компании
 
