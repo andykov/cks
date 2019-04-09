@@ -7,7 +7,7 @@ ready(function(){
 });
 
 const $ = require('jquery');
-$( document ).ready(function() {
+$(document).ready(function() {
     // $('.js-slider').slick();
     // $('.js-gallery').slick();
 });

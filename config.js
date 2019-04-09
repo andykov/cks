@@ -16,6 +16,7 @@ let config = {
   "addStyleBefore": [
     "src/scss/variables.scss",
     "src/scss/mixins.scss",
+    "@fancyapps/fancybox/dist/jquery.fancybox.min.css",
     "simplebar/dist/simplebar.css",
     // "slick-carousel/slick/slick.scss",
     // 'somePackage/dist/somePackage.css', // для 'node_modules/somePackage/dist/somePackage.css',
@@ -24,6 +25,7 @@ let config = {
     // "src/scss/print.scss"
   ],
   'addJsBefore': [
+    // "@fancyapps/fancybox/dist/jquery.fancybox.min.js",
     // 'somePackage/dist/somePackage.js', // для 'node_modules/somePackage/dist/somePackage.js',
   ],
   "addJsAfter": [

@@ -11,7 +11,6 @@
 
   $block-name:                &; // #{$block-name}__element
   
-
   &__inner {
     // max-width: 1280px;
     // margin: 0 auto;
@@ -25,35 +24,40 @@
   }
 
   &__item-inner {
-    display: flex;
-    justify-content: center;
     margin-left: -10px;
     margin-right: -10px;
+
+    @media (min-width: $screen-lg) {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__video {
-    // max-width: 620px;
-    // width: 100%;
     flex: 1;
     padding: 0 10px;
+
+    @media (max-width: $screen-lg - 1) {
+      margin-bottom: ($layout-vertical-line-height * 2);
+    }
+
     .embed-responsive {
       margin-bottom: 0;
     }
-    // @include col(md, 4);
   }
 
   &__text {
-    // max-width: 620px;
-    // width: 100%;
     flex: 1;
     padding: 0 10px;
     margin: auto 0;
   }
 
   .slick-arrow {
+
     &.slick-prev {
       left: 0;
     }
+
     &.slick-next {
       right: 0;
     }

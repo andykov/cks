@@ -1,22 +1,27 @@
-// В этом файле должны быть стили для БЭМ-блока fabrics, его элементов,
+// В этом файле должны быть стили для БЭМ-блока fabrics-logo, его элементов,
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-.fabrics {
-
-  $block-name:                &; // #{$block-name}__element
-
-  &__inner {
-    max-width: (1280px + (46px * 2));
-    margin: 0 auto;
-    padding: 0 46px;
-  }
-}
-
 .fabrics-logo {
+
+  // // @include row();
+  // display: flex;
+  // margin: 0 -10px;
+  $block-name:                &; // #{$block-name}__element
   // @include row();
   display: flex;
-  margin: 0 -10px;
+  justify-content: center;
+  max-width: 1372px;
+  margin: 0 auto;
+  padding-left: 56px;
+  padding-right: 56px;
+
+  &__inner {
+    // max-width: (1280px + (46px * 2));
+    // margin: 0 auto;
+    // padding: 0 46px;
+    @include row();
+  }
 
   .slick-arrow {
     z-index: 1;
@@ -39,8 +44,10 @@
     padding: 0 10px;
     max-width: 160px;
     width: 160px;
-    margin: auto;
+    // margin: auto;
     text-align: center;
+    // @include col();
+    // @include col('md', 1);
     img {
       // max-width: 140px;
       margin: 0 auto;
@@ -53,4 +60,22 @@
     }
   }
 
+  &__list {
+
+  }
+
+  &__item {
+    // @include row();
+  }
+
+  &--slider {
+    .fabrics-logo__inner {
+      
+    }
+
+    &__item & {
+      @include col();
+      @include col('md', 1);
+    }
+  }
 }

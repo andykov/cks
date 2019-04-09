@@ -57,38 +57,21 @@ block content
   
   section.section
     h2.title Производители материала
-    +fabrics()
+    .container
+      +fabrics-logo('slider', 'slider')
+        +fabrics-logo-item('img/fabric-1.png')
+        +fabrics-logo-item('img/fabric-2.png')
+        +fabrics-logo-item('img/fabric-3.png')
+        +fabrics-logo-item('img/fabric-4.png')
+        +fabrics-logo-item('img/fabric-5.png')
+        +fabrics-logo-item('img/fabric-6.png')
+        +fabrics-logo-item('img/fabric-7.png')
+        +fabrics-logo-item('img/fabric-8.png')
 
   section.section
     h2.title Наши гарантии
-    .guarantee
-      .guarantee__inner
-        .guarantee__item
-          .guarantee__img
-            img(src="https://ipsumimage.appspot.com/140x140,ff7700", alt="")
-          .guarantee__text
-            | Материалы для работы с продуктами питания), выданный Национальным фондом санитарной защиты и подтверждающий, что продукция компании безопасна для продуктов питания, для общественного здоровья и для окружающей среды при непосредственном контакте
-        .guarantee__item
-          .guarantee__img
-            img(src="https://ipsumimage.appspot.com/140x140,ff7700", alt="")
-          .guarantee__text
-            | Институтом окружающей среды. Данный сертификат признает, что в составе кварцевого камня отсутствует токсичность и продукция компании безопасна для использования в помещениях для детей
-        .guarantee__item
-          .guarantee__img
-            img(src="https://ipsumimage.appspot.com/140x140,ff7700", alt="")
-          .guarantee__text
-            | Стандарт качества и безопасности Европейского Союза, гарантирует соответствие обязательным требованиям и нормам Европейского Союза.
-        .guarantee__item
-          .guarantee__img
-            img(src="https://ipsumimage.appspot.com/140x140,ff7700", alt="")
-          .guarantee__text
-            | Это серия международных стандартов менеджмента окружающей среды, разработанная и утвержденная Международной Организацией по Стандартизации. Всегда использует и предоставляет продукцию и материалы, соответствующие нормам Европейского Союза.
-        .guarantee__item
-          .guarantee__img
-            img(src="https://ipsumimage.appspot.com/140x140,ff7700", alt="")
-          .guarantee__text
-            | Материалы для работы с продуктами питания), выданный Национальным фондом санитарной защиты и подтверждающий, что продукция компании безопасна для продуктов питания, для общественного здоровья и для окружающей среды при контакте
-
+    +guarantee()
+        
   section.section
     h2.title Наши сертификаты
     +awards()
@@ -103,17 +86,17 @@ block content
       +info-item({
         title: 'Акции',
         subtitle: 'Замер столешницы БЕСПЛАТНО!',
-        imgURL: 'img/info-img-1.png',
+        imgURL: 'img/info-img-1.jpg',
       })
       +info-item({
         title: 'Акции',
         subtitle: 'Замер столешницы БЕСПЛАТНО!',
-        imgURL: 'img/info-img-2.png',
+        imgURL: 'img/info-img-2.jpg',
       })
       +info-item({
         title: 'Акции',
         subtitle: 'Замер столешницы БЕСПЛАТНО!',
-        imgURL: 'img/info-img-3.png',
+        imgURL: 'img/info-img-3.jpg',
       })
 
 

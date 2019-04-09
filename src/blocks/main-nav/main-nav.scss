@@ -227,10 +227,19 @@
     }
 
     .main-nav__link {
+      box-shadow: none;
       text-align: right;
       background-color: rgba(255, 255, 255, 0.6);
-      &--lvl-2 {
+      transition: all $transition-time ease-in-out;
+      
+      &:active {
+        background-color: rgba(255, 255, 255, 1);
+      }
 
+      &:hover,
+      &:focus {
+        background-color: rgba(255, 255, 255, 1);
+        color: #223a7a;
       }
     }
   }

@@ -19,10 +19,16 @@ mixin advantages(mods)
       }
     }
 
-  .advantages(class=allMods)&attributes(attributes)
-    .container
-      .advantages__inner
-        block
+  //- .advantages(class=allMods)&attributes(attributes)
+  //-   .container
+  //-     .advantages__inner
+  //-       block
+  .container-half.container-half--narrow(class=allMods)&attributes(attributes)
+    .container-half__inner
+      .container-half__full
+        .advantages
+          .advantages__inner
+            block
 
 mixin advantages-item(props)
 

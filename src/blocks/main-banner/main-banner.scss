@@ -15,6 +15,17 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 774px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
   }
 
   &__cont {
@@ -24,20 +35,33 @@
     margin-left: auto;
     margin-right: 160px;
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
 
   &__title {
-    font-size: $font-size-1;
-    font-weight: bold;
-    line-height: (72 / 60);
+    font-size: $font-size-2;
+    font-weight: 700;
+    line-height: (42 / 32);
     color: #ccc;
     text-transform: uppercase;
+    margin-bottom: $layout-vertical-line-height;
+
+    @media (min-width: $screen-lg) {
+      font-size: $font-size-1;
+      line-height: (72 / 60);
+    }
   }
 
   &__text {
+    max-width: 620px;
+    max-height: 324px;
     font-size: $font-size-3;
+    font-weight: 700;
     line-height: (21.6 / 18);
     color: #fff;
+    margin: 0 auto;
+    overflow: hidden;
   }
 
   .slick-arrow {
@@ -50,5 +74,39 @@
   }
   .slick-next {
     right: 160px;
+  }
+  .slick-dots {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: calc(100% - 162px);
+    left: calc(100% - (470px + 160px));
+    transform: translateX(-50%);
+
+    li {
+      padding: 0 33px;
+    }
+
+    button {
+      font-size: 0;
+      width: 21px;
+      height: 21px;
+      border: 1px solid #000;
+      background-color: #fff;
+      opacity: 0.5;
+      border-radius: 21px;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .slick-active {
+      button {
+        opacity: 1;
+      }
+    }
   }
 }

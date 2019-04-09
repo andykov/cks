@@ -1,0 +1,47 @@
+//- Все примеси в этом файле должны начинаться c имени блока (fabrics-logo)
+
+mixin fabrics-logo(type, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +fabrics-logo('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' fabrics-logo--' + modsList[i].trim();
+      }
+    }
+
+  if type == 'slider'
+    .js-fabrics-logo.fabrics-logo(class=allMods)&attributes(attributes)
+      block
+  else
+    .fabrics-logo(class=allMods)&attributes(attributes)
+      block
+
+mixin fabrics-logo-item(url, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +fabrics-logo('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' fabrics-logo--' + modsList[i].trim();
+      }
+    }
+
+  .fabrics-logo__item(class=allMods)&attributes(attributes)
+    img(src=url, alt="")

@@ -79,6 +79,7 @@
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
     "@types/slick-carousel": "^1.6.33",
     "autosize": "^4.0.2",
     "baron": "^3.0.3",
