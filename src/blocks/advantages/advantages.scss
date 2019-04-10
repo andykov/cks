@@ -9,8 +9,10 @@
   }
 
   &__item {
-    @include col();
-    @include col(md, 2);
+    @include col(xs, 6);
+    @include col(sm, 6);
+    @include col(md, 4);
+    @include col(lg, 2);
     text-align: center;
   }
 

@@ -5,11 +5,18 @@
 .logo {
 
   $block-name:                &; // #{$block-name}__element
-
   display: inline-block;
   white-space: nowrap;
-  margin-top: 60px;
+  margin-top: 36px;
   margin-bottom: ($layout-vertical-line-height * 2);
+
+  @media (max-width: $screen-md - 1) {
+    max-width: 220px;
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-top: 60px;
+  }
 
   img {
     display: block;

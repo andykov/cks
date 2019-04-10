@@ -6,13 +6,17 @@
   display: inline-block;
   position: relative;
   z-index: 1;
-  width: 30px;
+  width: 50px;
   border: none;
   padding: 0;
   line-height: 30px;
   background: transparent;
   user-select: none;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 
   > span { // stylelint-disable-line  selector-combinator-blacklist
     display: inline-block;
@@ -24,6 +28,8 @@
     color: transparent;
     background: $toggler-part-bg-color;
     transition: background $transition-time $transition-time;
+
+    
 
     &:before,
     &:after {
