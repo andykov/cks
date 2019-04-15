@@ -60,17 +60,20 @@ mixin product-gallery(data, mods)
       }
     }
 
-  | <div class="js-gallery slider-pro">
-  |   <div class="sp-slides">
-  |     <div class="sp-slide"><img class="sp-image" src="https://picsum.photos/1260/612"></div>
-  |     <div class="sp-slide"><img class="sp-image" src="https://picsum.photos/1260/612"></div>
-  |     <div class="sp-slide">
-  |       <img class="sp-image" src="https://picsum.photos/1260/612">
-  |       <h3 class="sp-layer">Text layer</h3>
-  |       <p class="sp-layer">Text layer</p>
-  |     </div>
-  |   </div>
-  | </div>
+  .js-gallery.gallery.slider-pro
+    .sp-slides
+      .sp-slide
+        img(src="https://picsum.photos/1260/612?image=961", alt="").sp-image
+      .sp-slide
+        img(src="https://picsum.photos/1260/612?image=942", alt="").sp-image
+    .sp-thumbnails
+      .sp-thumbnail
+        img(src="https://picsum.photos/140/72?image=961", alt="")
+      .sp-thumbnail
+        img(src="https://picsum.photos/140/72?image=942", alt="")
+
+
+
   //- .js-gallery.gallery
   //-   .gallery__item
   //-     img(src="https://picsum.photos/1260/612", alt="")

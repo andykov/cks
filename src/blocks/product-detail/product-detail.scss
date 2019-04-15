@@ -27,6 +27,30 @@
   }
 }
 
+.product-detail {
+  &__gallery {
+    .slider-pro {
+      margin-left: 0;
+    }
+    .sp-right-thumbnails.sp-has-pointer .sp-selected-thumbnail:before,
+    .sp-right-thumbnails.sp-has-pointer .sp-selected-thumbnail:after {
+      content: none;
+    }
+    .sp-selected-thumbnail {
+      .sp-thumbnail {
+        box-shadow: $shadow;
+        outline: 6px solid #223a7a;
+        outline-offset: -5px;
+      }
+    }
+
+    .sp-thumbnail:hover {
+      cursor: pointer;
+      box-shadow: $shadow;
+    }
+  }
+}
+
 .gallery {
   margin-bottom: $layout-vertical-line-height * 2;
 }
