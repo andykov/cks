@@ -4,8 +4,8 @@ block meta
   title Новые цвета 2019!
   meta(name='description', content='')
 
-//- block append head
-//-   link(rel='stylesheet', href='css/some.css')
+block append head
+  link(rel='stylesheet', href='css/page-info-news-detail.css')
 
 block nav
   +main-nav('0', '', 'true')
@@ -60,5 +60,5 @@ block content
 //- block footer
 //-   p footer
 
-//- block append page-bottom
-//-   script(src='js/some.js')
+block append page-bottom
+  script(src='js/page-info-news-detail.js')

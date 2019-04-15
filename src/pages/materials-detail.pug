@@ -4,8 +4,8 @@ block meta
   title Labrador Multicolor
   meta(name='description', content='')
 
-//- block append head
-//-   link(rel='stylesheet', href='css/some.css')
+block append head
+  link(rel='stylesheet', href='css/page-materials-detail.css')
 
 block nav
   +main-nav('0', '', 'true')
@@ -37,8 +37,5 @@ block content
 //-   p footer
 
 block append page-bottom
-  script(src='js/some.js')
-  script.
-    $(function(){
-      $('.js-media-cont').sliderPro();
-    });
+block append page-bottom
+  script(src='js/page-materials-detail.js')
