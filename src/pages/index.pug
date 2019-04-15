@@ -4,8 +4,8 @@ block meta
   title Главная
   meta(name='description', content='')
 
-//- block append head
-//-   link(rel='stylesheet', href='css/some.css')
+block append head
+  link(rel='stylesheet', href='css/page-index.css')
 
 block nav
   +main-nav('', 'vertical', 'false')
@@ -99,12 +99,8 @@ block content
         imgURL: 'img/info-img-3.jpg',
       })
 
-
-
-//- #[a(href='blocks-demo.html') Библиотека блоков]
-
 //- block footer
 //-   p footer
 
-//- block append page-bottom
-  //- script(src='js/libs/slick.min.js')
+block append page-bottom
+  script(src='js/page-index.js')

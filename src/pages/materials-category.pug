@@ -14,8 +14,8 @@ block content
     .container
         .page__main-head
             +breadcrumbs()
-                +breadcrumbs-item('Главная', '/index.html')
-                +breadcrumbs-item('Материалы', '/materials.html')
+                +breadcrumbs-item('Главная', 'index.html')
+                +breadcrumbs-item('Материалы', 'materials.html')
                 +breadcrumbs-item('Гранит')
             h1.page__title Гранит
     //- +intro-cont()
@@ -61,111 +61,111 @@ block content
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1002',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'AA 493 Allegheny Amber',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1003',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'MADAGASCAR BLUE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1004',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'MULTICOLOR',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1005',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'BARDIGLIO IMPERIALE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1006',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'GALLOWAY Cambria',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1007',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'EMERALD PEARL EXTRA',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1008',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'AA 493 Allegheny Amber',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1009',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'MADAGASCAR BLUE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1010',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'MULTICOLOR',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1011',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'BARDIGLIO IMPERIALE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1012',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'GALLOWAY Cambria',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1013',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'EMERALD PEARL EXTRA',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1014',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'AA 493 Allegheny Amber',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1015',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'MADAGASCAR BLUE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1016',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'MULTICOLOR',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1017',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'BARDIGLIO IMPERIALE',
                 })
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1018',
+                    id: '1001',
                     img: 'https://picsum.photos/520/530',
                     name: 'GALLOWAY Cambria',
                 })
             .col-md-12(style="height: 0; visibility: hidden;")
                 .card-preview
-                    div
-                        img(src="https://picsum.photos/1260/523", alt="")
-                    div
+                    div.card-preview__slider
+                        +product-slider()
+                    div.card-preview__info
                         +product-desc()
         +pagination('true')
             +pagination-item('1', '/1')

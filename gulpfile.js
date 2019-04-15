@@ -1,561 +1,414 @@
-/* global exports process console __dirname Buffer */
-/* eslint-disable no-console */
 'use strict';
 
-// Проверка количества съедаемой памяти
-// setInterval(function(){ // eslint-disable-line
-//   let memory = process.memoryUsage()
-//   let date = new Date();
-//   console.log(`[${addZero(date.getHours())}:${addZero(date.getMinutes())}:${addZero(date.getSeconds())}]`, 'Memory usage (heapUsed):', (memory.heapUsed / 1024 / 1024).toFixed(2) + 'Mb');
-// }, 1000 * 10);
-// function addZero(i) { return (i < 10) ? i = "0" + i : i;}
-
-// Пакеты, использующиеся при обработке
-const { series, parallel, src, dest, watch, lastRun } = require('gulp');
-const fs = require('fs');
-const plumber = require('gulp-plumber');
+// Load plugins
+const gulp = require('gulp');
+const browsersync = require('browser-sync');
+const path = require('path');
 const del = require('del');
-const pug = require('gulp-pug');
-const through2 = require('through2');
-const rename = require('gulp-rename');
-const getClassesFromHtml = require('get-classes-from-html');
-const browserSync = require('browser-sync').create();
-const debug = require('gulp-debug');
-const sass = require('gulp-sass');
-const webpackStream = require('webpack-stream');
-const buffer = require('vinyl-buffer');
 const postcss = require('gulp-postcss');
-const autoprefixer = require("autoprefixer");
-const mqpacker = require("css-mqpacker");
-const atImport = require("postcss-import");
+// const lessImport = require('gulp-less-import');
+const less = require('gulp-less');
+const sass = require('gulp-sass');
+const autoprefixer = require("gulp-autoprefixer");
 const csso = require('gulp-csso');
+const cssnano = require('gulp-cssnano');
+const babel = require('gulp-babel');
+const eslint = require('gulp-eslint');
+const exec = require('child_process').exec; // это функции самого Node, вызывающие консольные команды.
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const pug = require('gulp-pug');
+const newer = require("gulp-newer");
+const imagemin = require('gulp-imagemin');
+const pngquant = require('imagemin-pngquant');
 const inlineSVG = require('postcss-inline-svg');
-const objectFitImages = require('postcss-object-fit-images');
-const cpy = require('cpy');
 const svgstore = require('gulp-svgstore');
 const svgmin = require('gulp-svgmin');
-const spritesmith = require('gulp.spritesmith');
-const merge = require('merge-stream');
-const imagemin = require('gulp-imagemin');
-const prettyHtml = require('gulp-pretty-html');
-const replace = require('gulp-replace');
-const ghpages = require('gh-pages');
-const path = require('path');
+const include = require('gulp-include');
+const rename = require('gulp-rename');
+const notify = require('gulp-notify');
+const debug = require('gulp-debug');
+const gulpIf = require('gulp-if');
+const argv = require('yargs').argv;
+// const clean = require('gulp-clean');
 
-// Глобальные настройки этого запуска
-const buildLibrary = process.env.BUILD_LIBRARY == 'yes' ? true : false;
-const nth = {};
-nth.config = require('./config.js');
-nth.blocksFromHtml = nth.config.alwaysAddBlocks; // блоки из конфига сразу добавим в список блоков
-nth.scssImportsList = []; // список импортов стилей
-const dir = nth.config.dir;
+// const paths = {
+//     allSrcJs: 'src/scripts/test.js',
+//     libDir: 'lib'
+// };
 
-// Сообщение для компилируемых файлов
-let doNotEditMsg = '\n ВНИМАНИЕ! Этот файл генерируется автоматически.\n Любые изменения этого файла будут потеряны при следующей компиляции.\n Любое изменение проекта без возможности компиляции ДОЛЬШЕ И ДОРОЖЕ в 2-5 раз.\n\n';
-
-// Настройки pug-компилятора
-let pugOption = {
-  data: { repoUrl: 'https://github.com/nicothin/NTH-start-project', },
-  filters: { 'show-code': filterShowCode, },
-};
-
-// Настройки бьютификатора
-let prettyOption = {
-  indent_size: 2,
-  indent_char: ' ',
-  unformatted: ['code', 'em', 'strong', 'span', 'i', 'b', 'br', 'script'],
-  content_unformatted: [],
-};
-
-// Список и настройки плагинов postCSS
-let postCssPlugins = [
-  autoprefixer({grid: true}),
-  mqpacker({
-    sort: true
-  }),
-  atImport(),
-  inlineSVG(),
-  objectFitImages(),
-];
-
-
-function writePugMixinsFile(cb) {
-  let allBlocksWithPugFiles = getDirectories('pug');
-  let pugMixins = '//-' + doNotEditMsg.replace(/\n /gm,'\n  ');
-  allBlocksWithPugFiles.forEach(function(blockName) {
-    pugMixins += `include ${dir.blocks.replace(dir.src,'../')}${blockName}/${blockName}.pug\n`;
-  });
-  fs.writeFileSync(`${dir.src}pug/mixins.pug`, pugMixins);
-  cb();
-}
-exports.writePugMixinsFile = writePugMixinsFile;
-
-
-function compilePug() {
-  const fileList = [
-    `${dir.src}pages/**/*.pug`
-  ];
-  if(!buildLibrary) fileList.push(`!${dir.src}pages/blocks-demo.pug`);
-  return src(fileList)
-    .pipe(plumber({
-      errorHandler: function (err) {
-        console.log(err.message);
-        this.emit('end');
-      }
-    }))
-    .pipe(debug({title: 'Compiles '}))
-    .pipe(pug(pugOption))
-    .pipe(prettyHtml(prettyOption))
-    .pipe(replace(/^(\s*)(<button.+?>)(.*)(<\/button>)/gm, '$1$2\n$1  $3\n$1$4'))
-    .pipe(replace(/^( *)(<.+?>)(<script>)([\s\S]*)(<\/script>)/gm, '$1$2\n$1$3\n$4\n$1$5\n'))
-    .pipe(replace(/^( *)(<.+?>)(<script\s+src.+>)(?:[\s\S]*)(<\/script>)/gm, '$1$2\n$1$3$4'))
-    .pipe(through2.obj(getClassesToBlocksList))
-    .pipe(dest(dir.build));
-}
-exports.compilePug = compilePug;
-
-
-function compilePugFast() {
-  const fileList = [
-    `${dir.src}pages/**/*.pug`
-  ];
-  if(!buildLibrary) fileList.push(`!${dir.src}pages/blocks-demo.pug`);
-  return src(fileList, { since: lastRun(compilePugFast) })
-    .pipe(plumber({
-      errorHandler: function (err) {
-        console.log(err.message);
-        this.emit('end');
-      }
-    }))
-    .pipe(debug({title: 'Compiles '}))
-    .pipe(pug(pugOption))
-    .pipe(prettyHtml(prettyOption))
-    .pipe(replace(/^(\s*)(<button.+?>)(.*)(<\/button>)/gm, '$1$2\n$1  $3\n$1$4'))
-    .pipe(replace(/^( *)(<.+?>)(<script>)([\s\S]*)(<\/script>)/gm, '$1$2\n$1$3\n$4\n$1$5\n'))
-    .pipe(replace(/^( *)(<.+?>)(<script\s+src.+>)(?:[\s\S]*)(<\/script>)/gm, '$1$2\n$1$3$4'))
-    .pipe(through2.obj(getClassesToBlocksList))
-    .pipe(dest(dir.build));
-}
-exports.compilePugFast = compilePugFast;
-
-
-function copyAssets(cb) {
-  for (let item in nth.config.addAssets) {
-    let dest = `${dir.build}${nth.config.addAssets[item]}`;
-    cpy(item, dest);
-  }
-  cb();
-}
-exports.copyAssets = copyAssets;
-
-
-function copyImg(cb) {
-  let copiedImages = [];
-  nth.blocksFromHtml.forEach(function(block) {
-    let src = `${dir.blocks}${block}/img`;
-    if(fileExist(src)) copiedImages.push(src);
-  });
-  nth.config.alwaysAddBlocks.forEach(function(block) {
-    let src = `${dir.blocks}${block}/img`;
-    if(fileExist(src)) copiedImages.push(src);
-  });
-  if(copiedImages.length) {
-    (async () => {
-      await cpy(copiedImages, `${dir.build}img`);
-      cb();
-    })();
-  }
-  else {
-    cb();
-  }
-}
-exports.copyImg = copyImg;
-
-
-function generateSvgSprite(cb) {
-  let spriteSvgPath = `${dir.blocks}sprite-svg/svg/`;
-  if(nth.config.alwaysAddBlocks.indexOf('sprite-svg') > -1 && fileExist(spriteSvgPath)) {
-    return src(spriteSvgPath + '*.svg')
-      .pipe(svgmin(function () {
-        return { plugins: [{ cleanupIDs: { minify: true } }] }
-      }))
-      .pipe(svgstore({ inlineSvg: true }))
-      .pipe(rename('sprite.svg'))
-      .pipe(dest(`${dir.blocks}sprite-svg/img/`));
-  }
-  else {
-    cb();
-  }
-}
-exports.generateSvgSprite = generateSvgSprite;
-
-
-function generatePngSprite(cb) {
-  let spritePngPath = `${dir.blocks}sprite-png/png/`;
-  if(nth.config.alwaysAddBlocks.indexOf('sprite-png') > -1 && fileExist(spritePngPath)) {
-    del(`${dir.blocks}sprite-png/img/*.png`);
-    let fileName = 'sprite-' + Math.random().toString().replace(/[^0-9]/g, '') + '.png';
-    let spriteData = src(spritePngPath + '*.png')
-      .pipe(spritesmith({
-        imgName: fileName,
-        cssName: 'sprite-png.scss',
-        padding: 4,
-        imgPath: '../img/' + fileName
-      }));
-    let imgStream = spriteData.img
-      .pipe(buffer())
-      .pipe(imagemin([ imagemin.optipng({ optimizationLevel: 5 }) ]))
-      .pipe(dest(`${dir.blocks}sprite-png/img/`));
-    let cssStream = spriteData.css
-      .pipe(dest(`${dir.blocks}sprite-png/`));
-    return merge(imgStream, cssStream);
-  }
-  else {
-    cb();
-  }
-}
-exports.generatePngSprite = generatePngSprite;
-
-
-function writeSassImportsFile(cb) {
-  const newScssImportsList = [];
-  nth.config.addStyleBefore.forEach(function(src) {
-    newScssImportsList.push(src);
-  });
-  let allBlocksWithScssFiles = getDirectories('scss');
-  allBlocksWithScssFiles.forEach(function(blockWithScssFile){
-    if (nth.blocksFromHtml.indexOf(blockWithScssFile) == -1) return;
-    newScssImportsList.push(`${dir.blocks}${blockWithScssFile}/${blockWithScssFile}.scss`);
-  });
-  nth.config.addStyleAfter.forEach(function(src) {
-    newScssImportsList.push(src);
-  });
-  let diff = getArraysDiff(newScssImportsList, nth.scssImportsList);
-  if (diff.length) {
-    let msg = `\n/*!*${doNotEditMsg.replace(/\n /gm,'\n * ').replace(/\n\n$/,'\n */\n\n')}`;
-    let styleImports = msg;
-    newScssImportsList.forEach(function(src) {
-      styleImports += `@import "${src}";\n`;
-    });
-    styleImports += msg;
-    fs.writeFileSync(`${dir.src}scss/style.scss`, styleImports);
-    console.log('---------- Write new style.scss');
-    nth.scssImportsList = newScssImportsList;
-  }
-  cb();
-}
-exports.writeSassImportsFile = writeSassImportsFile;
-
-
-function compileSass() {
-  const fileList = [
-    `${dir.src}scss/style.scss`,
-  ];
-  if(buildLibrary) fileList.push(`${dir.blocks}blocks-library/blocks-library.scss`);
-  return src(fileList, { sourcemaps: true })
-    .pipe(plumber({
-      errorHandler: function (err) {
-        console.log(err.message);
-        this.emit('end');
-      }
-    }))
-    .pipe(debug({title: 'Compiles:'}))
-    .pipe(sass({includePaths: [__dirname+'/','node_modules']}))
-    .pipe(postcss(postCssPlugins))
-    .pipe(csso({
-      restructure: false,
-    }))
-    .pipe(dest(`${dir.build}/css`, { sourcemaps: '.' }))
-    .pipe(browserSync.stream());
-}
-exports.compileSass = compileSass;
-
-
-function writeJsRequiresFile(cb) {
-  let msg = `\n/*!*${doNotEditMsg.replace(/\n /gm,'\n * ').replace(/\n\n$/,'\n */\n\n')}`;
-  let jsRequires = msg + '/* global require */\n\n';
-  nth.config.addJsBefore.forEach(function(src) {
-    jsRequires += `require('${src}');\n`;
-  });
-  const allBlocksWithJsFiles = getDirectories('js');
-  const allUsedBlocks = nth.blocksFromHtml.concat(nth.config.alwaysAddBlocks);
-  allBlocksWithJsFiles.forEach(function(blockWithJsFile){
-    if (allUsedBlocks.indexOf(blockWithJsFile) == -1) return;
-    jsRequires += `require('../blocks/${blockWithJsFile}/${blockWithJsFile}.js');\n`;
-  });
-  nth.config.addJsAfter.forEach(function(src) {
-    jsRequires += `require('${src}');\n`;
-  });
-  jsRequires += msg;
-  fs.writeFileSync(`${dir.src}js/entry.js`, jsRequires);
-  console.log('---------- Write new entry.js');
-  cb();
-}
-exports.writeJsRequiresFile = writeJsRequiresFile;
-
-
-function buildJs() {
-  const entryList = {
-    'bundle': `./${dir.src}js/entry.js`,
-  };
-  if(buildLibrary) entryList['blocks-library'] = `./${dir.blocks}blocks-library/blocks-library.js`;
-  return src(`${dir.src}js/entry.js`)
-    .pipe(plumber())
-    .pipe(webpackStream({
-      mode: 'production',
-      entry: entryList,
-      output: {
-        filename: '[name].js',
-      },
-      module: {
-        rules: [
-          {
-            test: /\.(js)$/,
-            exclude: /(node_modules)/,
-            loader: 'babel-loader',
-            query: {
-              presets: ['@babel/preset-env']
-            }
-          }
+const PATH = {
+    SRC: {
+        PUG: 'src/pages/*.pug',
+        LESS: [
+            'src/less/template.less',
+            // 'src/less/template-new.less',
+            'src/less/pages/*.less'
+        ],
+        SCSS: [
+            // 'src/scss/**/*.scss'
+            'src/scss/style-pages/*.scss'
+        ],
+        JS: [
+            'src/js/script.js',
+            'src/js/js-pages/*.js',
+            // 'src/scripts/**/*.js'
+        ],
+        JS_LIBS: [
+            'src/js/js-pages/*.js'
+        ],
+        IMG: [
+            'src/img/**/*.{jpg,jpeg,gif,png,svg}',
+            'src/blocks/img/**/*.{jpg,jpeg,gif,png,svg}'
+        ],
+        SVG: [
+            'src/img/svg/**/*.svg'
+        ],
+        FONTS: 'src/fonts/**'
+    },
+    BUILD: {
+        HTML: 'build/',
+        CSS: 'build/css/',
+        JS: 'build/js/',
+        IMG: 'build/img/',
+        SVG: 'build/img/svg',
+        FONTS: 'build/fonts/'
+    },
+    LIBS: {
+        CSS: [ // порядок имеет значение!
+            // 'node_modules/select2/dist/css/select2.min.css',
+            // 'node_modules/ion-rangeslider/css/ion.rangeSlider.css',
+            // 'node_modules/ion-rangeslider/css/ion.rangeSlider.skinNice.css',
+            // 'src/less/libs/bootstrap-datetimepicker.min.css',
+            // 'src/less/libs/tippy.css',
+            // 'node_modules/owl.carousel/dist/assets/owl.carousel.min.css'
+        ],
+        JS_LIBS: [ // порядок имеет значение!
+            'node_modules/jquery/dist/jquery.min.js',
+            'src/scripts/libs/jquery-ui.min.js',
+            'src/scripts/libs/jquery.validate.js',
+            'src/scripts/libs/tippy.all.js',
+            // 'node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
+            // 'src/scripts/libs/jquery.mask.min.js',
+            // 'src/scripts/libs/moment.min.js',
+            'src/scripts/libs/ru.js',
+            // 'src/scripts/libs/jquery.fancybox.pack.js',
+            'src/scripts/libs/fotorama.min.js',
+            'src/scripts/libs/iscroll.js',
+            'src/scripts/libs/jquery.scrollbar.js',
+            'src/scripts/libs/autosize.min.js',
+            'src/scripts/libs/cropper.min.js',
+            'src/scripts/libs/skrollr.min.js',
+            // 'src/scripts/libs/pie-chart-clusterer-custom.js',
+            // 'node_modules/select2/dist/js/select2.full.js',
+            // 'node_modules/ion-rangeslider/js/ion.rangeSlider.min.js',
+            'src/scripts/libs/bootstrap-without-jquery.js',
+            // 'src/scripts/libs/bootstrap-datetimepicker.min.js',
+            // 'node_modules/svg4everybody/dist/svg4everybody.min.js',
+            // 'node_modules/owl.carousel/dist/owl.carousel.min.js'
         ]
-      },
-      // externals: {
-      //   jquery: 'jQuery'
-      // }
-    }))
-    .pipe(dest(`${dir.build}js`));
-}
-exports.buildJs = buildJs;
-
-
-function clearBuildDir() {
-  return del([
-    `${dir.build}**/*`,
-    `!${dir.build}readme.md`,
-  ]);
-}
-exports.clearBuildDir = clearBuildDir;
-
-
-function reload(done) {
-  browserSync.reload();
-  done();
-}
-
-function deploy(cb) {
-  ghpages.publish(path.join(process.cwd(), dir.build), cb);
-}
-exports.deploy = deploy;
-
-
-function serve() {
-
-  browserSync.init({
-    server: dir.build,
-    port: 8080,
-    startPath: 'index.html',
-    open: false,
-    notify: false,
-  });
-
-  // Страницы: изменение, добавление
-  watch([`${dir.src}pages/**/*.pug`], { events: ['change', 'add'], delay: 100 }, series(
-    compilePugFast,
-    parallel(writeSassImportsFile, writeJsRequiresFile),
-    parallel(compileSass, buildJs),
-    reload
-  ));
-
-  // Страницы: удаление
-  watch([`${dir.src}pages/**/*.pug`], { delay: 100 })
-  // TODO попробовать с events: ['unlink']
-    .on('unlink', function(path) {
-      let filePathInBuildDir = path.replace(`${dir.src}pages/`, dir.build).replace('.pug', '.html');
-      fs.unlink(filePathInBuildDir, (err) => {
-        if (err) throw err;
-        console.log(`---------- Delete:  ${filePathInBuildDir}`);
-      });
-    });
-
-  // Разметка Блоков: изменение
-  watch([`${dir.blocks}**/*.pug`], { events: ['change'], delay: 100 }, series(
-    compilePug,
-    reload
-  ));
-
-  // Разметка Блоков: добавление
-  watch([`${dir.blocks}**/*.pug`], { events: ['add'], delay: 100 }, series(
-    writePugMixinsFile,
-    compilePug,
-    reload
-  ));
-
-  // Разметка Блоков: удаление
-  watch([`${dir.blocks}**/*.pug`], { events: ['unlink'], delay: 100 }, writePugMixinsFile);
-
-  // Шаблоны pug: все события
-  watch([`${dir.src}pug/**/*.pug`, `!${dir.src}pug/mixins.pug`], { delay: 100 }, series(
-    compilePug,
-    parallel(writeSassImportsFile, writeJsRequiresFile),
-    parallel(compileSass, buildJs),
-    reload,
-  ));
-
-  // Стили Блоков: изменение
-  watch([`${dir.blocks}**/*.scss`], { events: ['change'], delay: 100 }, series(
-    compileSass,
-  ));
-
-  // Стили Блоков: добавление
-  watch([`${dir.blocks}**/*.scss`], { events: ['add'], delay: 100 }, series(
-    writeSassImportsFile,
-    compileSass,
-  ));
-
-  // Стилевые глобальные файлы: все события
-  watch([`${dir.src}scss/**/*.scss`, `!${dir.src}scss/style.scss`], { events: ['all'], delay: 100 }, series(
-    compileSass,
-  ));
-
-  // Скриптовые глобальные файлы: все события
-  watch([`${dir.src}js/**/*.js`, `!${dir.src}js/entry.js`, `${dir.blocks}**/*.js`], { events: ['all'], delay: 100 }, series(
-    writeJsRequiresFile,
-    buildJs,
-    reload
-  ));
-
-  // Картинки: все события
-  watch([`${dir.blocks}**/img/*.{jpg,jpeg,png,gif,svg,webp}`], { events: ['all'], delay: 100 }, series(copyImg, reload));
-
-  // Спрайт SVG
-  watch([`${dir.blocks}sprite-svg/svg/*.svg`], { events: ['all'], delay: 100 }, series(
-    generateSvgSprite,
-    copyImg,
-    reload,
-  ));
-
-  // Спрайт PNG
-  watch([`${dir.blocks}sprite-png/png/*.png`], { events: ['all'], delay: 100 }, series(
-    generatePngSprite,
-    copyImg,
-    compileSass,
-    reload,
-  ));
-}
-
-
-exports.build = series(
-  parallel(clearBuildDir, writePugMixinsFile),
-  parallel(compilePugFast, copyAssets, generateSvgSprite, generatePngSprite),
-  parallel(copyImg, writeSassImportsFile, writeJsRequiresFile),
-  parallel(compileSass, buildJs),
-);
-
-
-exports.default = series(
-  parallel(clearBuildDir, writePugMixinsFile),
-  parallel(compilePugFast, copyAssets, generateSvgSprite, generatePngSprite),
-  parallel(copyImg, writeSassImportsFile, writeJsRequiresFile),
-  parallel(compileSass, buildJs),
-  serve,
-);
-
-
-
-
-
-// Функции, не являющиеся задачами Gulp ----------------------------------------
-
-/**
- * Получение списка классов из HTML и запись его в глоб. переменную nth.blocksFromHtml.
- * @param  {object}   file Обрабатываемый файл
- * @param  {string}   enc  Кодировка
- * @param  {Function} cb   Коллбэк
- */
-function getClassesToBlocksList(file, enc, cb) {
-  // Передана херь — выходим
-  if (file.isNull()) {
-    cb(null, file);
-    return;
-  }
-  // Проверяем, не является ли обрабатываемый файл исключением
-  let processThisFile = true;
-  nth.config.notGetBlocks.forEach(function(item) {
-    if (file.relative.trim() == item.trim()) processThisFile = false;
-  });
-  // Файл не исключён из обработки, погнали
-  if (processThisFile) {
-    const fileContent = file.contents.toString();
-    let classesInFile = getClassesFromHtml(fileContent);
-    // nth.blocksFromHtml = [];
-    // Обойдём найденные классы
-    for (let item of classesInFile) {
-      // Не Блок или этот Блок уже присутствует?
-      if ((item.indexOf('__') > -1) || (item.indexOf('--') > -1) || (nth.blocksFromHtml.indexOf(item) + 1)) continue;
-      // Класс совпадает с классом-исключением из настроек?
-      if (nth.config.ignoredBlocks.indexOf(item) + 1) continue;
-      // У этого блока отсутствует папка?
-      // if (!fileExist(dir.blocks + item)) continue;
-      // Добавляем класс в список
-      nth.blocksFromHtml.push(item);
+    },
+    WATCH: {
+        PUG: ['src/pages/*.pug', 'src/blocks/**/*.pug'],
+        // LESS: ['src/less/**/*.less', 'src/blocks/**/*.less', 'src/less/pages/*.less'],
+        SCSS: ['src/scss/**/*.scss', 'src/blocks/**/*.scss'],
+        // JS: ['src/scripts/template.js', 'src/blocks/**/*.js', 'src/scripts/pages/*.js', 'src/scripts/lp-constructor/*.js'],
+        JS: [
+            // 'src/blocks/**/*.js',
+            'src/js/script.js',
+            // 'src/js/pages/*.js',
+            // 'src/js/**/*.js'
+        ],
+        SVG: ['src/images/svg/**/*.svg']
     }
-    console.log('---------- Used HTML blocks: ' + nth.blocksFromHtml.join(', '));
-    file.contents = new Buffer.from(fileContent);
-  }
-  this.push(file);
-  cb();
+};
+
+// BrowserSync
+function browserSync(done) {
+    browsersync.init({
+        server: {
+            baseDir: "build/"
+        },
+        port: 3000
+    });
+    done();
 }
 
+// BrowserSync Reload
+function browserSyncReload(done) {
+    browsersync.reload();
+    done();
+}
+
+// Clean build
+function clean() {
+    console.log('>>> Очистка папки build');
+    return del('build/');
+}
+
+/*--------------------------------------------------------------
+# HTML
+--------------------------------------------------------------*/
+function pugHtml() {
+  console.log('---------- Обработка Pug');
+    return gulp.src(PATH.SRC.PUG)
+        .pipe(pug({pretty: true}))
+        .on('error', notify.onError(function(err){
+            return {
+                title: 'PUG',
+                message: err.message
+            };
+        }))
+        .pipe(gulp.dest(PATH.BUILD.HTML))
+        .pipe(browsersync.stream());
+}
+
+
+/*--------------------------------------------------------------
+ # CSS
+ --------------------------------------------------------------*/
+function taskSass() {
+    console.log('>>> Обработка SASS');
+    return gulp.src(PATH.SRC.SCSS)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest(PATH.BUILD.CSS))
+        .pipe(browsersync.stream());
+}
+
+function taskLess() {
+    console.log('>>> Обработка LESS');
+    return gulp.src(PATH.SRC.LESS)
+    // .pipe(sourcemaps.init())
+    // .pipe(cached('less'))
+    // .pipe(dependents())
+        .pipe(less({
+            paths: [path.join(__dirname, 'less', 'includes')]
+        })).on('error', notify.onError(function(err){
+            return {
+                title: 'LESS',
+                message: err.message
+            };
+        }))
+        .pipe(postcss([
+            require('postcss-flexbugs-fixes'),
+            require('postcss-inline-svg')
+        ]))
+        .pipe(autoprefixer({browsers: ['last 10 versions']}))
+        .pipe(cssnano())
+        .pipe(debug({title: 'обработано less файлов'}))
+        // .pipe(sourcemaps.write())
+        .pipe(gulp.dest(PATH.BUILD.CSS))
+        .pipe(browsersync.stream());
+}
+
+
+
+// Lint scripts
+// function scriptsLint() {
+//     return gulp
+//         .src(paths.allSrcJs)
+//         .pipe(eslint())
+//         .pipe(eslint.format())
+//         .pipe(eslint.failAfterError());
+// }
+
+// расширенный линтер с фиксацией и флагом --fix в командной строке
+// function scriptsLint() {
+//     let target = argv.file ? argv.file : paths.allSrcJs;
+//     let fixCode = argv.fix ? true : false;
 //
-/**
- * Pug-фильтр, выводящий содержимое pug-файла в виде форматированного текста
- */
-function filterShowCode(text, options) {
-  var lines = text.split('\n');
-  var result = '<pre class="code">\n';
-  if (typeof(options['first-line']) !== 'undefined') result = result + '<code>' + options['first-line'] + '</code>\n';
-  for (var i = 0; i < (lines.length - 1); i++) { // (lines.length - 1) для срезания последней строки (пустая)
-    result = result + '<code>' + lines[i].replace(/</gm, '&lt;') + '</code>\n';
-  }
-  result = result + '</pre>\n';
-  result = result.replace(/<code><\/code>/g, '<code>&nbsp;</code>');
-  return result;
+//     return gulp.src(target, {base: "./"})
+//         .pipe(eslint({
+//             fix: fixCode,
+//         }))
+//         .pipe(eslint.format())
+//         .pipe(gulpIf(isFixed, gulp.dest(paths.libDir)))
+//         .pipe(eslint.failAfterError());
+// }
+// использование
+// gulp eslint                                      // lint  all
+// gulp eslint --fix                                // lint + fix all
+// gulp eslint --file ./folder/filename.js          // lint file
+// gulp eslint --file ./folder/filename.js --fix    // lint + fix file
+
+// new function added to check if ESLint has run the fix
+// function isFixed(file) {
+//     return file.eslint !== null && file.eslint.fixed;
+// }
+// function eslintFix() {
+//     return gulp.src(paths.allSrcJs)
+//         .pipe(eslint({
+//             fix: true,
+//         }))
+//         .pipe(eslint.format())
+//         // if running fix - replace existing file with fixed one
+//         .pipe(gulpIf(isFixed, gulp.dest('./src/scripts/')))
+//         .pipe(eslint.failAfterError())
+// }
+
+/*--------------------------------------------------------------
+ # JS
+ --------------------------------------------------------------*/
+function scripts() {
+    // return gulp
+    //     .src(paths.allSrcJs)
+    //     .pipe(babel({
+    //         presets: ['@babel/env'],
+    //         plugins: ['@babel/transform-runtime'] // для шаблонизации
+    //     }))
+    //     .on('error', function(e) {
+    //         console.log('>>> ERROR', e);
+    //         // emit here
+    //         this.emit('end');
+    //     })
+    //     .pipe(gulp.dest(paths.libDir))
+    //     // .pipe(browsersync.stream());
+
+    console.log('>>> Обработка JS');
+    return gulp.src(PATH.SRC.JS)
+    // .pipe(plumber({
+    //   errorHandler: function(err) {
+    //     notify.onError({
+    //       title: 'Javascript concat/uglify error',
+    //       message: err.message
+    //     })(err);
+    //     this.emit('end');
+    //   }
+    // }))
+    // .pipe(concat('main.js'))
+        .pipe(include())
+        .on('error', notify.onError(function(err){
+            return {
+                title: 'JS',
+                message: err.message
+            };
+        }))
+        .pipe(uglify())
+        .pipe(gulp.dest(PATH.BUILD.JS))
+        .pipe(browsersync.stream());
+}
+function scriptsLibs() {
+    // return gulp
+    //     .src(paths.allSrcJs)
+    //     .pipe(babel({
+    //         presets: ['@babel/env'],
+    //         plugins: ['@babel/transform-runtime'] // для шаблонизации
+    //     }))
+    //     .on('error', function(e) {
+    //         console.log('>>> ERROR', e);
+    //         // emit here
+    //         this.emit('end');
+    //     })
+    //     .pipe(gulp.dest(paths.libDir))
+    //     // .pipe(browsersync.stream());
+
+    console.log('>>> Обработка JS');
+    return gulp.src(PATH.SRC.JS_LIBS)
+    // .pipe(plumber({
+    //   errorHandler: function(err) {
+    //     notify.onError({
+    //       title: 'Javascript concat/uglify error',
+    //       message: err.message
+    //     })(err);
+    //     this.emit('end');
+    //   }
+    // }))
+    // .pipe(concat('main.js'))
+        .pipe(include())
+        .on('error', notify.onError(function(err){
+            return {
+                title: 'JS',
+                message: err.message
+            };
+        }))
+        .pipe(uglify())
+        .pipe(gulp.dest(PATH.BUILD.JS))
+        .pipe(browsersync.stream());
 }
 
-/**
- * Проверка существования файла или папки
- * @param  {string} path      Путь до файла или папки
- * @return {boolean}
- */
-function fileExist(filepath){
-  let flag = true;
-  try{
-    fs.accessSync(filepath, fs.F_OK);
-  }catch(e){
-    flag = false;
-  }
-  return flag;
+/*--------------------------------------------------------------
+ # Оптимизация и копирование изображений
+ --------------------------------------------------------------*/
+function images() {
+    console.log('>>> Оптимизация картинок');
+    return gulp
+        .src(PATH.SRC.IMG)
+        .pipe(newer(PATH.BUILD.IMG))
+        .pipe(
+            imagemin([
+                imagemin.gifsicle({ interlaced: true }),
+                imagemin.jpegtran({ progressive: true }),
+                imagemin.optipng({ optimizationLevel: 5 }),
+                imagemin.svgo({
+                    plugins: [
+                        {
+                            removeViewBox: false,
+                            collapseGroups: true
+                        }
+                    ]
+                })
+            ])
+        )
+        .pipe(gulp.dest(PATH.BUILD.IMG))
+        .pipe(browsersync.stream({once: true}));
 }
 
-/**
- * Получение всех названий поддиректорий, содержащих файл указанного расширения, совпадающий по имени с поддиректорией
- * @param  {string} ext    Расширение файлов, которое проверяется
- * @return {array}         Массив из имён блоков
- */
-function getDirectories(ext) {
-  let source = dir.blocks;
-  let res = fs.readdirSync(source)
-    .filter(item => fs.lstatSync(source + item).isDirectory())
-    .filter(item => fileExist(source + item + '/' + item + '.' + ext));
-  return res;
+function svgSprite() {
+    console.log('---------- Сборка SVG спрайта');
+    return gulp.src(PATH.SRC.SVG)
+        .pipe(svgstore())
+        .pipe(rename('sprite-svg.svg'))
+        .pipe(gulp.dest(PATH.BUILD.SVG));
+};
+
+/*--------------------------------------------------------------
+ # FONTS
+ --------------------------------------------------------------*/
+function fonts() {
+    console.log('---------- Копирование шрифтов');
+    return gulp.src(PATH.SRC.FONTS)
+        .pipe(gulp.dest(PATH.BUILD.FONTS));
+};
+
+// Watch files
+function watchFiles() {
+    gulp.watch(PATH.WATCH.PUG, pugHtml);
+    gulp.watch(PATH.SRC.JS, scripts);
+    gulp.watch(PATH.SRC.JS_LIBS, scriptsLibs);
+    // gulp.watch(PATH.WATCH.LESS, taskLess);
+    // gulp.watch(PATH.WATCH.SCSS, gulp.series(taskSass));
+    gulp.watch(PATH.WATCH.SCSS, taskSass);
+    gulp.watch(PATH.SRC.IMG, images);
+    // gulp.watch(PATH.WATCH.JS, gulp.series(scripts));
+    // gulp.watch(paths.allSrcJs, gulp.series(scriptsLint, scripts));
 }
 
-/**
- * Получение разницы между двумя массивами.
- * @param  {array} a1 Первый массив
- * @param  {array} a2 Второй массив
- * @return {array}    Элементы, которые отличаются
- */
-function getArraysDiff(a1, a2) {
-  return a1.filter(i=>!a2.includes(i)).concat(a2.filter(i=>!a1.includes(i)))
-}
+
+// Tasks
+// gulp.task("js", gulp.series(scriptsLint, scripts));
+gulp.task("images", images);
+gulp.task("svgSprite", svgSprite);
+// gulp.task("css", taskSass);
+gulp.task("js", scripts);
+gulp.task("jsLibs", scriptsLibs);
+gulp.task("fonts", fonts);
+gulp.task("pugHtml", pugHtml);
+gulp.task("taskSass", taskSass);
+gulp.task("sass", sass);
+// gulp.task("eslintFix", eslintFix);
+gulp.task("clean", clean);
+
+// build
+gulp.task(
+    "build",
+    // gulp.series(clean, gulp.parallel('images', 'svgSprite', 'taskSass', 'js', 'fonts'))
+    gulp.series(clean, gulp.parallel('pugHtml', 'taskSass', 'images', 'js', 'jsLibs'))
+);
+
+// watch
+// gulp.task("watch", gulp.parallel(watchFiles, browserSync));
+
+gulp.task("default", gulp.parallel(watchFiles, browserSync));
+
+
+

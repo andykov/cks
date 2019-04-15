@@ -1,129 +1,152 @@
-/* eslint-disable */
+// создание файлов для блока - node createBlock [имя блока]
 'use strict';
 
-// Генератор файлов блока
+const fs = require('fs')
+const path = require('path')
+const colors = require('colors')
+const readline = require('readline')
 
-// Использование: node createBlock.js [имя блока] [доп. расширения через пробел]
+const rl = readline.createInterface(process.stdin, process.stdout);
 
-const fs = require('fs');
-const projectConfig = require('./config.js');
+// путь к папке с блоками
+const BLOCKS_DIR = path.join(__dirname, 'src/blocks');
 
-const dir = projectConfig.dir;
-const mkdirp = require('mkdirp');
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
-const blockName = process.argv[2];
-const defaultExtensions = ['scss', 'img', 'bg-img']; // расширения по умолчанию
-const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
 
-// Если есть имя блока
-if (blockName) {
-  const dirPath = `${dir.blocks}${blockName}/`; // полный путь к создаваемой папке блока
-  mkdirp(dirPath, (err) => {                    // создаем
-    // Если какая-то ошибка — покажем
-    if (err) {
-      console.error(`[NTH] Отмена операции: ${err}`);
-    }
+// default content for files in new block
+const fileSources = {
+	pug: `mixin {blockName}()\n\t.{blockName}\n\t\t| {blockName}\n`,
+	less: `// В этом файле должны быть стили для БЭМ-блока .{blockName} , его элементов, \n// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий... \n\n.{blockName} \{\n\t\n\}`,
+	js: `// .{blockName} scripts goes here \n\n/*$(function() {\n\t\n});*/`
+};
 
-    // Нет ошибки, поехали!
-    else {
-      console.log(`[NTH] Создание папки: ${dirPath} (если отсутствует)`);
+function validateBlockName(blockName) {
+	return new Promise((resolve, reject) => {
+		const isValid = /^(\d|\w|-)+$/.test(blockName);
 
-      // Обходим массив расширений и создаем файлы, если они еще не созданы
-      extensions.forEach((extension) => {
-        const filePath = `${dirPath + blockName}.${extension}`; // полный путь к создаваемому файлу
-        let fileContent = '';                                   // будущий контент файла
-        let fileCreateMsg = '';                                 // будущее сообщение в консоли при создании файла
+		if (isValid) {
+			resolve(isValid);
+		} else {
+			const errMsg = (
+				`ERR>>> Неверное имя блока '${blockName}'\n` +
+				`ERR>>> Имя блока должно содержать буквы, цифры и символ минус.`
+			);
+			reject(errMsg);
+		}
+	});
+}
 
-        if (extension === 'scss') {
-          fileContent = `// В этом файле должны быть стили для БЭМ-блока ${blockName}, его элементов,\n// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...\n// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority\n\n.${blockName} {\n\n  $block-name:                &; // #{$block-name}__element\n}\n`;
-          // fileCreateMsg = '';
-        }
+function directoryExist(blockPath, blockName) {
+	return new Promise((resolve, reject) => {
+		fs.stat(blockPath, notExist => {
+			if (notExist) {
+				resolve();
+			} else {
+				reject(`ERR>>> Блок '${blockName}' уже существует.`.red);
+			}
+		});
+	});
+}
 
-        else if (extension === 'js') {
-          fileContent = `/* global document */\n\n// const ready = require('../../js/utils/documentReady.js');\n\n// ready(function(){\n//   \n// });\n`;
-        }
+function createDir(dirPath) {
+	return new Promise((resolve, reject) => {
+		fs.mkdir(dirPath, err => {
+			if (err) {
+				reject(`ERR>>> Не удалось создать папку '${dirPath}'`.red);
+			} else {
+				resolve();
+			}
+		});
+	});
+}
 
-        else if (extension === 'md') {
-          fileContent = '';
-        }
+function createFiles(blocksPath, blockName) {
+	const promises = [];
+	Object.keys(fileSources).forEach(ext => {
+		const fileSource = fileSources[ext].replace(/\{blockName}/g, blockName);
+		const filename = `${blockName}.${ext}`;
+		const filePath = path.join(blocksPath, filename);
 
-        else if (extension === 'pug') {
-          fileContent = `//- Все примеси в этом файле должны начинаться c имени блока (${blockName})\n\nmixin ${blockName}(text, mods)\n\n  //- Принимает:\n  //-   text    {string} - текст\n  //-   mods    {string} - список модификаторов\n  //- Вызов:\n        +${blockName}('Текст', 'some-mod')\n\n  -\n    // список модификаторов\n    var allMods = '';\n    if(typeof(mods) !== 'undefined' && mods) {\n      var modsList = mods.split(',');\n      for (var i = 0; i < modsList.length; i++) {\n        allMods = allMods + ' ${blockName}--' + modsList[i].trim();\n      }\n    }\n\n  .${blockName}(class=allMods)&attributes(attributes)\n    .${blockName}__inner\n      block\n`;
-        }
+		promises.push(
+				new Promise((resolve, reject) => {
+					fs.writeFile(filePath, fileSource, 'utf8', err => {
+						if (err) {
+							reject(`ERR>>> Не удалось создать файл '${filePath}'`.red);
+						} else {
+							resolve();
+						}
+					});
+				})
+		);
+	});
 
-        else if (extension === 'img') {
-          const imgFolder = `${dirPath}img/`;
-          if (fileExist(imgFolder) === false) {
-            mkdirp(imgFolder, (err) => {
-              if (err) console.error(err);
-              else console.log(`[NTH] Создание папки: ${imgFolder} (если отсутствует)`);
-            });
-          } else {
-            console.log(`[NTH] Папка ${imgFolder} НЕ создана (уже существует) `);
-          }
-        }
+	return Promise.all(promises);
+}
 
-        else if (extension === 'bg-img') {
-          const imgFolder = `${dirPath}bg-img/`;
-          if (fileExist(imgFolder) === false) {
-            mkdirp(imgFolder, (err) => {
-              if (err) console.error(err);
-              else console.log(`[NTH] Создание папки: ${imgFolder} (если отсутствует)`);
-            });
-          } else {
-            console.log(`[NTH] Папка ${imgFolder} НЕ создана (уже существует) `);
-          }
-        }
+function getFiles(blockPath) {
+	return new Promise((resolve, reject) => {
+		fs.readdir(blockPath, (err, files) => {
+			if (err) {
+				reject(`ERR>>> Не удалось получить список файлов из папки '${blockPath}'`);
+			} else {
+				resolve(files);
+			}
+		});
+	});
+}
 
-        if (fileExist(filePath) === false && extension !== 'img' && extension !== 'bg-img' && extension !== 'md') {
-          fs.writeFile(filePath, fileContent, (err) => {
-            if (err) {
-              return console.log(`[NTH] Файл НЕ создан: ${err}`);
-            }
-            console.log(`[NTH] Файл создан: ${filePath}`);
-            if (fileCreateMsg) {
-              console.warn(fileCreateMsg);
-            }
-          });
-        }
-        else if (extension !== 'img' && extension !== 'bg-img' && extension !== 'md') {
-          console.log(`[NTH] Файл НЕ создан: ${filePath} (уже существует)`);
-        }
-        else if (extension === 'md') {
-          fs.writeFile(`${dirPath}readme.md`, fileContent, (err) => {
-            if (err) {
-              return console.log(`[NTH] Файл НЕ создан: ${err}`);
-            }
-            console.log(`[NTH] Файл создан: ${dirPath}readme.md`);
-            if (fileCreateMsg) {
-              console.warn(fileCreateMsg);
-            }
-          });
-        }
-      });
+function printErrorMessage(errText) {
+	console.log(errText);
+	rl.close();
+}
 
-    }
-  });
-} else {
-  console.log('[NTH] Отмена операции: не указан блок');
+// //////////////////////////////////////////////////////////////////////////
+
+function initMakeBlock(blockName) {
+	const blockPath = path.join(BLOCKS_DIR, blockName);
+
+	return validateBlockName(blockName)
+		.then(() => directoryExist(blockPath, blockName))
+		.then(() => createDir(blockPath))
+		.then(() => createFiles(blockPath, blockName))
+		.then(() => getFiles(blockPath))
+		.then(files => { 
+			const line = '-'.repeat(48 + blockName.length);
+			console.log(line);
+			console.log(`Блок только что был создан в 'src/blocks/${blockName}'`);
+			console.log(line);
+
+			// Displays a list of files created
+			files.forEach(file => console.log(file.yellow));
+
+			rl.close();
+		});
 }
 
 
+// //////////////////////////////////////////////////////////////////////////
+//
+// Start here
+//
 
-function uniqueArray(arr) {
-  const objectTemp = {};
-  for (let i = 0; i < arr.length; i++) {
-    const str = arr[i];
-    objectTemp[str] = true;
-  }
-  return Object.keys(objectTemp);
-}
+// Command line arguments
+const blockNameFromCli = process.argv
+		.slice(2)
+		// join all arguments to one string (to simplify the capture user input errors)
+		.join(' ');
 
-function fileExist(path) {
-  const fs = require('fs');
-  try {
-    fs.statSync(path);
-  } catch (err) {
-    return !(err && err.code === 'ENOENT');
-  }
+
+// If the user pass the name of the block in the command-line options
+// that create a block. Otherwise - activates interactive mode
+if (blockNameFromCli !== '') {
+	initMakeBlock(blockNameFromCli).catch(printErrorMessage);
+} 
+else {
+	rl.setPrompt('Block name: '.magenta);
+	rl.prompt();
+	rl.on('line', (line) => {
+		const blockName = line.trim();
+		initMakeBlock(blockName).catch(printErrorMessage);
+	});
 }

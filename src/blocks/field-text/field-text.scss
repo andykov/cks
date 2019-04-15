@@ -21,7 +21,7 @@
     @include field-text;
 
     @at-root textarea#{&} {
-      $textarea-height: ($line-height * 2) + ($field-padding-vertical * 2);
+      $textarea-height: ($line-height * 2) + ($field-padding-vertical * 2) + 100;
 
       height: auto;
       min-height: calc(#{$textarea-height} + 2px);

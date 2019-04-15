@@ -14,9 +14,9 @@ block content
     .container
       .page__main-head
           +breadcrumbs()
-              +breadcrumbs-item('Главная', '/index.html')
-              +breadcrumbs-item('Материалы', '/materials.html')
-              +breadcrumbs-item('Гранит', '/materials-category.html')
+              +breadcrumbs-item('Главная', 'index.html')
+              +breadcrumbs-item('Материалы', 'materials.html')
+              +breadcrumbs-item('Гранит', 'materials-category.html')
               +breadcrumbs-item('Labrador Multicolor')
           h1.page__title Labrador Multicolor
 
@@ -36,5 +36,9 @@ block content
 //- block footer
 //-   p footer
 
-//- block append page-bottom
-//-   script(src='js/some.js')
+block append page-bottom
+  script(src='js/some.js')
+  script.
+    $(function(){
+      $('.js-media-cont').sliderPro();
+    });

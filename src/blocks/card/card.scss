@@ -94,8 +94,9 @@
 
     span {
       display: block;
-      font-size: $font-size;
-      line-height: (21 / 15);
+      font-size: 0.789em;
+      // line-height: (18 / 14);
+      line-height: 0.789em;
     }
   }
 
@@ -175,10 +176,14 @@
       background-color: #fff;
       top: $layout-vertical-line-height * 2;
       text-align: center;
-      font-size: 19px;
+      font-size: 14px;
       font-weight: bold;
       line-height: (27 / 19);
       color: #223a7a;
+
+      @media (min-width: $screen-xl) {
+        font-size: 19px;
+      }
     }
     .card__desc {
       top: $layout-vertical-line-height * 6;
@@ -200,9 +205,10 @@
     .card__title {
       min-height: 90px;
       span {
-        font-size: $font-size-5;
+        font-size: 0.789em;
         font-weight: normal;
-        line-height: (18 / 14);
+        // line-height: (18 / 14);
+        line-height: 0.789em;
         text-transform: lowercase;
       }
     }
@@ -212,6 +218,13 @@
 .card-preview {
   display: flex;
 
-  &:first-child {flex: 4;}
-  &:last-child {flex: 2;}
+  &__slider {
+    flex: 4;
+    padding-right: 10px;
+  }
+
+  &__info {
+    flex: 2;
+    padding-left: 10px;
+  }
 }

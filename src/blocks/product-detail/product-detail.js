@@ -9,5 +9,6 @@ ready(function(){
 const $ = require('jquery');
 $(document).ready(function() {
     // $('.js-slider').slick();
+    // $('.js-gallery').sliderPro();
     // $('.js-gallery').slick();
 });

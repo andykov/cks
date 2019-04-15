@@ -14,10 +14,8 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 454px;
+    height: 420px;
     position: relative;
-
-    height: 554px;
     
 
     &::before {
@@ -47,6 +45,8 @@
     text-align: center;
     position: relative;
     z-index: 1;
+    padding-left: 30px;
+    padding-right: 30px;
 
     @media (min-width: $screen-lg) {
       max-width: 640px;
@@ -54,6 +54,8 @@
   
     @media (min-width: $screen-xl) {
       max-width: 740px;
+      padding-left: 0;
+      padding-right: 0;
     }
   
     @media (min-width: $screen-xxl) {
@@ -91,6 +93,8 @@
     color: #fff;
     margin: 0 auto;
     overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .slick-arrow {
@@ -99,10 +103,28 @@
     z-index: 1;
   }
   .slick-prev {
-    left: calc(100% - (940px + 160px));
+    left: 10px;
+    @media (min-width: $screen-lg) {
+      left: 35%;
+    }
+    @media (min-width: $screen-xl) {
+      left: 42%;
+    }
+    @media (min-width: $screen-xxl) {
+      // left: 42%;
+    }
   }
   .slick-next {
-    right: 160px;
+    right: 10px;
+    @media (min-width: $screen-lg) {
+      right: 8.5%;
+    }
+    @media (min-width: $screen-xl) {
+      right: 3.5%;
+    }
+    @media (min-width: $screen-xxl) {
+      right: 8.5%;
+    }
   }
   .slick-dots {
     display: flex;
@@ -111,8 +133,21 @@
     list-style: none;
     position: absolute;
     top: calc(100% - 162px);
-    left: calc(100% - (470px + 160px));
-    transform: translateX(-50%);
+    justify-content: center;
+    left: 0;
+    right: 0;
+    
+    @media (min-width: $screen-lg) {
+      left: 35%;
+      right: 8.5%;
+    }
+    @media (min-width: $screen-xl) {
+      left: 42%;
+      right: 3.5%;
+    }
+    @media (min-width: $screen-xxl) {
+      right: 8.5%;
+    }
 
     li {
       padding: 0 33px;
@@ -125,6 +160,7 @@
       border: 1px solid #000;
       background-color: #fff;
       opacity: 0.5;
+      vertical-align: middle;
       border-radius: 21px;
       cursor: pointer;
       &:focus {

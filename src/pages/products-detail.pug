@@ -14,15 +14,15 @@ block content
     .container
       .page__main-head
           +breadcrumbs()
-              +breadcrumbs-item('Главная', '/index.html')
-              +breadcrumbs-item('Изделия', '/products.html')
-              +breadcrumbs-item('Кухонные столешницы', '/products-category.html')
+              +breadcrumbs-item('Главная', 'index.html')
+              +breadcrumbs-item('Изделия', 'products.html')
+              +breadcrumbs-item('Кухонные столешницы', 'products-category.html')
               +breadcrumbs-item('Ресторан «Адмирал Бенбоу»')
           h1.page__title Лестиница бара «Адмирал Бенбоу»
 
-    +product-detail({imgTypeView: ''})
-    +product-detail({imgTypeView: 'gallery'})
-    
+    .container
+      +product-detail({imgTypeView: 'gallery'})
+      
     .container-half
         .container-half__inner
             .container-half__main

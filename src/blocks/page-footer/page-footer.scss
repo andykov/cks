@@ -2,6 +2,10 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
+.page__footer-wrapper {
+  padding-top: $layout-vertical-line-height * 2;
+}
+
 .page-footer {
   color: rgba(0, 0, 0, 0.8);
   padding: 0 10px;

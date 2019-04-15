@@ -67,7 +67,7 @@ mixin card(data, mods)
   .card(id=data.id class=allMods)&attributes(attributes)
     .card__inner
       if (data.url !== 'undefined' && data.url)
-        a.card__img-wrap(href=data.url)
+        a.card__img-wrap(href=data.url + '.html')
           img.card__img(src= data.img, alt=data.name)
       else
         span.card__img-wrap

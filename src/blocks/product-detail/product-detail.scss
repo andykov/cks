@@ -2,7 +2,31 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-.product-detail {
+.product-desc {
 
   $block-name:                &; // #{$block-name}__element
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__list {
+    margin-bottom: $layout-vertical-line-height * 2;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      width: 50%;
+      margin-bottom: 6px;
+    }
+  }
+}
+
+.gallery {
+  margin-bottom: $layout-vertical-line-height * 2;
 }
