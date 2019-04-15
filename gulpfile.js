@@ -171,6 +171,12 @@ function taskSass() {
     console.log('>>> Обработка SASS');
     return gulp.src(PATH.SRC.SCSS)
         .pipe(sass().on('error', sass.logError))
+        .pipe(postcss([
+            require('postcss-flexbugs-fixes'),
+            require('postcss-inline-svg')
+        ]))
+        .pipe(autoprefixer({browsers: ['last 10 versions']}))
+        .pipe(cssnano())
         .pipe(gulp.dest(PATH.BUILD.CSS))
         .pipe(browsersync.stream());
 }

@@ -1,4 +1,10 @@
 //=require libs/jquery-3.3.1.min.js
 
 
-console.log(111211);
+$(function(){
+    $('.embed-responsive').addClass('loading');
+        $('.embed-responsive').on('load', function(){
+        console.log('IFRAME LOADED');
+        $('.embed-responsive').removeClass("loading");
+    });
+});
