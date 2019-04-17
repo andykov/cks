@@ -55,7 +55,7 @@ block content
         .columns.js-card
             .col-md-6.col-lg-4.col-xl-2
                 +card({
-                    id: '1001',
+                    id: '99',
                     img: 'https://picsum.photos/520/530',
                     name: 'EMERALD PEARL EXTRA',
                 })
@@ -161,11 +161,12 @@ block content
                     img: 'https://picsum.photos/520/530',
                     name: 'GALLOWAY Cambria',
                 })
-            .col-md-12(style="height: 0; visibility: hidden;")
-                .card-preview
-                    div.card-preview__slider
+            //- .col-md-12(style="height: 0; visibility: hidden;")
+            .col-md-12
+                .card-preview.columns
+                    div.card-preview__slider.col-lg-8
                         +product-slider()
-                    div.card-preview__info
+                    div.card-preview__info.col-lg-4
                         +product-desc()
         +pagination('true')
             +pagination-item('1', '/1')

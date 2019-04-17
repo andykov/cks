@@ -44,10 +44,23 @@ mixin product-slider(data, mods)
 
   .js-slider.slider
     .slider__item
-      img(src="https://picsum.photos/1260/522", alt="")
+      //- if data.lazy === true
+      //- img(data-lazy="https://picsum.photos/1260/522/?image=1062", alt="")
+      //- else
+      //-   img(src="https://picsum.photos/1260/522/?image=1062", alt="")
+      img(src="https://picsum.photos/1260/522/?image=1062", alt="")
     .slider__item
-      img(src="https://picsum.photos/1260/522", alt="")
-
+      //- if data.lazy === true
+      //-   img(data-lazy="https://picsum.photos/1260/522/?image=1024", alt="")
+      //- else
+      //-   img(src="https://picsum.photos/1260/522/?image=1024", alt="")
+      img(src="https://picsum.photos/1260/522/?image=1024", alt="")
+    .slider__item
+      //- if data.lazy === true
+      //-   img(data-lazy="https://picsum.photos/1260/522/?image=1027", alt="")
+      //- else
+      //-   img(src="https://picsum.photos/1260/522/?image=1027", alt="")
+      img(src="https://picsum.photos/1260/522/?image=1027", alt="")
 
 mixin product-gallery(data, mods)
   -

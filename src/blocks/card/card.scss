@@ -216,15 +216,23 @@
 }
 
 .card-preview {
-  display: flex;
+  // display: flex;
+  visibility: hidden;
+  position: absolute;
+
+  &.is-show {
+    visibility: visible;
+    position: static;
+  }
 
   &__slider {
-    flex: 4;
-    padding-right: 10px;
+    // flex: 4;
+    // padding-right: 10px;
+    position: relative;
   }
 
   &__info {
-    flex: 2;
-    padding-left: 10px;
+    // flex: 2;
+    // padding-left: 10px;
   }
 }

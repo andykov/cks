@@ -19,3 +19,29 @@
 @import "src/blocks/page-header/page-header.scss";
 @import "src/blocks/pagination/pagination.scss";
 @import "src/blocks/social/social.scss";
+
+
+
+.slick-arrow {
+    font-size: 0;
+    outline: none;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+
+    &.slick-prev {
+        background: url(../img/arrow-left.svg) no-repeat center / contain;
+        left: 20px;
+    }
+    &.slick-next {
+        background: url(../img/arrow-right.svg) no-repeat center / contain;
+        right: 20px;
+    }
+}
