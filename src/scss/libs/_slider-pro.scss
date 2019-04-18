@@ -369,10 +369,12 @@
 /* Buttons
 --------------------------------------------------*/
 .sp-buttons {
-	position: relative;
-	width: 100%;
-	text-align: center;
-	padding-top: 10px;
+    display: flex;
+    position: absolute;
+    bottom: $layout-vertical-line-height * 3;
+    justify-content: center;
+    left: 0;
+    right: 160px;
 }
 
 .sp-rtl .sp-buttons {
@@ -384,16 +386,17 @@
 }
 
 .sp-button {
-	width: 10px;
-	height: 10px;
-	border: 2px solid #000;
-	border-radius: 50%;
-	margin: 4px;
-	display: inline-block;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
+	margin: 0 33px;
 	box-sizing: border-box;
-	cursor: pointer;
+	font-size: 0;
+    width: 21px;
+    height: 21px;
+    border: 1px solid #000;
+    background-color: #fff;
+    opacity: .5;
+    vertical-align: middle;
+    border-radius: 21px;
+    cursor: pointer;
 }
 
 .sp-selected-button {

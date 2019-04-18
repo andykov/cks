@@ -4,10 +4,12 @@
 
 .awards {
   overflow: hidden;
+  position: relative;
 
   &__inner {
-    // @include row();
     display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
     
     .simplebar-content {
       display: flex;
@@ -18,9 +20,6 @@
     width: 140px;
     flex: 0 0 140px;
     height: 198px;
-    
-    // @include col();
-    // @include col(md, 1);
 
     &:not(:last-child) {
       margin-right: 20px;

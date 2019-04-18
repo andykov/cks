@@ -1,8 +1,8 @@
 /* global document Element */
+//=include ../burger/burger.js
 
-const ready = require('../../js/utils/documentReady.js');
+(function(){
 
-ready(function(){
 
   // Добавление/удаление модификаторов при фокусировке на ссылочном элементе
   var linkClassName = 'main-nav__link';
@@ -79,5 +79,4 @@ ready(function(){
       return parents;
 
   };
-
-});
+}());

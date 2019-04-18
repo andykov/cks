@@ -1,4 +1,14 @@
-// BASE
-@import "../base.scss";
+@import "../variables.scss";
+@import "../mixins.scss";
+
+//LIBS
+@import "../libs/slider-pro.scss";
 
 // BLOCKS
+@import "../../blocks/product-detail/product-detail.scss";
+
+.buttons-wrap {
+    .btn {
+        margin-right: auto;
+    }
+}

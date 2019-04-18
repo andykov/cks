@@ -1,5 +1,6 @@
 //=require libs/jquery-3.3.1.min.js
-
+//=include ../blocks/main-nav/main-nav.js
+//=include ../blocks/field-num/field-num.js
 
 $(function(){
     $('.embed-responsive').addClass('loading');
@@ -8,3 +9,4 @@ $(function(){
         $('.embed-responsive').removeClass("loading");
     });
 });
+

@@ -20,7 +20,9 @@
 @import "src/blocks/pagination/pagination.scss";
 @import "src/blocks/social/social.scss";
 
-
+::-webkit-scrollbar { /* for Mac OS X support */
+    width: 0;
+}
 
 .slick-arrow {
     font-size: 0;
@@ -44,4 +46,8 @@
         background: url(../img/arrow-right.svg) no-repeat center / contain;
         right: 20px;
     }
+}
+
+.buttons-wrap {
+    display: flex;
 }

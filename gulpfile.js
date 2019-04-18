@@ -7,12 +7,12 @@ const path = require('path');
 const del = require('del');
 const postcss = require('gulp-postcss');
 // const lessImport = require('gulp-less-import');
+const esbabel = require('gulp-babel');
 const less = require('gulp-less');
 const sass = require('gulp-sass');
 const autoprefixer = require("gulp-autoprefixer");
 const csso = require('gulp-csso');
 const cssnano = require('gulp-cssnano');
-const babel = require('gulp-babel');
 const eslint = require('gulp-eslint');
 const exec = require('child_process').exec; // это функции самого Node, вызывающие консольные команды.
 const concat = require('gulp-concat');
@@ -42,20 +42,19 @@ const PATH = {
         PUG: 'src/pages/*.pug',
         LESS: [
             'src/less/template.less',
-            // 'src/less/template-new.less',
             'src/less/pages/*.less'
         ],
         SCSS: [
-            // 'src/scss/**/*.scss'
+            'src/scss/global.scss',
             'src/scss/style-pages/*.scss'
         ],
         JS: [
-            'src/js/script.js',
+            // 'node_modules/babel-polyfill/dist/polyfill.js',
             'src/js/js-pages/*.js',
-            // 'src/scripts/**/*.js'
+            'src/js/script.js',
         ],
         JS_LIBS: [
-            'src/js/js-pages/*.js'
+            // 'src/js/js-pages/*.js'
         ],
         IMG: [
             'src/img/**/*.{jpg,jpeg,gif,png,svg}',
@@ -76,48 +75,19 @@ const PATH = {
     },
     LIBS: {
         CSS: [ // порядок имеет значение!
-            // 'node_modules/select2/dist/css/select2.min.css',
-            // 'node_modules/ion-rangeslider/css/ion.rangeSlider.css',
-            // 'node_modules/ion-rangeslider/css/ion.rangeSlider.skinNice.css',
-            // 'src/less/libs/bootstrap-datetimepicker.min.css',
-            // 'src/less/libs/tippy.css',
-            // 'node_modules/owl.carousel/dist/assets/owl.carousel.min.css'
+            // 'node_modules/[moduleName]',
         ],
-        JS_LIBS: [ // порядок имеет значение!
-            'node_modules/jquery/dist/jquery.min.js',
-            'src/scripts/libs/jquery-ui.min.js',
-            'src/scripts/libs/jquery.validate.js',
-            'src/scripts/libs/tippy.all.js',
-            // 'node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
-            // 'src/scripts/libs/jquery.mask.min.js',
-            // 'src/scripts/libs/moment.min.js',
-            'src/scripts/libs/ru.js',
-            // 'src/scripts/libs/jquery.fancybox.pack.js',
-            'src/scripts/libs/fotorama.min.js',
-            'src/scripts/libs/iscroll.js',
-            'src/scripts/libs/jquery.scrollbar.js',
-            'src/scripts/libs/autosize.min.js',
-            'src/scripts/libs/cropper.min.js',
-            'src/scripts/libs/skrollr.min.js',
-            // 'src/scripts/libs/pie-chart-clusterer-custom.js',
-            // 'node_modules/select2/dist/js/select2.full.js',
-            // 'node_modules/ion-rangeslider/js/ion.rangeSlider.min.js',
-            'src/scripts/libs/bootstrap-without-jquery.js',
-            // 'src/scripts/libs/bootstrap-datetimepicker.min.js',
-            // 'node_modules/svg4everybody/dist/svg4everybody.min.js',
-            // 'node_modules/owl.carousel/dist/owl.carousel.min.js'
+        JS: [ // порядок имеет значение!
+            // 'node_modules/[moduleName]',
         ]
     },
     WATCH: {
         PUG: ['src/pages/*.pug', 'src/blocks/**/*.pug'],
-        // LESS: ['src/less/**/*.less', 'src/blocks/**/*.less', 'src/less/pages/*.less'],
         SCSS: ['src/scss/**/*.scss', 'src/blocks/**/*.scss'],
-        // JS: ['src/scripts/template.js', 'src/blocks/**/*.js', 'src/scripts/pages/*.js', 'src/scripts/lp-constructor/*.js'],
         JS: [
-            // 'src/blocks/**/*.js',
+            'src/blocks/**/*.js',
+            'src/js/js-pages/*.js',
             'src/js/script.js',
-            // 'src/js/pages/*.js',
-            // 'src/js/**/*.js'
         ],
         SVG: ['src/images/svg/**/*.svg']
     }
@@ -169,6 +139,10 @@ function pugHtml() {
  --------------------------------------------------------------*/
 function taskSass() {
     console.log('>>> Обработка SASS');
+    var plugins = [
+        autoprefixer({browsers: ['last 1 version']}),
+        cssnano()
+    ];
     return gulp.src(PATH.SRC.SCSS)
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([
@@ -181,31 +155,31 @@ function taskSass() {
         .pipe(browsersync.stream());
 }
 
-function taskLess() {
-    console.log('>>> Обработка LESS');
-    return gulp.src(PATH.SRC.LESS)
-    // .pipe(sourcemaps.init())
-    // .pipe(cached('less'))
-    // .pipe(dependents())
-        .pipe(less({
-            paths: [path.join(__dirname, 'less', 'includes')]
-        })).on('error', notify.onError(function(err){
-            return {
-                title: 'LESS',
-                message: err.message
-            };
-        }))
-        .pipe(postcss([
-            require('postcss-flexbugs-fixes'),
-            require('postcss-inline-svg')
-        ]))
-        .pipe(autoprefixer({browsers: ['last 10 versions']}))
-        .pipe(cssnano())
-        .pipe(debug({title: 'обработано less файлов'}))
-        // .pipe(sourcemaps.write())
-        .pipe(gulp.dest(PATH.BUILD.CSS))
-        .pipe(browsersync.stream());
-}
+// function taskLess() {
+//     console.log('>>> Обработка LESS');
+//     return gulp.src(PATH.SRC.LESS)
+//     // .pipe(sourcemaps.init())
+//     // .pipe(cached('less'))
+//     // .pipe(dependents())
+//         .pipe(less({
+//             paths: [path.join(__dirname, 'less', 'includes')]
+//         })).on('error', notify.onError(function(err){
+//             return {
+//                 title: 'LESS',
+//                 message: err.message
+//             };
+//         }))
+//         .pipe(postcss([
+//             require('postcss-flexbugs-fixes'),
+//             require('postcss-inline-svg')
+//         ]))
+//         .pipe(autoprefixer({browsers: ['last 10 versions']}))
+//         .pipe(cssnano())
+//         .pipe(debug({title: 'обработано less файлов'}))
+//         // .pipe(sourcemaps.write())
+//         .pipe(gulp.dest(PATH.BUILD.CSS))
+//         .pipe(browsersync.stream());
+// }
 
 
 
@@ -258,7 +232,7 @@ function taskLess() {
 function scripts() {
     // return gulp
     //     .src(paths.allSrcJs)
-    //     .pipe(babel({
+    //     .pipe(esbabel({
     //         presets: ['@babel/env'],
     //         plugins: ['@babel/transform-runtime'] // для шаблонизации
     //     }))
@@ -282,7 +256,11 @@ function scripts() {
     //   }
     // }))
     // .pipe(concat('main.js'))
+        
         .pipe(include())
+        // .pipe(esbabel({
+        //     presets: ['@babel/preset-env', 'module:@babel/plugin-proposal-class-properties']
+        // }))
         .on('error', notify.onError(function(err){
             return {
                 title: 'JS',
@@ -290,13 +268,14 @@ function scripts() {
             };
         }))
         .pipe(uglify())
+        
         .pipe(gulp.dest(PATH.BUILD.JS))
         .pipe(browsersync.stream());
 }
 function scriptsLibs() {
     // return gulp
     //     .src(paths.allSrcJs)
-    //     .pipe(babel({
+    //     .pipe(esbabel({
     //         presets: ['@babel/env'],
     //         plugins: ['@babel/transform-runtime'] // для шаблонизации
     //     }))
@@ -379,14 +358,9 @@ function fonts() {
 // Watch files
 function watchFiles() {
     gulp.watch(PATH.WATCH.PUG, pugHtml);
-    gulp.watch(PATH.SRC.JS, scripts);
-    gulp.watch(PATH.SRC.JS_LIBS, scriptsLibs);
-    // gulp.watch(PATH.WATCH.LESS, taskLess);
-    // gulp.watch(PATH.WATCH.SCSS, gulp.series(taskSass));
+    gulp.watch(PATH.WATCH.JS, scripts);
     gulp.watch(PATH.WATCH.SCSS, taskSass);
     gulp.watch(PATH.SRC.IMG, images);
-    // gulp.watch(PATH.WATCH.JS, gulp.series(scripts));
-    // gulp.watch(paths.allSrcJs, gulp.series(scriptsLint, scripts));
 }
 
 
@@ -394,9 +368,7 @@ function watchFiles() {
 // gulp.task("js", gulp.series(scriptsLint, scripts));
 gulp.task("images", images);
 gulp.task("svgSprite", svgSprite);
-// gulp.task("css", taskSass);
 gulp.task("js", scripts);
-gulp.task("jsLibs", scriptsLibs);
 gulp.task("fonts", fonts);
 gulp.task("pugHtml", pugHtml);
 gulp.task("taskSass", taskSass);
@@ -408,7 +380,7 @@ gulp.task("clean", clean);
 gulp.task(
     "build",
     // gulp.series(clean, gulp.parallel('images', 'svgSprite', 'taskSass', 'js', 'fonts'))
-    gulp.series(clean, gulp.parallel('pugHtml', 'taskSass', 'images', 'js', 'jsLibs'))
+    gulp.series(clean, gulp.parallel('pugHtml', 'taskSass', 'images', 'js'))
 );
 
 // watch
