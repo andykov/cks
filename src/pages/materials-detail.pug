@@ -20,21 +20,13 @@ block content
               +breadcrumbs-item('Labrador Multicolor')
           h1.page__title Labrador Multicolor
 
-    +product-detail({imgTypeView: 'gallery'})
+    .container
+      +product-detail({imgTypeView: 'gallery'})
     
     .container-half
         .container-half__inner
             .container-half__main
               +product-desc()
 
-    
-
-
-//- #[a(href='blocks-demo.html') Библиотека блоков]
-
-//- block footer
-//-   p footer
-
-block append page-bottom
 block append page-bottom
   script(src='js/page-materials-detail.js')

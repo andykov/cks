@@ -5,9 +5,11 @@
 .post {
 
   $block-name:                &; // #{$block-name}__element
-
-  display: flex;
   padding-top: 36px;
+
+  @media screen and (min-width: $screen-md) {
+    display: flex;
+  }
 
   &:not(:last-child) {
     margin-bottom: $layout-vertical-line-height * 5;
@@ -23,13 +25,25 @@
   &__text {
     width: 780px;
     max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    @media screen and (max-width: $screen-md - 1) {
+      padding-top: $layout-vertical-line-height;
+    }
   }
 
   &__header {
-    margin-top: -36px;
+    // margin-top: -36px;
     background-color: #d1e3ee;
-    padding: 7.5px 20px;
-    margin-bottom: $layout-vertical-line-height;
+    padding: 9px 20px;
+    
+
+    @media screen and (min-width: $screen-md) {
+      position: absolute;
+      transform: translateY(-100%);
+    }
 
     .post__date,
     .post__title {
@@ -40,23 +54,20 @@
     .post__date {
       font-weight: 700;
     }
-
-    // .post__date {
-    //   font-size: 17px;
-    //   font-weight: bold;
-    //   line-height: 1;
-    // }
   }
 
   &__title {
-    // background-color: #d1e3ee;
-    // padding: 7.5px 20px;
+    padding: 0;
     color: #333;
     margin-bottom: 0;
   }
 
   &__cont {
-    padding-left: 20px;
+    padding-top: $layout-vertical-line-height;
+
+    @media screen and (min-width: $screen-md) {
+      padding-left: 20px;
+    }
 
     .post__date,
     .post__title {
@@ -69,15 +80,18 @@
     display: block;
     font-size: $font-size-3;
     line-height: 1;
-    // margin-bottom: $layout-vertical-line-height;
     color: #66a1c7;
   }
 
   &__footer {
-    padding-left: 20px;
+    margin-top: auto;
+    
+    @media screen and (min-width: $screen-md) {
+      padding-left: 20px;
+    }
   }
 
   &__more-link {
-
+    
   }
 }

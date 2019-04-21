@@ -114,4 +114,8 @@ mixin product-desc(data, mods)
         p #[b Labrador Multicolor] – гранит итальянского происхождения с идеальной зеркальной полировкой.
         p Поверхность минерала темно-зеленая настолько, что кажется черной. Украшение камня – многочисленные серебристые вкрапления, формирующие монотонный, насыщенный узор. Укладка плитки и гранита #[b Labrador Multicolor] – не составит проблемы.
         p Колоритны подоконники и столешницы из гранита #[b Labrador Multicolor] в классических интерьерных решениях. Используется данный камень в составе художественных панно.
-    a.btn.btn--blue-dark(href="javascript:void(0);") Оставить заявку    
+    
+    if (typeof(data) !== 'undefined' && data.typeBtn === 'btn')
+      a.btn.btn--wide.btn--blue-dark(href="javascript:void(0);") Оставить заявку
+    else
+      a.product-desc__more-link(href="javascript:void(0);") #[b Подробнее]

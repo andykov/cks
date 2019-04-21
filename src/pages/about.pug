@@ -50,14 +50,26 @@ block content
     .container-half.container-half--narrow
         .container-half__inner
             .container-half__full
-                .columns
-                    .col-md-4
-                        | Производство
-                    .col-md-4
-                        | Структура
-                    .col-md-4
-                        | Вакансии
-                        
+                +info()
+                    +info-item({
+                        title: 'Производство',
+                        subtitle: 'Подробнее',
+                        imgURL: 'img/info-img-1.jpg',
+                        typeBtn: 'link'
+                    })
+                    +info-item({
+                        title: 'Структура',
+                        subtitle: 'Подробнее',
+                        imgURL: 'img/info-img-2.jpg',
+                        typeBtn: 'link'
+                    })
+                    +info-item({
+                        title: 'Вакансии',
+                        subtitle: 'Подробнее',
+                        imgURL: 'img/info-img-3.jpg',
+                        typeBtn: 'link'
+                    })
+    
     
 //- #[a(href='blocks-demo.html') Библиотека блоков]
 

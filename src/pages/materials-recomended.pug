@@ -57,27 +57,93 @@ block content
                     name: 'Кварц-керамика',
                     desc: 'В процессе эксплуатации столешница испытываетцелую гамму специфических воздействий: механическое -  при разделке продуктов; термическое - от горячей посуды; химическое - от уксуса, острого соуса и т.д. При выборе материала для изготовления столешницы, следует учитывать все вышеперечисленные факторы. Выбор есть и он богат. Из чего выбирает будущий владелец современной кухни.'
                 },'indent')
-
     .container-half
         .container-half__inner
             .container-half__main
-                h3 Компании-производители:
-    .container-half.container-half--narrow
-        .container-half__inner
-            .container-half__full
-                +fabrics-logo()
-                    +fabrics-logo-item('img/fabric-1.png')
-                    +fabrics-logo-item('img/fabric-2.png')
-                    +fabrics-logo-item('img/fabric-3.png')
-                    +fabrics-logo-item('img/fabric-4.png')
-                    +fabrics-logo-item('img/fabric-5.png')
-                    +fabrics-logo-item('img/fabric-6.png')
-                    +fabrics-logo-item('img/fabric-7.png')
-                    +fabrics-logo-item('img/fabric-8.png')
-                    +fabrics-logo-item('img/fabric-6.png')
-                    +fabrics-logo-item('img/fabric-7.png')
-                    +fabrics-logo-item('img/fabric-8.png')
-                    +fabrics-logo-item('img/fabric-6.png')
-
+                h3 Мы рекомендуем:
+    .container-fluid
+        .columns.js-card
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '99',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'EMERALD PEARL EXTRA',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'AA 493 Allegheny Amber',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MADAGASCAR BLUE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MULTICOLOR',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'BARDIGLIO IMPERIALE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'GALLOWAY Cambria',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'EMERALD PEARL EXTRA',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'AA 493 Allegheny Amber',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MADAGASCAR BLUE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'MULTICOLOR',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'BARDIGLIO IMPERIALE',
+                })
+            .col-md-6.col-lg-4.col-xl-2
+                +card({
+                    id: '1001',
+                    img: 'https://picsum.photos/520/530',
+                    name: 'GALLOWAY Cambria',
+                })
+            .col-md-12
+                .card-preview
+                    .card-preview__inner
+                        button.js-card-preview-close.card-preview__close
+                            svg(xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 15.642 15.642" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 15.642 15.642")
+                                path(fill-rule="evenodd" d="M8.882,7.821l6.541-6.541c0.293-0.293,0.293-0.768,0-1.061  c-0.293-0.293-0.768-0.293-1.061,0L7.821,6.76L1.28,0.22c-0.293-0.293-0.768-0.293-1.061,0c-0.293,0.293-0.293,0.768,0,1.061  l6.541,6.541L0.22,14.362c-0.293,0.293-0.293,0.768,0,1.061c0.147,0.146,0.338,0.22,0.53,0.22s0.384-0.073,0.53-0.22l6.541-6.541  l6.541,6.541c0.147,0.146,0.338,0.22,0.53,0.22c0.192,0,0.384-0.073,0.53-0.22c0.293-0.293,0.293-0.768,0-1.061L8.882,7.821z")
+                        div.card-preview__slider
+                            +product-slider()
+                        div.card-preview__info
+                            +product-desc()
 block append page-bottom
   script(src='js/page-materials.js')

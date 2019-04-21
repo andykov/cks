@@ -114,6 +114,11 @@
 .sp-bottom-thumbnails .sp-thumbnail-container {
 	margin-left: 2px;
 	margin-right: 2px;
+
+	@media screen and (max-width: 800px) {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
 }
 
 .sp-top-thumbnails .sp-thumbnail-container:first-child,
@@ -216,13 +221,18 @@
 /* Bottom thumbnails with pointer
 ---------------------------------*/
 .sp-bottom-thumbnails.sp-has-pointer {
-	margin-top: -13px;
+	@media screen and (min-width: 801px) {
+		margin-top: -13px;
+	}
 }
 
 .sp-bottom-thumbnails.sp-has-pointer .sp-thumbnail {
 	position: absolute;
-	top: 18px;
 	margin-top: 0 !important;
+
+	@media screen and (min-width: 801px) {
+		top: 18px;
+	}
 }
 
 .sp-bottom-thumbnails.sp-has-pointer .sp-selected-thumbnail:before {
@@ -371,10 +381,15 @@
 .sp-buttons {
     display: flex;
     position: absolute;
-    bottom: $layout-vertical-line-height * 3;
+    bottom: $layout-vertical-line-height * 5;
     justify-content: center;
     left: 0;
-    right: 160px;
+	right: 0;
+	
+	@media screen and (min-width: 801px){
+		right: 160px;
+		bottom: $layout-vertical-line-height * 3;
+	}
 }
 
 .sp-rtl .sp-buttons {

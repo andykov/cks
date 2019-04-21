@@ -127,16 +127,9 @@
     }
   }
   .slick-dots {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: absolute;
     top: calc(100% - 162px);
-    justify-content: center;
-    left: 0;
-    right: 0;
-    
+    bottom: auto;
+
     @media (min-width: $screen-lg) {
       left: 35%;
       right: 8.5%;
@@ -147,31 +140,6 @@
     }
     @media (min-width: $screen-xxl) {
       right: 8.5%;
-    }
-
-    li {
-      padding: 0 33px;
-    }
-
-    button {
-      font-size: 0;
-      width: 21px;
-      height: 21px;
-      border: 1px solid #000;
-      background-color: #fff;
-      opacity: 0.5;
-      vertical-align: middle;
-      border-radius: 21px;
-      cursor: pointer;
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .slick-active {
-      button {
-        opacity: 1;
-      }
     }
   }
 }

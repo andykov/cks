@@ -1,6 +1,9 @@
 @import "../variables.scss";
 @import "../mixins.scss";
 
+// LIBS
+@import "../libs/slick.scss";
 
 // BLOCKS
+@import "../../blocks/product-detail/product-detail.scss";
 @import "../../blocks/fabrics-logo/fabrics-logo.scss";

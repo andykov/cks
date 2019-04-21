@@ -20,7 +20,7 @@ mixin post(typePost, text, mods)
 
   article.post(class=allMods)&attributes(attributes)
     a.post__img-wrap(href="")
-      img(src="https://picsum.photos/620/252", alt="").post__img
+      img(src="https://picsum.photos/620/306", alt="").post__img
     .post__text
       header.post__header
         if (typePost == 'article')
@@ -46,7 +46,7 @@ mixin post(typePost, text, mods)
           p
             span Акция проводится до 2020 года
       footer.post__footer
-        a.btn.post__more-link(href="articles-item.html") Смотреть
+        a.btn.btn--sm.btn--blue-light(href="articles-item.html") Смотреть
     block
 
 

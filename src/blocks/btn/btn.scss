@@ -4,6 +4,7 @@
 
 $blue: #66a1c7;
 $blue-dark: #223a7a;
+$blue-light: #d1e3ee;
 
 .btn {
   box-sizing: border-box;
@@ -14,7 +15,7 @@ $blue-dark: #223a7a;
   border-radius: $border-radius;
   // border: 1px solid $gray-lighter;
   border: 0;
-  padding: $field-padding-vertical  $field-padding-horizontal;
+  padding: $field-padding-vertical 34px;
   vertical-align: middle;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -26,8 +27,8 @@ $blue-dark: #223a7a;
   line-height: (18 / 12);
   text-decoration: none;
   text-transform: uppercase;
-  color: $text-color;
-  background-color: $gray-lightest;
+  color: #fff;
+  background-color: #333;
   background-image: none;
   box-shadow: -6px 7px 8px 0 rgba(0,0,0,.35);
   cursor: pointer;
@@ -35,8 +36,8 @@ $blue-dark: #223a7a;
   &:hover,
   &:focus {
     text-decoration: none;
-    color: $text-color;
-    background-color: darken($gray-lightest, 10%);
+    color: #fff;
+    background-color: #223a7a;
     // border-color: darken($gray-lighter, 12%);
   }
 
@@ -68,14 +69,14 @@ $blue-dark: #223a7a;
   // }
 
   &--sm {
-    @include pt-to-px(13, 14);
+    font-size: $font-size-6;
     font-weight: bold;
     text-transform: uppercase;
+    padding-top: 9px;
+    padding-bottom: 9px;
   }
 
   &--lg {
-    max-width: 300px;
-    width: 100%;
     font-size: $font-size-3;
     font-weight: normal;
     line-height: 1;
@@ -84,14 +85,38 @@ $blue-dark: #223a7a;
     box-shadow: -6px 7px 8px 0 rgba(0,0,0,.35);
   }
 
+  &--wide {
+    max-width: 300px;
+    width: 100%;
+  }
+
+  &--blue-light {
+    background-color: $blue-light;
+    color: #223a7a;
+
+    &:hover {
+      background-color: $blue-dark;
+      color: $white;
+    }
+  }
+
   &--blue {
     background-color: $blue;
-    color: $white;
+    color: #223a7a;
+
+    &:hover {
+      background-color: $blue-dark;
+      color: $white;
+    }
   }
 
   &--blue-dark {
     background-color: $blue-dark;
     color: $white;
+
+    &:hover {
+      background-color: #333;
+    }
   }
 
   &--grey-dark {

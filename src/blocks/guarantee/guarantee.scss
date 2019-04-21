@@ -11,11 +11,19 @@
   }
 
   &__item {
+    margin-bottom: $layout-vertical-line-height * 2;
+
     @include col();
-    @include col(md, 2);
+    @include col(sm, 6);
+    @include col(md, 4);
+    @include col(lg, 2);
     max-width: 300px;
     padding-top: 2px;
     text-align: center;
+
+    @media screen and (min-width: $screen-lg) {
+      margin-bottom: 0;
+    }
 
     &:hover {
       color: #223a7a;

@@ -29,21 +29,25 @@
   &__link {
     display: block;
     padding: 5px;
-    background-color: $gray;
+    background-color: #333;
     border-radius: 2px;
+    &:hover {
+      #{$block-name}__link-wrap--fb & {
+        background-color: $color-fb;
+      }
 
-    #{$block-name}__link-wrap--fb & {
-      background-color: $color-fb;
+      #{$block-name}__link-wrap--vk & {
+        background-color: $color-vk;
+      }
+
+      #{$block-name}__link-wrap--tw & {
+        background-color: $color-tw;
+      }
+
+      #{$block-name}__link-wrap--tm & {
+        background-color: $color-tm;
+      }
     }
-
-    // #{$block-name}__link-wrap--vk & {
-    //   background-color: $color-vk;
-    // }
-
-    // #{$block-name}__link-wrap--tw & {
-    //   background-color: $color-tw;
-    // }
-
     // #{$block-name}__link-wrap--gh & {
     //   background-color: $color-gh;
     // }

@@ -58,150 +58,146 @@ description: '<p><b>Labrador Multicolor</b> – гранит итальянск�
 };
 
 $(function(){
-  var card = $('.js-card').children().not($('.card-preview').parent());
+  if ($('.card-preview').length) {
+    var card = $('.js-card').children().not($('.card-preview').parent());
 
-  card.each(function(i){
-      $(this).css('order', ++i);
-  });
-  
-  var cardRowIndexNum = 1;
-  var cardRowIndexCount = 1;
-  var arrCardRow = [];
-  card.each(function(){
-
-      var thisOffset = $(this).offset().top;
-
-      if(thisOffset == $(this).next().offset().top) {
-          ++cardRowIndexCount;
-          $(this).css('order', cardRowIndexNum);
-      } else {
-          arrCardRow.push([cardRowIndexCount, cardRowIndexNum]);
-          $(this).css('order', cardRowIndexNum);
-          cardRowIndexNum = cardRowIndexNum + 1;
-          cardRowIndexCount = 1;
-      }
-  });
-  // $('.js-slider').slick();
-  // $('.js-slider').not('.slick-initialized').slick();
-  // $('.js-slider').slick('reInit');
-  $('.js-card .card').on('click', function() {
-
+    card.each(function(i){
+        $(this).css('order', ++i);
+    });
     
-      var cardId = $(this).attr('id');
-      $('.js-card .card').removeClass('active');
-      $(this).addClass('active');
-      // $('.card-preview').parent().css({
-      //     'height': 'auto',
-      //     'visibility': 'visible',
-      //     'order': Number($(this).parent().css('order')),
-      // });
-      $('.card-preview').addClass('is-show');
-      $('.card-preview').parent().css({
-        'order': Number($(this).parent().css('order')),
-      });
-      
-      // setTimeout(function(){
-      //   $('.js-slider').slick();
-      // }, 1000);
-      // $('.js-slider.slick-initialized').slick('destroy');
-      
+    var cardRowIndexNum = 1;
+    var cardRowIndexCount = 1;
+    var arrCardRow = [];
+    card.each(function(){
 
-      $('.js-slider').not('.slick-initialized').slick({
-        infinite: false,
-        lazyLoad: 'ondemand',
-      });
+        var thisOffset = $(this).offset().top;
 
-      $.each(cardPreviewData.images, function(indexObj, obj) {
-        var obj = obj;
-        if ($('.slider__item').eq(indexObj).length === 0) {
-          // слайды добавляются если в массиве больше объектов чем самих слайдов
-          indexObj++;
-          $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
+        if(thisOffset == $(this).next().offset().top) {
+            ++cardRowIndexCount;
+            $(this).css('order', cardRowIndexNum);
         } else {
-          // слайды удаляются если в массиве меньше объектов чем самих слайдов,
-          $.each($('.slider__item'), function(indexEl, elem) {
-            if (indexEl != indexObj) {
-              $('.js-slider').slick('slickRemove', indexEl);
-            } else {
-              // console.log(cardPreviewData.images[0].url);
-              $(elem).eq(0).find('img').attr('src', cardPreviewData.images[0].url);
-              $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
-              $('.js-slider').slick('slickGoTo', 0);
-            }
-          });
+            arrCardRow.push([cardRowIndexCount, cardRowIndexNum]);
+            $(this).css('order', cardRowIndexNum);
+            cardRowIndexNum = cardRowIndexNum + 1;
+            cardRowIndexCount = 1;
         }
-        $('.slider__item').eq(indexObj).find('img').attr('src', obj.url);
-      });
+    });
+
+    $('.js-card .card').on('click', function() {
+
+        var cardId = $(this).attr('id');
+        $('.js-card .card').removeClass('active');
+        $(this).addClass('active');
+
+        $('.card-preview').addClass('is-show');
+        $('.card-preview').parent().css({
+          'order': Number($(this).parent().css('order')),
+        });
+
+        $('.js-slider').not('.slick-initialized').slick({
+          infinite: false,
+          lazyLoad: 'ondemand',
+          dots: true
+        });
+
+        $.each(cardPreviewData.images, function(indexObj, obj) {
+          var obj = obj;
+          if ($('.slider__item').eq(indexObj).length === 0) {
+            // слайды добавляются если в массиве больше объектов чем самих слайдов
+            indexObj++;
+            $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
+          } else {
+            // слайды удаляются если в массиве меньше объектов чем самих слайдов,
+            $.each($('.slider__item'), function(indexEl, elem) {
+              if (indexEl != indexObj) {
+                $('.js-slider').slick('slickRemove', indexEl);
+              } else {
+                // console.log(cardPreviewData.images[0].url);
+                $(elem).eq(0).find('img').attr('src', cardPreviewData.images[0].url);
+                $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
+                $('.js-slider').slick('slickGoTo', 0);
+              }
+            });
+          }
+          $('.slider__item').eq(indexObj).find('img').attr('src', obj.url);
+        });
 
 
 
-      // ПРОВЕРКА РАБОТЫ РАЗНОГО НАБОРА ПРИХОДЯЩИХ ИЗОБРАЖЕНИЙ
+        // ПРОВЕРКА РАБОТЫ РАЗНОГО НАБОРА ПРИХОДЯЩИХ ИЗОБРАЖЕНИЙ
 
-      // if (cardId == '99') {
-      //   $.each(cardPreviewData2.images, function(indexObj, obj) {
-      //     var obj = obj;
-      //     if ($('.slider__item').eq(indexObj).length === 0) {
-      //       // слайды добавляются если в массиве больше объектов чем самих слайдов
-      //       indexObj++;
-      //       $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
-      //     } else {
-      //       // слайды удаляются если в массиве меньше объектов чем самих слайдов,
-      //       $.each($('.slider__item'), function(indexEl, elem) {
-      //         if (indexEl != indexObj) {
-      //           $('.js-slider').slick('slickRemove', indexEl);
-      //         } else {
-      //           // console.log(cardPreviewData2.images[0].url);
-      //           $(elem).eq(0).find('img').attr('src', cardPreviewData2.images[0].url);
-      //           $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
-      //           $('.js-slider').slick('slickGoTo', 0);
-      //         }
-      //       });
-      //     }
-      //     $('.slider__item').eq(indexObj).find('img').attr('src', obj.url);
-      //   });
-      // } else {
-      //   $.each(cardPreviewData.images, function(indexObj, obj) {
-      //     var obj = obj;
-      //     if ($('.slider__item').eq(indexObj).length === 0) {
-      //       // слайды добавляются если в массиве больше объектов чем самих слайдов
-      //       indexObj++;
-      //       $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
-      //     } else {
-      //       // слайды удаляются если в массиве меньше объектов чем самих слайдов,
-      //       $.each($('.slider__item'), function(indexEl, elem) {
-      //         if (indexEl != indexObj) {
-      //           $('.js-slider').slick('slickRemove', indexEl);
-      //         } else {
-      //           // console.log(cardPreviewData.images[0].url);
-      //           $(elem).eq(0).find('img').attr('src', cardPreviewData.images[0].url);
-      //           $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
-      //           $('.js-slider').slick('slickGoTo', 0);
-      //         }
-      //       });
-      //     }
-      //     $('.slider__item').eq(indexObj).find('img').attr('src', obj.url);
-      //   });
-      // }
+        // if (cardId == '99') {
+        //   $.each(cardPreviewData2.images, function(indexObj, obj) {
+        //     var obj = obj;
+        //     if ($('.slider__item').eq(indexObj).length === 0) {
+        //       // слайды добавляются если в массиве больше объектов чем самих слайдов
+        //       indexObj++;
+        //       $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
+        //     } else {
+        //       // слайды удаляются если в массиве меньше объектов чем самих слайдов,
+        //       $.each($('.slider__item'), function(indexEl, elem) {
+        //         if (indexEl != indexObj) {
+        //           $('.js-slider').slick('slickRemove', indexEl);
+        //         } else {
+        //           // console.log(cardPreviewData2.images[0].url);
+        //           $(elem).eq(0).find('img').attr('src', cardPreviewData2.images[0].url);
+        //           $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
+        //           $('.js-slider').slick('slickGoTo', 0);
+        //         }
+        //       });
+        //     }
+        //     $('.slider__item').eq(indexObj).find('img').attr('src', obj.url);
+        //   });
+        // } else {
+        //   $.each(cardPreviewData.images, function(indexObj, obj) {
+        //     var obj = obj;
+        //     if ($('.slider__item').eq(indexObj).length === 0) {
+        //       // слайды добавляются если в массиве больше объектов чем самих слайдов
+        //       indexObj++;
+        //       $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
+        //     } else {
+        //       // слайды удаляются если в массиве меньше объектов чем самих слайдов,
+        //       $.each($('.slider__item'), function(indexEl, elem) {
+        //         if (indexEl != indexObj) {
+        //           $('.js-slider').slick('slickRemove', indexEl);
+        //         } else {
+        //           // console.log(cardPreviewData.images[0].url);
+        //           $(elem).eq(0).find('img').attr('src', cardPreviewData.images[0].url);
+        //           $('.js-slider').slick('slickAdd','<div class="slider__item"><img src="'+obj.url+'"></div>');
+        //           $('.js-slider').slick('slickGoTo', 0);
+        //         }
+        //       });
+        //     }
+        //     $('.slider__item').eq(indexObj).find('img').attr('src', obj.url);
+        //   });
+        // }
 
-      var elMaterial = $('.js-product-material span'),
-          elFormat = $('.js-product-format span'),
-          elProcessing = $('.js-product-processing span'),
-          elColor = $('.js-product-color span'),
-          elSize = $('.js-product-size span'),
-          elDepth = $('.js-product-depth span'),
-          elCountry = $('.js-product-country span'),
-          elBrand = $('.js-product-brand span'),
-          elDescription = $('.js-product-desc');
-          
+        var elMaterial = $('.js-product-material span'),
+            elFormat = $('.js-product-format span'),
+            elProcessing = $('.js-product-processing span'),
+            elColor = $('.js-product-color span'),
+            elSize = $('.js-product-size span'),
+            elDepth = $('.js-product-depth span'),
+            elCountry = $('.js-product-country span'),
+            elBrand = $('.js-product-brand span'),
+            elDescription = $('.js-product-desc');
+            
 
-      elMaterial.text(cardPreviewData.specifications.material);
-      elFormat.text(cardPreviewData.specifications.format);
-      elProcessing.text(cardPreviewData.specifications.processing);
-      elColor.text(cardPreviewData.specifications.color);
-      elSize.text(cardPreviewData.specifications.size);
-      elDepth.text(cardPreviewData.specifications.depth);
-      elCountry.text(cardPreviewData.specifications.country);
-      elBrand.text(cardPreviewData.specifications.brand);
-      elDescription.html(cardPreviewData.description);
-  });
+        elMaterial.text(cardPreviewData.specifications.material);
+        elFormat.text(cardPreviewData.specifications.format);
+        elProcessing.text(cardPreviewData.specifications.processing);
+        elColor.text(cardPreviewData.specifications.color);
+        elSize.text(cardPreviewData.specifications.size);
+        elDepth.text(cardPreviewData.specifications.depth);
+        elCountry.text(cardPreviewData.specifications.country);
+        elBrand.text(cardPreviewData.specifications.brand);
+        elDescription.html(cardPreviewData.description);
+    });
+
+
+    $('.js-card-preview-close').on('click', function(){
+      $(this).closest('.card-preview').removeClass('is-show');
+      $('.card').removeClass('active');
+    });
+  }
 });

@@ -3,53 +3,47 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .fabrics-logo {
-
-  // // @include row();
-  // display: flex;
-  // margin: 0 -10px;
   $block-name:                &; // #{$block-name}__element
-  // @include row();
   display: flex;
   justify-content: center;
-  max-width: 1372px;
+  
   margin: 0 auto;
-  padding-left: 56px;
-  padding-right: 56px;
+  
+
+  &:not(.fabrics-logo--slider) {
+    @include row();
+
+    .fabrics-logo__item {
+      margin-bottom: $layout-vertical-line-height;
+
+      img {
+        max-height: 72px;
+      }
+    }
+  }
 
   &__inner {
-    // max-width: (1280px + (46px * 2));
-    // margin: 0 auto;
-    // padding: 0 46px;
-    @include row();
+    
   }
 
   .slick-arrow {
     z-index: 1;
   }
 
-  .slick-slide {
-    // max-width: 160px;
-  }
   .slick-next {
-    right: -46px;
+    right: 0;
   }
   .slick-prev {
-    left: -46px;
+    left: 0;
   }
 
   &__item {
-    // @include col();
-    // @include col(md, 1);
     display: block;
     padding: 0 10px;
     max-width: 160px;
     width: 160px;
-    // margin: auto;
     text-align: center;
-    // @include col();
-    // @include col('md', 1);
     img {
-      // max-width: 140px;
       margin: 0 auto;
     }
   }
@@ -65,10 +59,14 @@
   }
 
   &__item {
-    // @include row();
+
   }
 
   &--slider {
+    max-width: 1372px;
+    padding-left: 56px;
+    padding-right: 56px;
+
     .fabrics-logo__inner {
       
     }

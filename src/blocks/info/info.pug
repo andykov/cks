@@ -45,12 +45,21 @@ mixin info-item(props)
     }
 
   .info__item(class=allMods)&attributes(attributes)
-    .info__item-inner
-      .info__head
-        span.info__name= props.title
-        span.info__date 06.07.2019
-        p= props.subtitle
-      .info__image
-        img(src=props.imgURL, alt="")
-      a.btn(href="/info-sales-detail.html") Смотреть
+    if (typeof(props) !== 'undefined' && props.typeBtn === 'link')
+      a.info__item-inner
+        .info__head
+          span.info__name= props.title
+          p= props.subtitle
+        .info__image
+          img(src=props.imgURL, alt="")
+    if (typeof(props) !== 'undefined' && props.typeBtn === 'btn')
+      .info__item-inner
+        .info__head
+          span.info__name= props.title
+          span.info__date 06.07.2019
+          p= props.subtitle
+        .info__image
+          img(src=props.imgURL, alt="")
+        a.btn.btn--wide.btn--sm(href="/info-sales-detail.html") Смотреть
+      
       

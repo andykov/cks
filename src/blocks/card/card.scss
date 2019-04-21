@@ -2,10 +2,6 @@
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
-.card-list {
-  // @include row();
-}
-
 .card {
 
   $block-name:                &; // #{$block-name}__element
@@ -16,12 +12,9 @@
   flex-direction: column;
   align-items: center;
   min-width: 150px;
-  // padding: 0 15px;
   margin-bottom: 20px;
   overflow: hidden;
-  // @include get-width();
-  // @include col(md, 3);
-  // max-width: 460px;
+  cursor: pointer;
 
   &__inner {
     flex-grow: 1;
@@ -30,13 +23,11 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    // margin-bottom: 20px;
   }
 
   &__img-wrap {
     flex-shrink: 0;
     display: block;
-    // margin-bottom: 20px;
     width: 100%;
     position: relative;
 
@@ -85,6 +76,7 @@
     align-items: center;
     justify-content: center;
     font-size: $font-size;
+    text-align: center;
     line-height: (18 / 15);
     background-color: #333333;
     color: #fff;
@@ -95,7 +87,6 @@
     span {
       display: block;
       font-size: 0.789em;
-      // line-height: (18 / 14);
       line-height: 0.789em;
     }
   }
@@ -117,7 +108,7 @@
     font-size: $font-size-5;
     line-height: (18 / 14);
     color: #fff;
-    padding: ($layout-vertical-line-height * 2) ($layout-vertical-line-height / 2) 0;
+    padding: ($layout-vertical-line-height * 2) $layout-vertical-line-height 0;
     visibility: hidden;
     opacity: 0;
     transition: visibility $transition-time ease-in-out, opacity $transition-time ease-in-out;
@@ -136,7 +127,6 @@
   }
 
   &:hover {
-    // cursor: pointer;
 
     .card__title {
       background-color: #223a7a;
@@ -152,8 +142,6 @@
     position: absolute;
     left: 0;
     right: 0;
-    // bottom: -1px;
-    // height: 50%;
     bottom: -2px;
     height: 18%;
     background: url('../img/card-arrow-active.svg') no-repeat center bottom / 100% auto;
@@ -207,7 +195,6 @@
       span {
         font-size: 0.789em;
         font-weight: normal;
-        // line-height: (18 / 14);
         line-height: 0.789em;
         text-transform: lowercase;
       }
@@ -216,23 +203,65 @@
 }
 
 .card-preview {
-  // display: flex;
   visibility: hidden;
   position: absolute;
+  margin-bottom: $layout-vertical-line-height * 2;
+  
 
   &.is-show {
     visibility: visible;
     position: static;
   }
 
-  &__slider {
-    // flex: 4;
-    // padding-right: 10px;
+  &__inner {
+    @include row();
     position: relative;
   }
 
+  &__slider {
+    position: relative;
+    @include make-col(12, $grid-columns, $grid-gutter-width);
+
+    @media screen and (min-width: $screen-xl) {
+      @include make-col(6, $grid-columns, $grid-gutter-width);
+
+      .slider__item img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    @media screen and (min-width: 1900px) {
+      @include make-col(8, $grid-columns, $grid-gutter-width);
+    }
+  }
+
   &__info {
-    // flex: 2;
-    // padding-left: 10px;
+    @include make-col(12, $grid-columns, $grid-gutter-width + 20);
+
+    @media screen and (min-width: $screen-xl) {
+      @include make-col(6, $grid-columns, $grid-gutter-width);
+    }
+    @media screen and (min-width: 1900px) {
+      @include make-col(4, $grid-columns, $grid-gutter-width);
+    }
+  }
+
+  &__close {
+    position: absolute;
+    background: transparent;
+    outline: none;
+    border: 0;
+    padding: 15px;
+    top: $layout-vertical-line-height - 15;
+    right: ($layout-vertical-line-height + 10) - 15;
+    cursor: pointer;
+    svg {
+      vertical-align: middle;
+    }
+    &:hover {
+      svg {
+        color: #4e6195;
+      }
+    }
   }
 }

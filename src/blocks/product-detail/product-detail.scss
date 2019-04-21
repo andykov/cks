@@ -5,9 +5,13 @@
 .product-desc {
 
   $block-name:                &; // #{$block-name}__element
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   &__title {
     font-weight: 700;
+    color: #66a1c7;
   }
 
   &__list {
@@ -24,6 +28,11 @@
       width: 50%;
       margin-bottom: 6px;
     }
+  }
+
+  &__more-link {
+    color: #223a7a;
+    margin-top: auto;
   }
 }
 

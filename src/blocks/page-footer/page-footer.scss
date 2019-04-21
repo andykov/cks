@@ -48,6 +48,7 @@
     align-items: center;
     justify-content: space-around;
     @include col(lg, 4);
+    border-right: 1px solid rgba(0,0,0, 0.8);
   }
 
   &__right {

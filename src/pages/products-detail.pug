@@ -20,23 +20,16 @@ block content
               +breadcrumbs-item('Ресторан «Адмирал Бенбоу»')
           h1.page__title Лестиница бара «Адмирал Бенбоу»
 
-    +product-detail({imgTypeView: 'gallery'})
+    .container
+      +product-detail({imgTypeView: 'gallery'})
       
-    .container-half
+    .container-half.container-half--wide
       .container-half__inner
         .container-half__aside
           .buttons-wrap
-            a(href="#").btn.btn--grey-dark Материал
+            a.btn.btn--wide.btn--grey-dark(href="#") Материал
         .container-half__main
-          +product-desc()
-
-    
-
-
-//- #[a(href='blocks-demo.html') Библиотека блоков]
-
-//- block footer
-//-   p footer
+          +product-desc({typeBtn: 'btn'})
 
 block append page-bottom
   script(src='js/page-products-detail.js')
