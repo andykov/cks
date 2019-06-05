@@ -28,7 +28,7 @@
       background-color: rgba(0, 0, 0, 0.5);
     }
 
-    @media (min-width: $screen-xl) {
+    @media (min-width: $screen-lg) {
       height: 554px;
     }
     @media (min-width: $screen-xxl) {
@@ -98,12 +98,14 @@
   }
 
   .slick-arrow {
+    background-color: rgba(255, 255, 255, 0.8);
     position: absolute;
     bottom: 0;
     z-index: 1;
   }
   .slick-prev {
     left: 10px;
+    background-position-x: 10px;
     @media (min-width: $screen-lg) {
       left: 35%;
     }
@@ -111,11 +113,12 @@
       left: 42%;
     }
     @media (min-width: $screen-xxl) {
-      // left: 42%;
+
     }
   }
   .slick-next {
     right: 10px;
+    background-position-x: 13px;
     @media (min-width: $screen-lg) {
       right: 8.5%;
     }

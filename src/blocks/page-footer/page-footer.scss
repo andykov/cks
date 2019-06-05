@@ -76,6 +76,13 @@
 
     li {
       margin-bottom: $layout-vertical-line-height;
+      position: relative;
+      padding-left: 20px;
+
+      svg {
+        position: absolute;
+        left: 0;
+      }
     }
   }
 

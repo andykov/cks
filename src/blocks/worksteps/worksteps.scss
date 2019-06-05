@@ -18,21 +18,19 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-
-    
+    align-items: center;
   }
 
   &__img {
     position: relative;
+    max-width: 200px;
+    width: 100%;
 
     @media screen and (max-width: $screen-sm - 1) {
       height: 150px;
     }
-    @media screen and (min-width: $screen-sm) {
-      margin-bottom: $layout-vertical-line-height * 2;
-    }
     @media screen and (min-width: $screen-md) {
-      padding-top: 102%;
+      padding-top: 80%;
     }
 
     img {

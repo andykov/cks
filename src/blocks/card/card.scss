@@ -137,7 +137,7 @@
     }
   }
 
-  &::after {
+  &:not(.card--indent)::after {
     content: '';
     position: absolute;
     left: 0;
@@ -159,6 +159,8 @@
   }
 
   &--indent {
+    overflow: unset;
+
     .card__title {
       min-height: 72px;
       background-color: #fff;
@@ -173,6 +175,7 @@
         font-size: 19px;
       }
     }
+    
     .card__desc {
       top: $layout-vertical-line-height * 6;
     }

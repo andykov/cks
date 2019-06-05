@@ -41,16 +41,30 @@
     .slider-pro {
       margin-left: 0;
     }
+
     .sp-right-thumbnails.sp-has-pointer .sp-selected-thumbnail:before,
     .sp-right-thumbnails.sp-has-pointer .sp-selected-thumbnail:after {
       content: none;
     }
+
     .sp-selected-thumbnail {
       .sp-thumbnail {
         box-shadow: $shadow;
         outline: 6px solid #223a7a;
         outline-offset: -5px;
       }
+    }
+
+    .sp-bottom-thumbnails {
+      padding-bottom: 10px;
+    }
+
+    .sp-right-thumbnails {
+      padding-bottom: 10px;
+    }
+
+    .sp-selected-thumbnail {
+      overflow: unset;
     }
 
     .sp-thumbnail:hover {
