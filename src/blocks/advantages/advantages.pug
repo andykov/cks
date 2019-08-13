@@ -1,6 +1,6 @@
 //- Все примеси в этом файле должны начинаться c имени блока (advantages)
 
-mixin advantages(mods)
+mixin advantages(wrapper, mods)
 
   //- Принимает:
   //-   imgURL    {string} - путь к картинке
@@ -23,12 +23,17 @@ mixin advantages(mods)
   //-   .container
   //-     .advantages__inner
   //-       block
-  .container-half.container-half--narrow(class=allMods)&attributes(attributes)
-    .container-half__inner
-      .container-half__full
-        .advantages
-          .advantages__inner
-            block
+  if(typeof(wrapper) !== 'undefined' && wrapper)
+    .container-half.container-half--narrow(class=allMods)&attributes(attributes)
+      .container-half__inner
+        .container-half__full
+          .advantages
+            .advantages__inner
+              block
+  else
+    .advantages
+      .advantages__inner
+        block
 
 mixin advantages-item(props)
 
@@ -52,4 +57,9 @@ mixin advantages-item(props)
   .advantages__item
     .advantages__img
       img(src=props.imgURL, alt="")
-    .advantages__text= props.text
+    if(typeof(props.text) !== 'object' && props.text)
+      .advantages__text= props.text
+    else
+      .advantages__text
+        span= props.text.span
+        = props.text.txt

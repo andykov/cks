@@ -6,6 +6,10 @@ $blue: #66a1c7;
 $blue-dark: #223a7a;
 $blue-light: #d1e3ee;
 
+$green: #219653;
+$green-dark: #0d793b;
+$green-light: #41bf77;
+
 .btn {
   box-sizing: border-box;
   display: inline-block;
@@ -116,6 +120,16 @@ $blue-light: #d1e3ee;
 
     &:hover {
       background-color: #333;
+    }
+  }
+
+  &--green {
+    background-color: $green;
+    color: $white;
+
+    &:hover {
+      background-color: $green-light;
+      color: $white;
     }
   }
 
