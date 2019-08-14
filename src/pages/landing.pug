@@ -1,0 +1,220 @@
+extends ../pug/layout.pug
+
+block meta
+  title Landing
+  meta(name='description', content='')
+
+block append head
+  link(rel='stylesheet', href='css/landing.css')
+
+block nav
+//-   +main-nav('', 'vertical', 'false')
+
+block content
+  
+  section.section
+    .container
+        .lp-advantage
+            .lp-advantage__item
+                .lp-advantage__img
+                    img(src="img/lp-advantages-img-1.png", alt="")
+                .lp-advantage__title
+                    span 15 лет на рынке:
+                    | более 5000 довольных клиентов
+            .lp-advantage__item
+                .lp-advantage__img
+                    img(src="img/lp-advantages-img-2.png", alt="")
+                .lp-advantage__title
+                    span Прямые поставки
+                    | от производителей из 17 стран мира
+            .lp-advantage__item
+                .lp-advantage__img
+                    img(src="img/lp-advantages-img-3.png", alt="")
+                .lp-advantage__title 
+                    span Полный цикл работ:
+                    | от замера до установки
+            .lp-advantage__item
+                .lp-advantage__img
+                    img(src="img/lp-advantages-img-4.png", alt="")
+                .lp-advantage__title 
+                    span Персональный подход:
+                    | с вами работает индивидуальный менеджер
+            .lp-advantage__item
+                .lp-advantage__img
+                    img(src="img/lp-advantages-img-5.png", alt="")
+                .lp-advantage__title
+                    span Собственное современное производство
+            .lp-advantage__item
+                .lp-advantage__img
+                    img(src="img/15-year-img.png", alt="")
+                .lp-advantage__title
+                    span 15 лет гарантии на материалы
+            .lp-advantage__item
+                .lp-advantage__img
+                    img(src="img/3-year-img.png", alt="")
+                .lp-advantage__title
+                    span 3 года гарантии на работы
+
+  section.section
+    h2.title Преимущества каменных столешниц
+    +advantages()
+      +advantages-item({
+        imgURL: 'img/advantages-img-1.png',
+        text: {
+          span: 'Износостойкие',
+          txt: 'на поверхности не остается царапин, сколов или потертостей'
+        },
+      })
+      +advantages-item({
+        imgURL: 'img/advantages-img-2.png',
+        text: {
+          span: 'Влагостойкость',
+          txt: 'поверхность не вздуется и на ней не образуется плесень или грибок'
+        },
+      })
+      +advantages-item({
+        imgURL: 'img/advantages-img-3.png',
+        text: {
+          span: 'Простота в обращении',
+          txt: 'достаточно протереть тряпкой, чтобы устранить любые последствия готовки'
+        },
+      })
+      +advantages-item({
+        imgURL: 'img/advantages-img-4.png',
+        text: {
+          span: 'Экологичность',
+          txt: 'материал абсолютно безопасен для человека и окружающей среды'
+        },
+      })
+
+      +advantages-item({
+        imgURL: 'img/advantages-img-5.png',
+        text: {
+          span: 'Выдерживает высокие температуры',
+          txt: 'можно поставить горячую сковороду или кастрюлю'
+        },
+      })
+      +advantages-item({
+        imgURL: 'img/advantages-img-6.png',
+        text: {
+          span: 'Долговечность',
+          txt: 'столешница прослужит вам и вашей семье долгие годы, сохраняя свой первозданный вид'
+        },
+      })
+
+  section.section
+    h2.title Нам доверяют
+    +clients()
+  
+  .container-fluid
+    .lp-materials
+      .lp-materials__item
+        .lp-materials-nav
+          .lp-materials-nav__inner
+            a(href="#").lp-materials-nav__item.active гранит
+            a(href="#").lp-materials-nav__item мрамор
+            a(href="#").lp-materials-nav__item агломерат
+            a(href="#").lp-materials-nav__item кварц-керамика
+      .lp-materials__item
+        +card({
+          img: 'https://picsum.photos/520/530',
+          name: 'EMERALD PEARL EXTRA',
+        })
+      .lp-materials__item
+        +card({
+          img: 'https://picsum.photos/520/530',
+          name: 'EMERALD PEARL EXTRA',
+        })
+      .lp-materials__item
+        +card({
+          img: 'https://picsum.photos/520/530',
+          name: 'EMERALD PEARL EXTRA',
+        })
+      .lp-materials__item
+        +card({
+          img: 'https://picsum.photos/520/530',
+          name: 'EMERALD PEARL EXTRA',
+        })
+      .lp-materials__item
+        +card({
+          img: 'https://picsum.photos/520/530',
+          name: 'EMERALD PEARL EXTRA',
+        })
+
+  section.section
+    .container
+      .columns
+        .col-sm-12.col-md-5
+          img(src="img/lp-form-img.jpg", alt="")
+        .col-sm-12.col-md-7
+          .form-request
+            .form-request__title получите скидку 10%
+            .form-request__subtitle при выборе акционного материала
+            +form()
+              +fieldset()
+                .columns
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'Имя:',
+                    })
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'Телефон:',
+                    })
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'E-mail:',
+                      attrs: {
+                        type: 'email',
+                      }
+                    })
+              +field-checkbox([
+                {
+                  title: 'Я согласен с политикой конфиденциальности.',
+                  attrs: {
+                      name: 'check0',
+                  }
+                },
+              ])
+              +field-actions()
+                +btn('получить расчёт', 'green, wide, sm', true)
+
+  section.section
+    h2.title Наши гарантии
+    +guarantee()
+        
+  section.section
+    h2.title Наши сертификаты
+    +awards()
+
+  section.section
+    .text-center
+      a.btn.btn--lg.btn--wide.btn--blue-dark(href="/") Оставить заявку
+
+  section.section
+    h2.title Информационные материалы
+    +info()
+      +info-item({
+        title: 'Акции',
+        subtitle: 'Замер столешницы БЕСПЛАТНО!',
+        imgURL: 'img/info-img-1.jpg',
+        typeBtn: 'btn'
+      })
+      +info-item({
+        title: 'Новости',
+        subtitle: 'Кварцевый агломерат – уникальный материал',
+        imgURL: 'img/info-img-2.jpg',
+        typeBtn: 'btn'
+      })
+      +info-item({
+        title: 'Статья',
+        subtitle: 'Первый шаг к качественному изделию из камня – точный замер',
+        imgURL: 'img/info-img-3.jpg',
+        typeBtn: 'btn'
+      })
+
+//- block footer
+//-   p footer
+
+block append page-bottom
+  script(src='js/page-index.js')

@@ -1,0 +1,63 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+// BLOCKS
+@import "../../blocks/advantages/advantages.scss";
+
+.lp-advantage {
+    @include row();
+    justify-content: center;
+
+    &__item {
+        text-align: center;
+        
+        @media (min-width: $screen-lg) {
+            @include width(5);
+        }
+    }
+
+    &__title {
+        font-size: 13px;
+        
+        span {
+            display: block;
+            color: #223A7A;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.lp-materials {
+    @include row();
+
+    &__item {
+        @include make-col(12);
+
+        @media (min-width: $screen-sm) {
+            @include make-col(6);
+        }
+
+        @media (min-width: $screen-lg) {
+            @include make-col(2);
+        }
+            // @media (min-width: $screen-lg) {
+            //     @include make-col(2);
+            // }
+
+        // &:first-child {
+        //     @media (min-width: $screen-lg - 1) {
+        //         @include make-col(2);
+        //     }
+        // }
+    }
+}
+
+.form-request {
+    &__title {
+        font-family: $font-family;
+        font-size: 40px;
+        line-height: (48 / 40); 
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+}
