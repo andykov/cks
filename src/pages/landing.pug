@@ -14,97 +14,86 @@ block content
   
   section.section
     .container
-        .lp-advantage
-            .lp-advantage__item
-                .lp-advantage__img
-                    img(src="img/lp-advantages-img-1.png", alt="")
-                .lp-advantage__title
-                    span 15 лет на рынке:
-                    | более 5000 довольных клиентов
-            .lp-advantage__item
-                .lp-advantage__img
-                    img(src="img/lp-advantages-img-2.png", alt="")
-                .lp-advantage__title
-                    span Прямые поставки
-                    | от производителей из 17 стран мира
-            .lp-advantage__item
-                .lp-advantage__img
-                    img(src="img/lp-advantages-img-3.png", alt="")
-                .lp-advantage__title 
-                    span Полный цикл работ:
-                    | от замера до установки
-            .lp-advantage__item
-                .lp-advantage__img
-                    img(src="img/lp-advantages-img-4.png", alt="")
-                .lp-advantage__title 
-                    span Персональный подход:
-                    | с вами работает индивидуальный менеджер
-            .lp-advantage__item
-                .lp-advantage__img
-                    img(src="img/lp-advantages-img-5.png", alt="")
-                .lp-advantage__title
-                    span Собственное современное производство
-            .lp-advantage__item
-                .lp-advantage__img
-                    img(src="img/15-year-img.png", alt="")
-                .lp-advantage__title
-                    span 15 лет гарантии на материалы
-            .lp-advantage__item
-                .lp-advantage__img
-                    img(src="img/3-year-img.png", alt="")
-                .lp-advantage__title
-                    span 3 года гарантии на работы
+      .lp-advantage
+        .lp-advantage__item
+          .lp-advantage__img
+              img(src="img/lp-advantages-img-1.png", alt="")
+          .lp-advantage__title
+            span 15 лет на рынке:
+            | более 5000 довольных клиентов
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/lp-advantages-img-2.png", alt="")
+          .lp-advantage__title
+            span Прямые поставки
+            | от производителей из 17 стран мира
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/lp-advantages-img-3.png", alt="")
+          .lp-advantage__title 
+            span Полный цикл работ:
+            | от замера до установки
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/lp-advantages-img-4.png", alt="")
+          .lp-advantage__title 
+            span Персональный подход:
+            | с вами работает индивидуальный менеджер
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/lp-advantages-img-5.png", alt="")
+          .lp-advantage__title
+            span Собственное современное производство
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/15-year-img.png", alt="")
+          .lp-advantage__title
+            span 15 лет гарантии на материалы
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/3-year-img.png", alt="")
+          .lp-advantage__title
+            span 3 года гарантии на работы
 
   section.section
     h2.title Преимущества каменных столешниц
-    +advantages()
-      +advantages-item({
-        imgURL: 'img/advantages-img-1.png',
-        text: {
-          span: 'Износостойкие',
-          txt: 'на поверхности не остается царапин, сколов или потертостей'
-        },
-      })
-      +advantages-item({
-        imgURL: 'img/advantages-img-2.png',
-        text: {
-          span: 'Влагостойкость',
-          txt: 'поверхность не вздуется и на ней не образуется плесень или грибок'
-        },
-      })
-      +advantages-item({
-        imgURL: 'img/advantages-img-3.png',
-        text: {
-          span: 'Простота в обращении',
-          txt: 'достаточно протереть тряпкой, чтобы устранить любые последствия готовки'
-        },
-      })
-      +advantages-item({
-        imgURL: 'img/advantages-img-4.png',
-        text: {
-          span: 'Экологичность',
-          txt: 'материал абсолютно безопасен для человека и окружающей среды'
-        },
-      })
-
-      +advantages-item({
-        imgURL: 'img/advantages-img-5.png',
-        text: {
-          span: 'Выдерживает высокие температуры',
-          txt: 'можно поставить горячую сковороду или кастрюлю'
-        },
-      })
-      +advantages-item({
-        imgURL: 'img/advantages-img-6.png',
-        text: {
-          span: 'Долговечность',
-          txt: 'столешница прослужит вам и вашей семье долгие годы, сохраняя свой первозданный вид'
-        },
-      })
-
-  section.section
-    h2.title Нам доверяют
-    +clients()
+    .lp-advantage.lp-advantage--six
+      .lp-advantage__item
+        .lp-advantage__img
+          img(src="img/advantages-stone-img-1.png", alt="")
+        .lp-advantage__title
+          span Износостойкие
+          | на поверхности не остается царапин, сколов или потертостей
+      .lp-advantage__item
+        .lp-advantage__img
+          img(src="img/advantages-stone-img-2.png", alt="")
+        .lp-advantage__title
+          span Влагостойкость
+          | поверхность не вздуется и на ней не образуется плесень или грибок
+      .lp-advantage__item
+        .lp-advantage__img
+          img(src="img/advantages-stone-img-3.png", alt="")
+        .lp-advantage__title
+          span Простота в обращении
+          | достаточно протереть тряпкой, чтобы устранить любые последствия готовки
+      .lp-advantage__item
+        .lp-advantage__img
+          img(src="img/advantages-stone-img-4.png", alt="")
+        .lp-advantage__title
+          span Экологичность
+          | материал абсолютно безопасен для человека и окружающей среды
+      .lp-advantage__item
+        .lp-advantage__img
+          img(src="img/advantages-stone-img-5.png", alt="")
+        .lp-advantage__title
+          span Выдерживает высокие температуры
+          | можно поставить горячую сковороду или кастрюлю
+      .lp-advantage__item
+        .lp-advantage__img
+          img(src="img/advantages-stone-img-6.png", alt="")
+        .lp-advantage__title
+          span Долговечность
+          | столешница прослужит вам и вашей семье долгие годы, сохраняя свой первозданный вид
   
   .container-fluid
     .lp-materials
@@ -178,43 +167,153 @@ block content
               ])
               +field-actions()
                 +btn('получить расчёт', 'green, wide, sm', true)
+  
+  section.section
+    h2.title Варианты кромок
+    .container-half.container-half--narrow
+      .container-half__inner
+        .columns
+          .col-md-6.col-lg-2
+            img(src="img/edge_e2.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_e10.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_a.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_v.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_t.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_h.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_d.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_q.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_o.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_f.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_l.png", alt="")
+          .col-md-6.col-lg-2
+            img(src="img/edge_h2.png", alt="")
 
   section.section
-    h2.title Наши гарантии
-    +guarantee()
-        
-  section.section
-    h2.title Наши сертификаты
-    +awards()
+    h2.title Мойки и раковины
+    .container-half
+      .container-half__inner
+        .columns
+          .col-md-6.col-lg-3
+            +card({
+              img: 'https://picsum.photos/520/530',
+              name: 'EMERALD PEARL EXTRA',
+            })
+          .col-md-6.col-lg-3
+            +card({
+              img: 'https://picsum.photos/520/530',
+              name: 'EMERALD PEARL EXTRA',
+            })
+          .col-md-6.col-lg-3
+            +card({
+              img: 'https://picsum.photos/520/530',
+              name: 'EMERALD PEARL EXTRA',
+            })
+          .col-md-6.col-lg-3
+            +card({
+              img: 'https://picsum.photos/520/530',
+              name: 'EMERALD PEARL EXTRA',
+            })
 
   section.section
     .text-center
       a.btn.btn--lg.btn--wide.btn--blue-dark(href="/") Оставить заявку
 
   section.section
-    h2.title Информационные материалы
-    +info()
-      +info-item({
-        title: 'Акции',
-        subtitle: 'Замер столешницы БЕСПЛАТНО!',
-        imgURL: 'img/info-img-1.jpg',
-        typeBtn: 'btn'
-      })
-      +info-item({
-        title: 'Новости',
-        subtitle: 'Кварцевый агломерат – уникальный материал',
-        imgURL: 'img/info-img-2.jpg',
-        typeBtn: 'btn'
-      })
-      +info-item({
-        title: 'Статья',
-        subtitle: 'Первый шаг к качественному изделию из камня – точный замер',
-        imgURL: 'img/info-img-3.jpg',
-        typeBtn: 'btn'
-      })
+    .container
+      .columns
+        .col-sm-12.col-md-5
+          img(src="img/lp-form-img.jpg", alt="")
+        .col-sm-12.col-md-7
+          .form-request
+            .form-request__title рассчитаем стоимость изделия за 15 минут
+            +form()
+              +fieldset()
+                .columns
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'Тип столешницы:',
+                    })
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'Материал:',
+                    })
+                  .col-md-6.col-lg-4
+                    +btn('загрузить документ', 'green, wide, sm', true)
+              +fieldset()
+                .columns
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'Тип столешницы:',
+                    })
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'Материал:',
+                    })
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'Размер изделия:',
+                      attrs: {
+                        type: 'email',
+                      }
+                    })
+              +field-checkbox([
+                {
+                  title: 'Я согласен с политикой конфиденциальности.',
+                  attrs: {
+                      name: 'check0',
+                  }
+                },
+              ])
+              +field-actions()
+                +btn('получить расчёт', 'green, wide, sm', true)
 
-//- block footer
-//-   p footer
+section.section
+    .container
+      .columns
+        .col-sm-12.col-md-5
+          img(src="img/lp-form-img.jpg", alt="")
+        .col-sm-12.col-md-7
+          .form-request
+            .form-request__title получите скидку 10%
+            .form-request__subtitle при выборе акционного материала
+            +form()
+              +fieldset()
+                .columns
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'Имя:',
+                    })
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'Телефон:',
+                    })
+                  .col-md-6.col-lg-4
+                    +field-text({
+                      title: 'E-mail:',
+                      attrs: {
+                        type: 'email',
+                      }
+                    })
+              +field-checkbox([
+                {
+                  title: 'Я согласен с политикой конфиденциальности.',
+                  attrs: {
+                      name: 'check0',
+                  }
+                },
+              ])
+              +field-actions()
+                +btn('получить расчёт', 'green, wide, sm', true)
 
 block append page-bottom
   script(src='js/page-index.js')

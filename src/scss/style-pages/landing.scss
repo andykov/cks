@@ -8,6 +8,14 @@
     @include row();
     justify-content: center;
 
+    &--six {
+        .lp-advantage__item {
+            @media (min-width: $screen-lg) {
+                @include width(6);
+            }
+        }
+    }
+
     &__item {
         text-align: center;
         
