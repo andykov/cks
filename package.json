@@ -24,7 +24,7 @@
     "del": "^3.0.0",
     "fancybox": "^3.0.0",
     "fs": "0.0.1-security",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "^4.0.0",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.3.2",

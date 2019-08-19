@@ -133,6 +133,16 @@ $green-light: #41bf77;
     }
   }
 
+  &--green {
+    background-color: $green;
+    color: $white;
+
+    &:hover {
+      background-color: $green-light;
+      color: $white;
+    }
+  }
+
   &--grey-dark {
     background-color: #333333;
     color: $white;

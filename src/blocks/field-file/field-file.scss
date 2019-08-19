@@ -7,6 +7,7 @@
   $block-name:                &; // #{$block-name}__element
 
   display: block;
+  margin-top: $typo-margin-vertical;
   margin-bottom: $typo-margin-vertical;
 
   &__name {
@@ -48,25 +49,25 @@
       cursor: not-allowed;
     }
 
-    &:before {
-      content: attr(data-button-text);
-      display: block;
-      background-color: $gray-lightest;
-      border-right: 1px solid $border-color;
-      margin-right: $field-padding-horizontal;
-      line-height: $line-height;
-      padding: $field-padding-vertical  $field-padding-horizontal;
-      border-top-left-radius: $border-radius;
-      border-bottom-left-radius: $border-radius;
-    }
+    // &:before {
+    //   content: attr(data-button-text);
+    //   display: block;
+    //   background-color: $gray-lightest;
+    //   border-right: 1px solid $border-color;
+    //   margin-right: $field-padding-horizontal;
+    //   line-height: $line-height;
+    //   padding: $field-padding-vertical  $field-padding-horizontal;
+    //   border-top-left-radius: $border-radius;
+    //   border-bottom-left-radius: $border-radius;
+    // }
 
-    &:hover,
-    &:focus {
+    // &:hover,
+    // &:focus {
 
-      &:before {
-        background-color: darken($gray-lightest, 10%); // как у обычных кнопок
-      }
-    }
+    //   &:before {
+    //     background-color: darken($gray-lightest, 10%); // как у обычных кнопок
+    //   }
+    // }
   }
 
   &__help-text {

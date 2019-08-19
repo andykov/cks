@@ -1,8 +1,13 @@
 @import "../variables.scss";
 @import "../mixins.scss";
 
+body {
+    font-family: Verdana;
+}
+
 // BLOCKS
 @import "../../blocks/advantages/advantages.scss";
+
 
 .lp-advantage {
     @include row();
@@ -61,11 +66,46 @@
 }
 
 .form-request {
+    background: #FFFFFF;
+    border: 1px solid #939598;
+    box-shadow: -6px 7px 8px rgba(0, 0, 0, 0.35);
+    padding: 20px;
+
+    .form__fieldset {
+        margin-bottom: 0;
+    }
+    .field-actions {
+        margin-top: 0;
+    }
+
+    &__img {
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+
+        img {    
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%)
+        }
+    }
+    
+    &__holder {}
+
     &__title {
-        font-family: $font-family;
+        font-family: Verdana;
         font-size: 40px;
         line-height: (48 / 40); 
         font-weight: 600;
         text-transform: uppercase;
+        color: #223A7A;
+    }
+
+    &__subtitle {
+        font-size: $font-size-3;
+        line-height: (36 / 18); 
+        text-transform: uppercase;
+        margin-bottom: $layout-vertical-line-height;
     }
 }

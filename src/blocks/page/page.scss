@@ -726,6 +726,16 @@ pre {
   }
 }
 
+.align-self-center {
+  align-self: center;
+}
+
+.pb-18 { padding-bottom: $layout-vertical-line-height; }
+.pb-36 { padding-bottom: $layout-vertical-line-height * 2; }
+
+.pt-18 { padding-top: $layout-vertical-line-height; }
+.pt-36 { padding-top: $layout-vertical-line-height * 2; }
+
 .mb-18 { margin-bottom: $layout-vertical-line-height; }
 .mb-36 { margin-bottom: $layout-vertical-line-height * 2; }
 

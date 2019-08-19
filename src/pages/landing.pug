@@ -54,6 +54,85 @@ block content
             img(src="img/3-year-img.png", alt="")
           .lp-advantage__title
             span 3 года гарантии на работы
+  
+  section.section
+    .container
+      .form-request
+        .columns
+          .col-sm-12.col-md-5
+            .form-request__img
+              img(src="img/lp-form-img.jpg", alt="")
+          .col-sm-12.col-md-7
+            .form-request__holder
+              .form-request__title получите скидку 10%
+              .form-request__subtitle при выборе акционного материала
+              +form()
+                +fieldset()
+                  .columns
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'Имя:',
+                        mods: 'error',
+                      })
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'Телефон:',
+                      })
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'E-mail:',
+                        attrs: {
+                          type: 'email',
+                        }
+                      })
+                    .col-sm-12
+                      +field-checkbox([
+                        {
+                          title: 'Я согласен с политикой конфиденциальности.',
+                          attrs: {
+                              name: 'check0',
+                          }
+                        },
+                      ])
+                +field-actions()
+                  +btn('получить расчёт', 'green, wide, sm', true)
+  
+  section.section
+    h2.title Изготовим столешницу из материалов:
+    .container-fluid
+      .lp-materials
+        .lp-materials__item
+          .lp-materials-nav
+            .lp-materials-nav__inner
+              a(href="#").lp-materials-nav__item.active гранит
+              a(href="#").lp-materials-nav__item мрамор
+              a(href="#").lp-materials-nav__item агломерат
+              a(href="#").lp-materials-nav__item кварц-керамика
+        .lp-materials__item
+          +card({
+            img: 'https://picsum.photos/520/530',
+            name: 'EMERALD PEARL EXTRA',
+          })
+        .lp-materials__item
+          +card({
+            img: 'https://picsum.photos/520/530',
+            name: 'EMERALD PEARL EXTRA',
+          })
+        .lp-materials__item
+          +card({
+            img: 'https://picsum.photos/520/530',
+            name: 'EMERALD PEARL EXTRA',
+          })
+        .lp-materials__item
+          +card({
+            img: 'https://picsum.photos/520/530',
+            name: 'EMERALD PEARL EXTRA',
+          })
+        .lp-materials__item
+          +card({
+            img: 'https://picsum.photos/520/530',
+            name: 'EMERALD PEARL EXTRA',
+          })
 
   section.section
     h2.title Преимущества каменных столешниц
@@ -94,79 +173,6 @@ block content
         .lp-advantage__title
           span Долговечность
           | столешница прослужит вам и вашей семье долгие годы, сохраняя свой первозданный вид
-  
-  .container-fluid
-    .lp-materials
-      .lp-materials__item
-        .lp-materials-nav
-          .lp-materials-nav__inner
-            a(href="#").lp-materials-nav__item.active гранит
-            a(href="#").lp-materials-nav__item мрамор
-            a(href="#").lp-materials-nav__item агломерат
-            a(href="#").lp-materials-nav__item кварц-керамика
-      .lp-materials__item
-        +card({
-          img: 'https://picsum.photos/520/530',
-          name: 'EMERALD PEARL EXTRA',
-        })
-      .lp-materials__item
-        +card({
-          img: 'https://picsum.photos/520/530',
-          name: 'EMERALD PEARL EXTRA',
-        })
-      .lp-materials__item
-        +card({
-          img: 'https://picsum.photos/520/530',
-          name: 'EMERALD PEARL EXTRA',
-        })
-      .lp-materials__item
-        +card({
-          img: 'https://picsum.photos/520/530',
-          name: 'EMERALD PEARL EXTRA',
-        })
-      .lp-materials__item
-        +card({
-          img: 'https://picsum.photos/520/530',
-          name: 'EMERALD PEARL EXTRA',
-        })
-
-  section.section
-    .container
-      .columns
-        .col-sm-12.col-md-5
-          img(src="img/lp-form-img.jpg", alt="")
-        .col-sm-12.col-md-7
-          .form-request
-            .form-request__title получите скидку 10%
-            .form-request__subtitle при выборе акционного материала
-            +form()
-              +fieldset()
-                .columns
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'Имя:',
-                    })
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'Телефон:',
-                    })
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'E-mail:',
-                      attrs: {
-                        type: 'email',
-                      }
-                    })
-              +field-checkbox([
-                {
-                  title: 'Я согласен с политикой конфиденциальности.',
-                  attrs: {
-                      name: 'check0',
-                  }
-                },
-              ])
-              +field-actions()
-                +btn('получить расчёт', 'green, wide, sm', true)
   
   section.section
     h2.title Варианты кромок
@@ -224,96 +230,109 @@ block content
               name: 'EMERALD PEARL EXTRA',
             })
 
-  section.section
-    .text-center
-      a.btn.btn--lg.btn--wide.btn--blue-dark(href="/") Оставить заявку
+  section.section.pt-18
+    .container
+      .form-request
+        .columns
+          .col-sm-12.col-md-5
+            .form-request__img
+              img(src="img/lp-form-img.jpg", alt="")
+          .col-sm-12.col-md-7
+            .form-request__holder
+              .form-request__title рассчитаем стоимость изделия за 15 минут
+              +form()
+                +fieldset()
+                  .columns
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'Тип столешницы:',
+                      })
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'Материал:',
+                      })
+                    .col-md-6.col-lg-4.align-self-center
+                      +field-file({
+                        mods: '',
+                        attrs: {
+                          name: 'commentFile',
+                          multiple: true,
+                        },
+                        text: {
+                          nothingText: 'Загрузите документ'
+                        },
+                      })
+                    .col-md-6.col-lg-12
+                      +field-text({
+                        title: 'Размер изделия:',
+                      })
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'Имя:',
+                      })
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'Телефон:',
+                      })
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'E-mail:',
+                        attrs: {
+                          type: 'email',
+                        }
+                      })
+                    .col-sm-12
+                      +field-checkbox([
+                        {
+                          title: 'Я согласен с политикой конфиденциальности.',
+                          attrs: {
+                              name: 'check0',
+                          }
+                        },
+                      ])
+                +field-actions()
+                  +btn('получить расчёт', 'green, wide, sm', true)
 
   section.section
     .container
-      .columns
-        .col-sm-12.col-md-5
-          img(src="img/lp-form-img.jpg", alt="")
-        .col-sm-12.col-md-7
-          .form-request
-            .form-request__title рассчитаем стоимость изделия за 15 минут
-            +form()
-              +fieldset()
-                .columns
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'Тип столешницы:',
-                    })
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'Материал:',
-                    })
-                  .col-md-6.col-lg-4
-                    +btn('загрузить документ', 'green, wide, sm', true)
-              +fieldset()
-                .columns
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'Тип столешницы:',
-                    })
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'Материал:',
-                    })
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'Размер изделия:',
-                      attrs: {
-                        type: 'email',
-                      }
-                    })
-              +field-checkbox([
-                {
-                  title: 'Я согласен с политикой конфиденциальности.',
-                  attrs: {
-                      name: 'check0',
-                  }
-                },
-              ])
-              +field-actions()
-                +btn('получить расчёт', 'green, wide, sm', true)
-
-section.section
-    .container
-      .columns
-        .col-sm-12.col-md-5
-          img(src="img/lp-form-img.jpg", alt="")
-        .col-sm-12.col-md-7
-          .form-request
-            .form-request__title получите скидку 10%
-            .form-request__subtitle при выборе акционного материала
-            +form()
-              +fieldset()
-                .columns
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'Имя:',
-                    })
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'Телефон:',
-                    })
-                  .col-md-6.col-lg-4
-                    +field-text({
-                      title: 'E-mail:',
-                      attrs: {
-                        type: 'email',
-                      }
-                    })
-              +field-checkbox([
-                {
-                  title: 'Я согласен с политикой конфиденциальности.',
-                  attrs: {
-                      name: 'check0',
-                  }
-                },
-              ])
-              +field-actions()
-                +btn('получить расчёт', 'green, wide, sm', true)
+      .form-request
+        .columns
+          .col-sm-12.col-md-5
+            .form-request__img
+              img(src="img/lp-form-img.jpg", alt="")
+          .col-sm-12.col-md-7
+            .form-request__holder
+              .form-request__title получите скидку 10%
+              .form-request__subtitle при выборе акционного материала
+              +form()
+                +fieldset()
+                  .columns
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'Имя:',
+                      })
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'Телефон:',
+                      })
+                    .col-md-6.col-lg-4
+                      +field-text({
+                        title: 'E-mail:',
+                        attrs: {
+                          type: 'email',
+                        }
+                      })
+                    .col-sm-12
+                      +field-checkbox([
+                        {
+                          title: 'Я согласен с политикой конфиденциальности.',
+                          attrs: {
+                              name: 'check0',
+                          }
+                        },
+                      ])
+                +field-actions()
+                  +btn('получить расчёт', 'green, wide, sm', true)
 
 block append page-bottom
   script(src='js/page-index.js')
