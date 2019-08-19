@@ -8,6 +8,182 @@ body {
 // BLOCKS
 @import "../../blocks/advantages/advantages.scss";
 
+// В этом файле должны быть стили для БЭМ-блока main-nav, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.main-nav-lp {
+  
+    @media (min-width: $screen-lg) {
+      &:not(&--vertical) {
+        padding-top: $layout-vertical-line-height;
+      }
+    }
+  
+    @media (max-width: ($menu-desktop-width - 1)) {
+      position: fixed;
+      background-color: rgba(34, 58, 122, 0);
+      top: 0;
+      left: 0;
+      z-index: 10;
+      @include get-width(10);
+      width: 100%;
+    }
+  
+    &--open {
+      @media (max-width: ($menu-desktop-width - 1)) {
+        height: 100%;
+        background-color: rgba(34, 58, 122, 1);
+        box-shadow: 6px 7px 8px 0 rgba(0, 0, 0, 0.12);
+        // transition: background-color 0.6s;
+      }
+    }
+    
+    // первый уровень
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      
+      @media (min-width: ($menu-desktop-width)) {
+        @include row();
+      }
+  
+    
+      // мобильный вид списка
+      @media (max-width: ($menu-desktop-width - 1)) {
+  
+        // открытие/закрытие меню только в случае работающего JS
+        flex-direction: column;
+        height: calc(100% - 70px);
+        
+  
+        .js & {
+          max-height: 0;
+          // overflow: hidden;
+          overflow-y: auto;
+          transition: max-height 0.2s;
+        }
+  
+        .js .main-nav-lp--open & {
+          max-height: 100vh;
+          transition: max-height 0.6s;
+        }
+  
+        // &:not(&--lvl-2) {
+          padding: 0 $layout-vertical-line-height / 2;
+        // }
+      }
+  
+      // настольный вид списка
+      @media (min-width: $menu-desktop-width) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  
+    &__item {
+      position: relative;
+  
+      
+      
+      &--has-child {
+        z-index: 1;
+      }
+  
+    //   &:not(&--lvl-2) {
+        @media (max-width: ($menu-desktop-width - 1)) {
+          margin-bottom: 9px;
+        }
+        @media (min-width: ($menu-desktop-width)) {
+          @include width(5);
+        }
+    //   }
+  
+      &:first-child {
+        a {
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+        }
+      }
+      &:last-child {
+        a {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+      }
+  
+      &--active {
+  
+        & > .main-nav-lp__link { // stylelint-disable-line  selector-combinator-blacklist
+          color: #223a7a;
+          background-color: #fff;
+          // rgba(102, 161, 199, 0.3)
+          box-shadow: inset 0 0 0 3px rgba(34, 58, 122, 0.5), inset 3.5px 6px 7px 0 rgba(34, 58, 122, 0.15), -6px 7px 8px 0 rgba(0, 0, 0, 0.35);
+        }
+      }
+  
+      &:hover {
+        z-index: 1;
+      }
+    }
+  
+    &__link {
+      display: block;
+      padding: 1em 15px;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 13px;
+      line-height: 1;
+      text-transform: uppercase;
+      background-color: rgb(102, 161, 199);
+      box-shadow: inset 3.5px 6px 7px 0 rgba(34,58,122, 0.15);
+  
+      
+  
+      @media (min-width: $menu-desktop-width) {
+        color: #223a7a;
+        font-size: $font-size-3;
+        background-color: rgba(102, 161, 199, 0.2);
+  
+        // &:not(&--lvl-2) {
+        //   color: #223a7a;
+        // }
+      }
+  
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: #fff;
+        box-shadow: inset 0 0 0 3px rgba(34, 58, 122, 0.5), inset 3.5px 6px 7px 0 rgba(34, 58, 122, 0.15), -6px 7px 8px 0 rgba(0, 0, 0, 0.35);
+      }
+    }
+  
+    // переключатель
+    &__toggler {
+      display: inline-block;
+      border: none;
+      padding: 0;
+      background: none;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.5);
+  
+      &.burger--close {
+        background-color: rgba(255, 255, 255, 0);
+      }
+  
+      @media (min-width: $menu-desktop-width) {
+        display: none;
+      }
+  
+      .no-js & {
+        display: none;
+      }
+    }
+}
+  
 
 .lp-advantage {
     @include row();
