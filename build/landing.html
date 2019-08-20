@@ -34,7 +34,7 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
           <div class="page-header__inner">
             <div class="container">
               <div class="header-panel">
-                <div class="header-panel__inner"><a class="logo" href="/index.html"><img src="img/logo.png" alt="Logo" width="460" height="98"></a>
+                <div class="header-panel__inner"><a class="logo logo--lp" href="/index.html"><img src="img/logo.png" alt="Logo" width="460" height="98"></a>
                 </div>
                 <nav class="main-nav-lp" id="nav-lp">
                   <button class="burger main-nav-lp__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav-lp--open"><span>Показать главное меню</span></button>
@@ -357,6 +357,55 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
             </div>
           </section>
           <section class="section">
+            <h2 class="title">Примеры стоимости столешниц </h2>
+            <div class="container">
+              <div class="example-price">
+                <div class="js-example-price-nav example-price__nav"><a class="active" href="#">Прямая</a><a href="#">Г-образная</a><a href="#">П-образная</a></div>
+                <div class="example-price__body">
+                  <div class="example-price__body-item active">
+                    <div class="example-price__img"><img src="img/lp-example-price-1.png" alt=""></div>
+                    <div class="example-price__info">
+                      <h3 class="example-price__title">Прямая кухонная столешница</h3><span class="example-price__total">40 000<sub>руб.</sub></span>
+                      <ul>
+                        <li> <b>Размер (мм):</b>3000 х 600 х 20</li>
+                        <li> <b>Материал:</b>кварц-керамика Technistone ELEGANCE ECO ZEN (Чехия)</li>
+                        <li><b>Обработка:</b>кромка Е2</li>
+                        <li> <b>Вырезы под мойку и варочную поверхность “Под ключ”</b></li>
+                      </ul>
+                      <p> <b>В стоимость велючены:</b><br>камень, обработка кромкой, пристеночный бортик, вырез под мойку, замер, установка, монтаж</p><a class="btn btn--sm btn--wide btn--green" href="#form-request-detail">получить расчёт</a>
+                    </div>
+                  </div>
+                  <div class="example-price__body-item">
+                    <div class="example-price__img"><img src="img/lp-example-price-1.png" alt=""></div>
+                    <div class="example-price__info">
+                      <h3 class="example-price__title">Г-образная кухонная столешница</h3><span class="example-price__total">60 000<sub>руб.</sub></span>
+                      <ul>
+                        <li> <b>Размер (мм):</b>3000/2000 х 600 х 20</li>
+                        <li> <b>Материал:</b>кварц-керамика Technistone NOBLE PRO FROST (Чехия)</li>
+                        <li><b>Обработка:</b>кромка Е2</li>
+                        <li> <b>Вырезы под мойку и варочную поверхность “Под ключ”</b></li>
+                      </ul>
+                      <p> <b>В стоимость велючены:</b><br>камень, обработка кромкой, пристеночный бортик, вырез под мойку, замер, установка, монтаж   </p><a class="btn btn--sm btn--wide btn--green" href="#form-request-detail" data-scrollto>получить расчёт</a>
+                    </div>
+                  </div>
+                  <div class="example-price__body-item">
+                    <div class="example-price__img"><img src="img/lp-example-price-1.png" alt=""></div>
+                    <div class="example-price__info">
+                      <h3 class="example-price__title">П-образная кухонная столешница</h3><span class="example-price__total">75 000<sub>руб.</sub></span>
+                      <ul>
+                        <li> <b>Размер (мм):</b>2000/3000/2000 х 600 х 20</li>
+                        <li> <b>Материал:</b>кварц-керамика Technistone TAURUS TERAZZO GREY (Чехия)</li>
+                        <li><b>Обработка:</b>кромка Е2</li>
+                        <li> <b>Вырезы под мойку и варочную поверхность “Под ключ”</b></li>
+                      </ul>
+                      <p> <b>В стоимость велючены:</b><br>камень, обработка кромкой, пристеночный бортик, вырез под мойку, замер, установка, монтаж</p><a class="btn btn--sm btn--wide btn--green" href="#form-request-detail" data-scrollto>получить расчёт</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="section">
             <h2 class="title">Варианты кромок</h2>
             <div class="container-half container-half--narrow">
               <div class="columns">
@@ -420,7 +469,7 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
           </section>
           <section class="section pt-18">
             <div class="container">
-              <div class="form-request">
+              <div class="form-request" id="form-request-detail">
                 <div class="columns">
                   <div class="col-xl-5 is-hidden-max-xl">
                     <div class="form-request__img"><img src="img/lp-form-img.jpg" alt=""></div>

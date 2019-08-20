@@ -12,6 +12,15 @@ $(function(){
     $(this).closest('.lp-materials').find('.lp-materials__body-item').eq($(this).index()).addClass('active')
   });
 
+  $('.js-example-price-nav a').on('click', function(e){
+    e.preventDefault();
+    $(this).siblings().removeClass('active');
+    $(this).addClass('active');
+
+    $(this).closest('.example-price').find('.example-price__body-item').siblings().removeClass('active');
+    $(this).closest('.example-price').find('.example-price__body-item').eq($(this).index()).addClass('active')
+  });
+
   //Слайдер
   // $('.js-example-work').slick();
   $('.js-example-work').slick({
@@ -34,5 +43,14 @@ $(function(){
             }
         }
     ]
+  });
+
+  // Плавный скролл к формам
+  $('a[href^="#"]').click(function () {
+    $('html, body').animate({
+      scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+
+    return false;
   });
 });

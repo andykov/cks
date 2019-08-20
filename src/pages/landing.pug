@@ -276,6 +276,88 @@ block content
             | столешница прослужит вам и вашей семье долгие годы, сохраняя свой первозданный вид
   
   section.section
+    h2.title Примеры стоимости столешниц 
+    .container
+      .example-price
+        .js-example-price-nav.example-price__nav
+          a.active(href="#") Прямая
+          a(href="#") Г-образная
+          a(href="#") П-образная
+        .example-price__body
+          .example-price__body-item.active
+            .example-price__img
+              img(src="img/lp-example-price-1.png", alt="")
+            .example-price__info
+              h3.example-price__title Прямая кухонная столешница
+              span.example-price__total 40 000
+                sub руб.
+              ul
+                li 
+                  b Размер (мм):
+                  | 3000 х 600 х 20
+                li 
+                  b Материал:
+                  | кварц-керамика Technistone ELEGANCE ECO ZEN (Чехия)
+                li
+                  b Обработка:
+                  | кромка Е2
+                li 
+                  b Вырезы под мойку и варочную поверхность “Под ключ”
+              p 
+                b В стоимость велючены:
+                br
+                | камень, обработка кромкой, пристеночный бортик, вырез под мойку, замер, установка, монтаж
+              a(href="#form-request-detail").btn.btn--sm.btn--wide.btn--green получить расчёт
+          .example-price__body-item
+            .example-price__img
+              img(src="img/lp-example-price-1.png", alt="")
+            .example-price__info
+              h3.example-price__title Г-образная кухонная столешница
+              span.example-price__total 60 000
+                sub руб.
+              ul
+                li 
+                  b Размер (мм):
+                  | 3000/2000 х 600 х 20
+                li 
+                  b Материал:
+                  | кварц-керамика Technistone NOBLE PRO FROST (Чехия)
+                li
+                  b Обработка:
+                  | кромка Е2
+                li 
+                  b Вырезы под мойку и варочную поверхность “Под ключ”
+              p 
+                b В стоимость велючены:
+                br
+                | камень, обработка кромкой, пристеночный бортик, вырез под мойку, замер, установка, монтаж   
+              a(href="#form-request-detail" data-scrollto).btn.btn--sm.btn--wide.btn--green получить расчёт
+          .example-price__body-item
+            .example-price__img
+              img(src="img/lp-example-price-1.png", alt="")
+            .example-price__info
+              h3.example-price__title П-образная кухонная столешница
+              span.example-price__total 75 000
+                sub руб.
+              ul
+                li 
+                  b Размер (мм):
+                  | 2000/3000/2000 х 600 х 20
+                li 
+                  b Материал:
+                  | кварц-керамика Technistone TAURUS TERAZZO GREY (Чехия)
+                li
+                  b Обработка:
+                  | кромка Е2
+                li 
+                  b Вырезы под мойку и варочную поверхность “Под ключ”
+              p 
+                b В стоимость велючены:
+                br
+                | камень, обработка кромкой, пристеночный бортик, вырез под мойку, замер, установка, монтаж
+              a(href="#form-request-detail" data-scrollto).btn.btn--sm.btn--wide.btn--green получить расчёт
+
+  section.section
     h2.title Варианты кромок
     .container-half.container-half--narrow
       .columns
@@ -333,7 +415,7 @@ block content
 
   section.section.pt-18
     .container
-      .form-request
+      #form-request-detail.form-request
         .columns
           .col-xl-5.is-hidden-max-xl
             .form-request__img

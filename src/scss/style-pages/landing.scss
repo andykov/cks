@@ -106,11 +106,15 @@ body {
       &:first-child {
         flex: 1;
         margin-right: auto;
+        align-self: center;
+        text-align: center;
+
         span {
             font-size: 15px;
             font-weight: bold;
             line-height: (18 / 15);
         }
+
         a {
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
@@ -195,6 +199,7 @@ body {
     background: url('../img/lp-banner-bg.png') no-repeat center center / cover;
     color: #FFFFFF;
     text-align: center;
+    margin-top: -19px;
 
     &__inner {
         padding: $layout-vertical-line-height * 6 10px $layout-vertical-line-height * 4;
@@ -218,7 +223,8 @@ body {
     &__subtitle {
         font-size: 27px;
         font-weight: bold;
-        line-height: (33 / 27);
+        line-height: (32 / 27);
+        padding: 11px 0;
         text-transform: uppercase;
         margin-bottom: $layout-vertical-line-height;
     }
@@ -301,8 +307,104 @@ body {
 
         span {
             display: block;
-            color: #223A7A;
+            color: #66A1C7;
             text-transform: uppercase;
+        }
+    }
+}
+
+.example-price {
+    @include row();
+    
+
+    &__nav {
+        flex: 0 0 320px;
+        max-width: 320px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        a {
+            display: block;
+            width: 100%;
+            color: #4c5f95;
+            font-size: 22px;
+            line-height: 1.22727;
+            text-align: center;
+            padding: 14px 0;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+
+            &:hover,
+            &.active {
+                background: #4c5f95;
+                box-shadow: -6px 7px 8px rgba(0,0,0,.35);
+                color: #fff;
+            }
+        }
+    }
+
+    &__body {
+        // @include col(sm, 10);
+        flex: 0 0 1280px;
+        max-width: 1280px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        &-item {
+            display: none;
+
+            &.active {
+                @include row();
+            }
+        }
+    }
+
+    &__img {
+        flex: 0 0 800px;
+        max-width: 800px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    &__info {
+        flex: 0 0 480px;
+        max-width: 480px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        ul {
+            font-size: 16px;
+            line-height: (25 / 16);
+            padding-left: 0;
+            margin-bottom: 36px;
+            list-style: none;
+        }
+        p {
+            font-size: 16px;
+            line-height: (25 / 16);
+        }
+    }
+
+    &__title {
+        padding: 0;
+        margin: 0;
+        color: #000;
+        font-size: 22px;
+        line-height: (27 / 22);
+    }
+
+    &__total {
+        display: block;
+        font-size: 80px;
+        line-height: (96 / 80);
+        color: #66A1C7;
+        font-style: italic;
+        padding: 15px 0;
+
+        sub {
+            font-size: 16px;
+            font-style: normal;
+            vertical-align: baseline;
         }
     }
 }
