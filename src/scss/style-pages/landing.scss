@@ -1,6 +1,10 @@
 @import "../variables.scss";
 @import "../mixins.scss";
 
+// LIBS
+@import "../libs/slick.scss";
+@import "../libs/jquery.fancybox.min.scss";
+
 body {
     font-family: Verdana;
 }
@@ -11,6 +15,7 @@ body {
 // В этом файле должны быть стили для БЭМ-блока main-nav, его элементов,
 // модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
 
 .main-nav-lp {
   
@@ -84,8 +89,6 @@ body {
   
     &__item {
       position: relative;
-  
-      
       
       &--has-child {
         z-index: 1;
@@ -101,6 +104,13 @@ body {
     //   }
   
       &:first-child {
+        flex: 1;
+        margin-right: auto;
+        span {
+            font-size: 15px;
+            font-weight: bold;
+            line-height: (18 / 15);
+        }
         a {
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
@@ -138,15 +148,12 @@ body {
       font-size: 13px;
       line-height: 1;
       text-transform: uppercase;
-      background-color: rgb(102, 161, 199);
-      box-shadow: inset 3.5px 6px 7px 0 rgba(34,58,122, 0.15);
   
       
   
       @media (min-width: $menu-desktop-width) {
         color: #223a7a;
         font-size: $font-size-3;
-        background-color: rgba(102, 161, 199, 0.2);
   
         // &:not(&--lvl-2) {
         //   color: #223a7a;
@@ -156,8 +163,8 @@ body {
       &:hover,
       &:focus {
         text-decoration: none;
-        background-color: #fff;
-        box-shadow: inset 0 0 0 3px rgba(34, 58, 122, 0.5), inset 3.5px 6px 7px 0 rgba(34, 58, 122, 0.15), -6px 7px 8px 0 rgba(0, 0, 0, 0.35);
+        // background-color: #fff;
+        // box-shadow: inset 0 0 0 3px rgba(34, 58, 122, 0.5), inset 3.5px 6px 7px 0 rgba(34, 58, 122, 0.15), -6px 7px 8px 0 rgba(0, 0, 0, 0.35);
       }
     }
   
@@ -184,6 +191,78 @@ body {
     }
 }
   
+.lp-banner {
+    background: url('../img/lp-banner-bg.png') no-repeat center center / cover;
+    color: #FFFFFF;
+    text-align: center;
+
+    &__inner {
+        padding: $layout-vertical-line-height * 6 10px $layout-vertical-line-height * 4;
+        background-color: rgba(0,0,0, 0.6);
+        min-height: 432px;
+    }
+
+    &__title {
+        font-size: 40px;
+        line-height: (73 / 60);
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 0;
+
+        @media (min-width: $screen-sm) {
+            font-size: 60px;
+        }
+    }
+
+    &__subtitle {
+        font-size: 27px;
+        font-weight: bold;
+        line-height: (33 / 27);
+        text-transform: uppercase;
+        margin-bottom: $layout-vertical-line-height;
+    }
+
+    &__notice {
+        font-size: 15px;
+        line-height: (19 / 15);
+    }
+
+    .btn {
+        margin-top: $layout-vertical-line-height * 3;
+    }
+}
+
+.about-box {
+    @include row();
+
+    &__images {
+        // @include make-col(7);
+        @include col(xs, 12);
+        @include col(lg, 7);
+        overflow: hidden;
+    }
+
+    &__images-inner {
+        @include row();
+    }
+
+    &__img {
+        padding: 0 10px;
+        @include width(3);
+    }
+
+    &__text {
+        // @include make-col(5);
+        @include col(xs, 12);
+        @include col(lg, 5);
+        padding-top: $layout-vertical-line-height * 2;
+
+        @media (min-width: $screen-lg) {
+            padding-top: 0;
+        }
+    }
+}
 
 .lp-advantage {
     @include row();
@@ -199,6 +278,16 @@ body {
 
     &__item {
         text-align: center;
+        @include col(xs, 6);
+        margin-bottom: 20px;
+
+        @media (min-width: $screen-sm) {
+            @include width(2);
+        }
+
+        @media (min-width: $screen-md) {
+            @include width(3);
+        }
         
         @media (min-width: $screen-lg) {
             @include width(5);
@@ -207,7 +296,9 @@ body {
 
     &__title {
         font-size: 13px;
-        
+        line-height: (20 / 13);
+        padding-top: 14px;
+
         span {
             display: block;
             color: #223A7A;
@@ -219,15 +310,72 @@ body {
 .lp-materials {
     @include row();
 
-    &__item {
+    &__nav {
+        @include make-col(10);
+        margin-left: auto;
+        margin-right: auto;
+        // padding-left: 0;
+
+        @media (min-width: $screen-xl) {
+            @include make-col(3);
+        }
+        @media (min-width: $screen-xxl) {
+            @include make-col(2);
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            color: #4C5F95;
+            font-size: 22px;
+            line-height: (27 / 22);
+            text-align: center;
+            padding: 14px 0;
+            margin-bottom: $layout-vertical-line-height;
+
+            // &:not(:last-child) {
+            //     margin-bottom: $layout-vertical-line-height;
+            // }
+
+            &:hover,
+            &.active {
+                background: #4C5F95;
+                box-shadow: -6px 7px 8px rgba(0, 0, 0, 0.35);
+                color: #fff;
+            }
+        }
+    }
+
+    &__body {
         @include make-col(12);
+        // padding-right: 0;
+
+        @media (min-width: $screen-xl) {
+            @include make-col(9);
+        }
+        @media (min-width: $screen-xxl) {
+            @include make-col(10);
+        }
+
+        &-item {
+            display: none;
+
+            &.active {
+                @include row();
+            }
+        }
+    }
+
+    &__item {
+        @include width(1);
 
         @media (min-width: $screen-sm) {
-            @include make-col(6);
+            @include width(2);
         }
 
         @media (min-width: $screen-lg) {
-            @include make-col(2);
+            // @include make-col(2);
+            @include width(5);
         }
             // @media (min-width: $screen-lg) {
             //     @include make-col(2);
@@ -238,6 +386,8 @@ body {
         //         @include make-col(2);
         //     }
         // }
+
+        
     }
 }
 
@@ -263,7 +413,10 @@ body {
             position: absolute;
             left: 0;
             top: 50%;
-            transform: translateY(-50%)
+            transform: translateY(-50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
     
@@ -283,5 +436,52 @@ body {
         line-height: (36 / 18); 
         text-transform: uppercase;
         margin-bottom: $layout-vertical-line-height;
+    }
+}
+
+.example-work {
+    padding-left: 52px;
+    padding-right: 52px;
+
+    @media (min-width: $screen-lg) {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    @media (min-width: $screen-xl) {
+        padding-left: 160px;
+        padding-right: 160px;
+    }
+
+    &__item {
+        padding: 0 10px;
+
+        img {
+            margin: 0 auto;
+        }
+    }
+
+    .slick-arrow.slick-prev {
+        left: 10px;
+
+        @media (min-width: $screen-lg) {
+            left: 20px;
+        }
+    
+        @media (min-width: $screen-xl) {
+            left: 52px;
+        }
+    }
+
+    .slick-arrow.slick-next {
+        right: 10px;
+
+        @media (min-width: $screen-lg) {
+            right: 20px;
+        }
+    
+        @media (min-width: $screen-xl) {
+            right: 52px;
+        }
     }
 }

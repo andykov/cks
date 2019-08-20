@@ -55,6 +55,12 @@
     }
 }
 
+.h-align-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .buttons-wrap {
     display: flex;
     margin-bottom: $layout-vertical-line-height * 2;

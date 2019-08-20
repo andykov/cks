@@ -12,6 +12,8 @@ block nav
     +burger('Показать главное меню', 'nav', 'main-nav-lp--open')(class='main-nav-lp__toggler')
     ul.main-nav-lp__list
       li.main-nav-lp__item
+        span +7 (812) 333 99 98
+      li.main-nav-lp__item
         a(href="#").main-nav-lp__link Каталог камня
       li.main-nav-lp__item
         a(href="#").main-nav-lp__link Пример расчёта
@@ -21,8 +23,18 @@ block nav
         a(href="#").main-nav-lp__link Отзывы
 
 block content
+  section.section
+    .lp-banner
+      .lp-banner__inner
+        h1.lp-banner__title Столешницы для кухни за 5 дней
+        .lp-banner__subtitle Замер, доставка  бесплатно*
+        .lp-banner__notice
+          sup *
+          | При оформлении заказа до 01.08.2019 доставка в пределах КАД + 10км 
+        button.btn.btn--green.btn--sm.btn--wide Получить расчет
   
   section.section
+    h2.title Почему Центр каменных столешниц?
     .container
       .lp-advantage
         .lp-advantage__item
@@ -69,33 +81,32 @@ block content
     .container
       .form-request
         .columns
-          .col-sm-12.col-md-5
+          .col-xl-5.is-hidden-max-xl
             .form-request__img
               img(src="img/lp-form-img.jpg", alt="")
-          .col-sm-12.col-md-7
+          .col-xs-12.col-xl-7
             .form-request__holder
               .form-request__title получите скидку 10%
               .form-request__subtitle при выборе акционного материала
               +form()
                 +fieldset()
                   .columns
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-md-6.col-lg-4
                       +field-text({
                         title: 'Имя:',
-                        mods: 'error',
                       })
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-md-6.col-lg-4
                       +field-text({
                         title: 'Телефон:',
                       })
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-md-12.col-lg-4
                       +field-text({
                         title: 'E-mail:',
                         attrs: {
                           type: 'email',
                         }
                       })
-                    .col-sm-12
+                    .col-xs-12
                       +field-checkbox([
                         {
                           title: 'Я согласен с политикой конфиденциальности.',
@@ -111,157 +122,237 @@ block content
     h2.title Изготовим столешницу из материалов:
     .container-fluid
       .lp-materials
-        .lp-materials__item
-          .lp-materials-nav
-            .lp-materials-nav__inner
-              a(href="#").lp-materials-nav__item.active гранит
-              a(href="#").lp-materials-nav__item мрамор
-              a(href="#").lp-materials-nav__item агломерат
-              a(href="#").lp-materials-nav__item кварц-керамика
-        .lp-materials__item
-          +card({
-            img: 'https://picsum.photos/520/530',
-            name: 'EMERALD PEARL EXTRA',
-          })
-        .lp-materials__item
-          +card({
-            img: 'https://picsum.photos/520/530',
-            name: 'EMERALD PEARL EXTRA',
-          })
-        .lp-materials__item
-          +card({
-            img: 'https://picsum.photos/520/530',
-            name: 'EMERALD PEARL EXTRA',
-          })
-        .lp-materials__item
-          +card({
-            img: 'https://picsum.photos/520/530',
-            name: 'EMERALD PEARL EXTRA',
-          })
-        .lp-materials__item
-          +card({
-            img: 'https://picsum.photos/520/530',
-            name: 'EMERALD PEARL EXTRA',
-          })
+        .js-lp-materials-nav.lp-materials__nav
+          a(href="#").active гранит
+          a(href="#") мрамор
+          a(href="#") агломерат
+          a(href="#") кварц-керамика
+        .lp-materials__body
+          .lp-materials__body-item.active
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+          .lp-materials__body-item
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+          .lp-materials__body-item
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+          .lp-materials__body-item
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .lp-materials__item
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+      p.subtitle наш специалист поможет выбрать материал и цвет
 
   section.section
     h2.title Преимущества каменных столешниц
-    .lp-advantage.lp-advantage--six
-      .lp-advantage__item
-        .lp-advantage__img
-          img(src="img/advantages-stone-img-1.png", alt="")
-        .lp-advantage__title
-          span Износостойкие
-          | на поверхности не остается царапин, сколов или потертостей
-      .lp-advantage__item
-        .lp-advantage__img
-          img(src="img/advantages-stone-img-2.png", alt="")
-        .lp-advantage__title
-          span Влагостойкость
-          | поверхность не вздуется и на ней не образуется плесень или грибок
-      .lp-advantage__item
-        .lp-advantage__img
-          img(src="img/advantages-stone-img-3.png", alt="")
-        .lp-advantage__title
-          span Простота в обращении
-          | достаточно протереть тряпкой, чтобы устранить любые последствия готовки
-      .lp-advantage__item
-        .lp-advantage__img
-          img(src="img/advantages-stone-img-4.png", alt="")
-        .lp-advantage__title
-          span Экологичность
-          | материал абсолютно безопасен для человека и окружающей среды
-      .lp-advantage__item
-        .lp-advantage__img
-          img(src="img/advantages-stone-img-5.png", alt="")
-        .lp-advantage__title
-          span Выдерживает высокие температуры
-          | можно поставить горячую сковороду или кастрюлю
-      .lp-advantage__item
-        .lp-advantage__img
-          img(src="img/advantages-stone-img-6.png", alt="")
-        .lp-advantage__title
-          span Долговечность
-          | столешница прослужит вам и вашей семье долгие годы, сохраняя свой первозданный вид
+    .container-fluid
+      .lp-advantage.lp-advantage--six
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/advantages-stone-img-1.png", alt="")
+          .lp-advantage__title
+            span Износостойкие
+            | на поверхности не остается царапин, сколов или потертостей
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/advantages-stone-img-2.png", alt="")
+          .lp-advantage__title
+            span Влагостойкость
+            | поверхность не вздуется и на ней не образуется плесень или грибок
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/advantages-stone-img-3.png", alt="")
+          .lp-advantage__title
+            span Простота в обращении
+            | достаточно протереть тряпкой, чтобы устранить любые последствия готовки
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/advantages-stone-img-4.png", alt="")
+          .lp-advantage__title
+            span Экологичность
+            | материал абсолютно безопасен для человека и окружающей среды
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/advantages-stone-img-5.png", alt="")
+          .lp-advantage__title
+            span Выдерживает высокие температуры
+            | можно поставить горячую сковороду или кастрюлю
+        .lp-advantage__item
+          .lp-advantage__img
+            img(src="img/advantages-stone-img-6.png", alt="")
+          .lp-advantage__title
+            span Долговечность
+            | столешница прослужит вам и вашей семье долгие годы, сохраняя свой первозданный вид
   
   section.section
     h2.title Варианты кромок
     .container-half.container-half--narrow
-      .container-half__inner
-        .columns
-          .col-md-6.col-lg-2
-            img(src="img/edge_e2.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_e10.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_a.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_v.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_t.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_h.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_d.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_q.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_o.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_f.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_l.png", alt="")
-          .col-md-6.col-lg-2
-            img(src="img/edge_h2.png", alt="")
+      .columns
+        .col-xs-4.col-lg-2
+          img(src="img/edge_e2.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_e10.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_a.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_v.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_t.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_h.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_d.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_q.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_o.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_f.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_l.png", alt="").h-align-center
+        .col-xs-4.col-lg-2
+          img(src="img/edge_h2.png", alt="").h-align-center
 
   section.section
     h2.title Мойки и раковины
-    .container-half
-      .container-half__inner
-        .columns
-          .col-md-6.col-lg-3
-            +card({
-              img: 'https://picsum.photos/520/530',
-              name: 'EMERALD PEARL EXTRA',
-            })
-          .col-md-6.col-lg-3
-            +card({
-              img: 'https://picsum.photos/520/530',
-              name: 'EMERALD PEARL EXTRA',
-            })
-          .col-md-6.col-lg-3
-            +card({
-              img: 'https://picsum.photos/520/530',
-              name: 'EMERALD PEARL EXTRA',
-            })
-          .col-md-6.col-lg-3
-            +card({
-              img: 'https://picsum.photos/520/530',
-              name: 'EMERALD PEARL EXTRA',
-            })
+    .container
+      .container-half
+        .container-half__inner
+          .columns
+            .col-sm-6.col-lg-3
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .col-sm-6.col-lg-3
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .col-sm-6.col-lg-3
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
+            .col-sm-6.col-lg-3
+              +card({
+                img: 'https://picsum.photos/520/530',
+                name: 'EMERALD PEARL EXTRA',
+              })
 
   section.section.pt-18
     .container
       .form-request
         .columns
-          .col-sm-12.col-md-5
+          .col-xl-5.is-hidden-max-xl
             .form-request__img
               img(src="img/lp-form-img.jpg", alt="")
-          .col-sm-12.col-md-7
+          .col-xs-12.col-xl-7
             .form-request__holder
               .form-request__title рассчитаем стоимость изделия за 15 минут
               +form()
                 +fieldset()
                   .columns
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-md-6.col-lg-4
                       +field-text({
                         title: 'Тип столешницы:',
                       })
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-md-6.col-lg-4
                       +field-text({
                         title: 'Материал:',
                       })
-                    .col-md-6.col-lg-4.align-self-center
+                    .col-xs-12.col-md-6.col-lg-4.align-self-center
                       +field-file({
                         mods: '',
                         attrs: {
@@ -272,26 +363,26 @@ block content
                           nothingText: 'Загрузите документ'
                         },
                       })
-                    .col-md-6.col-lg-12
+                    .col-xs-12.col-md-6.col-lg-12
                       +field-text({
                         title: 'Размер изделия:',
                       })
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-md-6.col-lg-4
                       +field-text({
                         title: 'Имя:',
                       })
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-md-6.col-lg-4
                       +field-text({
                         title: 'Телефон:',
                       })
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-lg-4
                       +field-text({
                         title: 'E-mail:',
                         attrs: {
                           type: 'email',
                         }
                       })
-                    .col-sm-12
+                    .col-xs-12
                       +field-checkbox([
                         {
                           title: 'Я согласен с политикой конфиденциальности.',
@@ -302,37 +393,108 @@ block content
                       ])
                 +field-actions()
                   +btn('получить расчёт', 'green, wide, sm', true)
+  section.section
+    h2.title собственное производство столешниц из камня
+    .container
+      //- .columns
+      //-   .col-sm-12.col-md-7
+      //-     .columns
+      //-       .col-sm-4
+      //-         img(src="img/lp-about-box-1.jpg", alt="")
+      //-       .col-sm-4
+      //-         img(src="img/lp-about-box-2.jpg", alt="")
+      //-       .col-sm-4
+      //-         img(src="img/lp-about-box-3.jpg", alt="")
+      //-   .col-sm-12.col-md-5
+      //-     p
+      //-       | &nbsp;&nbsp;&nbsp;&nbsp; ГК «Master Stone» основана в 2010 году в результате слияния нескольких компаний, специализирующихся  в области работы с натуральным и искусственным камнем. Головной офис компании находится в Санкт-Петербурге.
+      //-       br
+      //-       | &nbsp;&nbsp;&nbsp;&nbsp; В компании работают высококлассные специалисты с большим опытом работы. Компания имеет собственное производство, оснащенное современным высокотехнологичным оборудованием по обработке камня, конструкторский и технологический отделы, подразделение  аппаратно- цифровых замеров, монтажные, транспортные и сервисные подразделения.
+      //-       br
+      //-       | &nbsp;&nbsp;&nbsp;&nbsp; За истекший период, компания  выполнила большое количество проектов и приобрела отличную репутацию специалисты
+
+      //-     p &nbsp;&nbsp;&nbsp;&nbsp; Всем бобра!
+      //-     p.text-center
+      //-       button.btn.btn--blue-dark.btn--sm.btn--wide Узнать больше
+
+      .about-box
+        .about-box__images
+          .about-box__images-inner
+            .about-box__img
+              img(src="img/lp-about-box-1.jpg", alt="")
+            .about-box__img
+              img(src="img/lp-about-box-2.jpg", alt="")
+            .about-box__img
+              img(src="img/lp-about-box-3.jpg", alt="")
+        .about-box__text
+          p
+            | &nbsp;&nbsp;&nbsp;&nbsp; ГК «Master Stone» основана в 2010 году в результате слияния нескольких компаний, специализирующихся  в области работы с натуральным и искусственным камнем. Головной офис компании находится в Санкт-Петербурге.
+            br
+            | &nbsp;&nbsp;&nbsp;&nbsp; В компании работают высококлассные специалисты с большим опытом работы. Компания имеет собственное производство, оснащенное современным высокотехнологичным оборудованием по обработке камня, конструкторский и технологический отделы, подразделение  аппаратно- цифровых замеров, монтажные, транспортные и сервисные подразделения.
+            br
+            | &nbsp;&nbsp;&nbsp;&nbsp; За истекший период, компания  выполнила большое количество проектов и приобрела отличную репутацию специалисты
+
+          p &nbsp;&nbsp;&nbsp;&nbsp; Всем бобра!
+          p.text-center
+            button.btn.btn--blue-dark.btn--sm.btn--wide Узнать больше
+      
+
+  section.section
+    .container-fluid
+      .js-example-work.example-work
+        .example-work__item
+          a(data-fancybox="images" href="https://source.unsplash.com/lSXpV8bDeMA/1536x2304")
+            img(src="img/example-work-1.jpg", alt="")
+        .example-work__item
+          a(data-fancybox="images" href="https://source.unsplash.com/lSXpV8bDeMA/1536x2304")
+            img(src="img/example-work-2.jpg", alt="")
+        .example-work__item
+          a(data-fancybox="images" href="https://source.unsplash.com/lSXpV8bDeMA/1536x2304")
+            img(src="img/example-work-3.jpg", alt="")
+        .example-work__item
+          a(data-fancybox="images" href="https://source.unsplash.com/lSXpV8bDeMA/1536x2304")
+            img(src="img/example-work-4.jpg", alt="")
+        .example-work__item
+          a(data-fancybox="images" href="https://source.unsplash.com/lSXpV8bDeMA/1536x2304")
+            img(src="img/example-work-5.jpg", alt="")
+        .example-work__item
+          a(data-fancybox="images" href="https://source.unsplash.com/lSXpV8bDeMA/1536x2304")
+            img(src="img/example-work-2.jpg", alt="")
+        .example-work__item
+          a(data-fancybox="images" href="https://source.unsplash.com/lSXpV8bDeMA/1536x2304")
+            img(src="img/example-work-4.jpg", alt="")
+
 
   section.section
     .container
       .form-request
         .columns
-          .col-sm-12.col-md-5
+          .col-xl-5.is-hidden-max-xl
             .form-request__img
               img(src="img/lp-form-img.jpg", alt="")
-          .col-sm-12.col-md-7
+          .col-xs-12.col-xl-7
             .form-request__holder
               .form-request__title получите скидку 10%
               .form-request__subtitle при выборе акционного материала
               +form()
                 +fieldset()
                   .columns
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-md-6.col-lg-4
                       +field-text({
                         title: 'Имя:',
                       })
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-md-6.col-lg-4
                       +field-text({
                         title: 'Телефон:',
                       })
-                    .col-md-6.col-lg-4
+                    .col-xs-12.col-md-12.col-lg-4
                       +field-text({
                         title: 'E-mail:',
                         attrs: {
                           type: 'email',
                         }
                       })
-                    .col-sm-12
+                    .col-xs-12
                       +field-checkbox([
                         {
                           title: 'Я согласен с политикой конфиденциальности.',
@@ -345,4 +507,4 @@ block content
                   +btn('получить расчёт', 'green, wide, sm', true)
 
 block append page-bottom
-  script(src='js/page-index.js')
+  script(src='js/landing.js')
