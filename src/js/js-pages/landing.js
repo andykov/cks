@@ -53,4 +53,8 @@ $(function(){
 
     return false;
   });
+
+  // Отзывы
+  $('.js-reviews').slick();
+  
 });

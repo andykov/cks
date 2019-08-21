@@ -316,12 +316,19 @@ body {
 .example-price {
     @include row();
     
-
     &__nav {
-        flex: 0 0 320px;
-        max-width: 320px;
         padding-left: 10px;
         padding-right: 10px;
+
+        @media (min-width: $screen-md) {
+            flex: 0 0 calc(420 / 1600 * 100%);
+            max-width: calc(420 / 1600 * 100%);
+        }
+
+        @media (min-width: $screen-xl) {
+            flex: 0 0 calc(320 / 1600 * 100%);
+            max-width: calc(320 / 1600 * 100%);
+        }
 
         a {
             display: block;
@@ -345,10 +352,23 @@ body {
 
     &__body {
         // @include col(sm, 10);
-        flex: 0 0 1280px;
-        max-width: 1280px;
         padding-left: 10px;
         padding-right: 10px;
+
+        @media (min-width: $screen-md) {
+            flex: 0 0 (1180 / 1600 * 100%);
+            max-width: (1180 / 1600 * 100%);
+        }
+
+        @media (min-width: $screen-xl) {
+            flex: 0 0 (1280 / 1600 * 100%);
+            max-width: (1280 / 1600 * 100%);
+        }
+
+        @media (min-width: $screen-xxl) {
+            flex: 0 0 (1280 / 1600 * 100%);
+            max-width: (1280 / 1600 * 100%);
+        }
 
         &-item {
             display: none;
@@ -360,17 +380,37 @@ body {
     }
 
     &__img {
-        flex: 0 0 800px;
-        max-width: 800px;
         padding-left: 10px;
         padding-right: 10px;
+        
+        @media (min-width: $screen-md) {
+            margin-bottom: $layout-vertical-line-height;
+        }
+
+        @media (min-width: $screen-xl) {
+            flex: 0 0 calc(780 / 1280 * 100%);
+            max-width: calc(780 / 1280 * 100%);
+        }
+
+        @media (min-width: $screen-xxl) {
+            flex: 0 0 calc(800 / 1280 * 100%);
+            max-width: calc(800 / 1280 * 100%);
+        }
     }
 
     &__info {
-        flex: 0 0 480px;
-        max-width: 480px;
         padding-left: 10px;
         padding-right: 10px;
+
+        @media (min-width: $screen-xl) {
+            flex: 0 0 calc(500 / 1280 * 100%);
+            max-width: calc(500 / 1280 * 100%);
+        }
+
+        @media (min-width: $screen-xxl) {
+            flex: 0 0 calc(480 / 1280 * 100%);
+            max-width: calc(480 / 1280 * 100%);
+        }
 
         ul {
             font-size: 16px;
@@ -379,6 +419,7 @@ body {
             margin-bottom: 36px;
             list-style: none;
         }
+
         p {
             font-size: 16px;
             line-height: (25 / 16);
@@ -587,3 +628,83 @@ body {
         }
     }
 }
+
+.reviews {
+    // max-width: 1280px;
+    max-width: 1372px;
+    margin: 0 auto;
+    padding-left: 56px;
+    padding-right: 56px;
+  
+    $block-name:                &; // #{$block-name}__element
+    
+    &__inner {
+      // max-width: 1280px;
+      // margin: 0 auto;
+      // padding: 0 46px;
+      // margin-left: -10px;
+      // margin-right: -10px;
+    }
+  
+    &__item {
+      
+    }
+  
+    &__item-inner {
+      margin-left: -10px;
+      margin-right: -10px;
+  
+      @media (min-width: $screen-lg) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  
+    &__img {
+      padding: 0 10px;
+      max-height: 223px;
+  
+      @media (max-width: $screen-lg - 1) {
+        margin-bottom: ($layout-vertical-line-height * 2);
+      }
+
+      @media (min-width: $screen-xl) {
+        flex: 0 0 calc(300 / 1280 * 100%);
+        max-width: calc(300 / 1280 * 100%);
+      }
+  
+      .embed-responsive {
+        margin-bottom: 0;
+      }
+    }
+  
+    &__text {
+      flex: 1;
+      padding: 0 10px;
+      display: flex;
+      flex-direction: column;
+
+      p {
+        &:last-child {
+            margin-top: auto;
+            margin-bottom: 0;
+        }
+      }
+
+    //   @media (min-width: $screen-xl) {
+    //     flex: 0 0 calc(300 / 1280 * 100%);
+    //     max-width: calc(300 / 1280 * 100%);
+    //   }
+    }
+  
+    .slick-arrow {
+  
+      &.slick-prev {
+        left: 0;
+      }
+  
+      &.slick-next {
+        right: 0;
+      }
+    }
+  }
