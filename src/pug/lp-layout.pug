@@ -50,9 +50,17 @@ html(class='page  no-js', lang='ru')
 
         .page__main-content(role="main")
           block content
-      .page__footer-wrapper
-        //- +page-footer()
-          block footer
+      section.section
+        .container
+          .lp-footer
+            .lp-footer__col
+              img(src="img/logo.png", alt="").lp-footer__logo
+            .lp-footer__col
+              span.lp-footer__phone +7 (812) 333 99 98
+            .lp-footer__col
+              span.lp-footer__address Санкт-петербург, Студенческая, 10
+          
+            
 
     block page-bottom
       script(src='js/script.js')

@@ -401,6 +401,10 @@ body {
     &__info {
         padding-left: 10px;
         padding-right: 10px;
+        
+        @media (max-width: $screen-sm - 1) {
+          padding-top: 36px;
+        }
 
         @media (min-width: $screen-xl) {
             flex: 0 0 calc(500 / 1280 * 100%);
@@ -441,6 +445,10 @@ body {
         color: #66A1C7;
         font-style: italic;
         padding: 15px 0;
+
+        @media (max-width: $screen-sm - 1) {
+          font-size: 60px;
+        }
 
         sub {
             font-size: 16px;
@@ -572,6 +580,10 @@ body {
         font-weight: 600;
         text-transform: uppercase;
         color: #223A7A;
+
+        @media (max-width: $screen-sm - 1) {
+          font-size: 32px;
+        }
     }
 
     &__subtitle {
@@ -654,7 +666,7 @@ body {
       margin-left: -10px;
       margin-right: -10px;
   
-      @media (min-width: $screen-lg) {
+      @media (min-width: $screen-md) {
         display: flex;
         justify-content: center;
       }
@@ -664,11 +676,15 @@ body {
       padding: 0 10px;
       max-height: 223px;
   
-      @media (max-width: $screen-lg - 1) {
+      @media (max-width: $screen-sm - 1) {
         margin-bottom: ($layout-vertical-line-height * 2);
       }
 
-      @media (min-width: $screen-xl) {
+      @media (min-width: $screen-xs) {
+        max-width: 208px;
+      }
+
+      @media (min-width: $screen-md) {
         flex: 0 0 calc(300 / 1280 * 100%);
         max-width: calc(300 / 1280 * 100%);
       }
@@ -706,5 +722,49 @@ body {
       &.slick-next {
         right: 0;
       }
+    }
+  }
+
+  .lp-footer {
+    @include row();
+    max-width: 1372px;
+    margin: 0 auto;
+
+    &__col {
+      @include col(xs, 12);
+
+      &:first-child {
+        @include col(md, 4);
+        text-align: center;
+      }
+      
+      @include col(md, 4);
+    }
+
+    &__logo {
+      max-width: 217px;
+
+      @media (max-width: $screen-md - 1) {
+        text-align: center;
+        margin-bottom: 36px;
+      }
+    }
+
+    &__phone {
+      display: block;
+      font-size: 22px;
+      line-height: 27px;
+      text-align: center;
+
+      @media (max-width: $screen-md - 1) {
+        margin-bottom: 36px;
+      }
+    }
+
+    &__address {
+      display: block;
+      font-size: 15px;
+      line-height: 19px;
+      text-align: center;
     }
   }
