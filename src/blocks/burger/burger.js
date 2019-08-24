@@ -8,7 +8,7 @@
       var burger = burgers[i];
       burger.addEventListener('click', showBurgerTarget);
     }
-  
+  main-nav
     function showBurgerTarget() {
       var targetId = this.getAttribute('data-target-id');
       var targetClassToggle = this.getAttribute('data-target-class-toggle');

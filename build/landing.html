@@ -37,13 +37,13 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
                 <div class="header-panel__inner"><a class="logo logo--lp" href="/index.html"><img src="img/logo.png" alt="Logo" width="460" height="98"></a>
                 </div>
                 <nav class="main-nav-lp" id="nav-lp">
-                  <button class="burger main-nav-lp__toggler" aria-label="Показать главное меню" data-target-id="nav" data-target-class-toggle="main-nav-lp--open"><span>Показать главное меню</span></button>
+                  <button class="burger main-nav-lp__toggler" aria-label="Показать главное меню" data-target-id="nav-lp" data-target-class-toggle="main-nav-lp--open"><span>Показать главное меню</span></button>
                   <ul class="main-nav-lp__list">
                     <li class="main-nav-lp__item"><span>+7 (812) 333 99 98</span></li>
-                    <li class="main-nav-lp__item"><a class="main-nav-lp__link" href="#">Каталог камня</a></li>
-                    <li class="main-nav-lp__item"><a class="main-nav-lp__link" href="#">Пример расчёта</a></li>
-                    <li class="main-nav-lp__item"><a class="main-nav-lp__link" href="#">Производство</a></li>
-                    <li class="main-nav-lp__item"><a class="main-nav-lp__link" href="#">Отзывы</a></li>
+                    <li class="main-nav-lp__item"><a class="main-nav-lp__link" href="#catalog">Каталог камня</a></li>
+                    <li class="main-nav-lp__item"><a class="main-nav-lp__link" href="#example-price">Пример расчёта</a></li>
+                    <li class="main-nav-lp__item"><a class="main-nav-lp__link" href="#production">Производство</a></li>
+                    <li class="main-nav-lp__item"><a class="main-nav-lp__link" href="#reviews">Отзывы</a></li>
                   </ul>
                 </nav>
               </div>
@@ -56,8 +56,7 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
               <div class="lp-banner__inner">
                 <h1 class="lp-banner__title">Столешницы для кухни за 5 дней</h1>
                 <div class="lp-banner__subtitle">Замер, доставка  бесплатно*</div>
-                <div class="lp-banner__notice"><sup>*</sup>При оформлении заказа до 01.08.2019 доставка в пределах КАД + 10км </div>
-                <button class="btn btn--green btn--sm btn--wide">Получить расчет</button>
+                <div class="lp-banner__notice"><sup>*</sup>При оформлении заказа до 01.08.2019 доставка в пределах КАД + 10км </div><a class="btn btn--green btn--sm btn--wide" href="#form-request-one">Получить расчет</a>
               </div>
             </div>
           </section>
@@ -98,7 +97,7 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
           </section>
           <section class="section">
             <div class="container">
-              <div class="form-request">
+              <div class="form-request" id="form-request-one">
                 <div class="columns">
                   <div class="col-xl-5 is-hidden-max-xl">
                     <div class="form-request__img"><img src="img/lp-form-img.jpg" alt=""></div>
@@ -146,7 +145,7 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
               </div>
             </div>
           </section>
-          <section class="section">
+          <section class="section" id="catalog">
             <h2 class="title">Изготовим столешницу из материалов:</h2>
             <div class="container-fluid">
               <div class="lp-materials">
@@ -356,7 +355,7 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
               </div>
             </div>
           </section>
-          <section class="section">
+          <div class="section section" id="example-price">
             <h2 class="title">Примеры стоимости столешниц </h2>
             <div class="container">
               <div class="example-price">
@@ -404,23 +403,47 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
                 </div>
               </div>
             </div>
-          </section>
+          </div>
           <section class="section">
             <h2 class="title">Варианты кромок</h2>
             <div class="container-half container-half--narrow">
               <div class="columns">
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_e2.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_e10.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_a.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_v.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_t.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_h.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_d.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_q.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_o.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_f.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_l.png" alt=""></div>
-                <div class="col-xs-4 col-lg-2"><img class="h-align-center" src="img/edge_h2.png" alt=""></div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_e2.png" alt=""><span>E2</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_e10.png" alt=""><span>E10</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_a.png" alt=""><span>A</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_v.png" alt=""><span>V</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_t.png" alt=""><span>T</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_h.png" alt=""><span>H</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_d.png" alt=""><span>D</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_q.png" alt=""><span>Q</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_o.png" alt=""><span>O</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_f.png" alt=""><span>F</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_l.png" alt=""><span>L</span></div>
+                </div>
+                <div class="col-xs-4 col-lg-2">
+                  <div class="example-edge"><img class="h-align-center" src="img/edge_h2.png" alt=""><span>H2</span></div>
+                </div>
               </div>
             </div>
           </section>
@@ -538,8 +561,8 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
               </div>
             </div>
           </section>
-          <section class="section">
-            <h2 class="title">собственное производство столешниц из камня</h2>
+          <section class="section" id="production">
+            <h2 class="title">Собственное производство столешниц из камня</h2>
             <div class="container">
               <div class="about-box">
                 <div class="about-box__images">
@@ -560,6 +583,7 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
             </div>
           </section>
           <section class="section">
+            <h2 class="title">Примеры работ под ключ</h2>
             <div class="container-fluid">
               <div class="js-example-work example-work">
                 <div class="example-work__item"><a data-fancybox="images" href="https://source.unsplash.com/lSXpV8bDeMA/1536x2304"><img src="img/example-work-1.jpg" alt=""></a></div>
@@ -572,7 +596,8 @@ if(~navigator.appVersion.indexOf("Linux"))cth('linux');
               </div>
             </div>
           </section>
-          <section class="section">
+          <section class="section" id="reviews">
+            <h2 class="title">Отзывы</h2>
             <div class="container">
               <div class="js-reviews reviews" data-slick="{&quot;slidesToShow&quot;: 1, &quot;slidesToScroll&quot;: 1}">
                 <div class="reviews__item">

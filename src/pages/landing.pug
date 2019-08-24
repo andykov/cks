@@ -9,18 +9,18 @@ block append head
 
 block nav
   nav.main-nav-lp#nav-lp
-    +burger('Показать главное меню', 'nav', 'main-nav-lp--open')(class='main-nav-lp__toggler')
+    +burger('Показать главное меню', 'nav-lp', 'main-nav-lp--open')(class='main-nav-lp__toggler')
     ul.main-nav-lp__list
       li.main-nav-lp__item
         span +7 (812) 333 99 98
       li.main-nav-lp__item
-        a(href="#").main-nav-lp__link Каталог камня
+        a(href="#catalog").main-nav-lp__link Каталог камня
       li.main-nav-lp__item
-        a(href="#").main-nav-lp__link Пример расчёта
+        a(href="#example-price").main-nav-lp__link Пример расчёта
       li.main-nav-lp__item
-        a(href="#").main-nav-lp__link Производство
+        a(href="#production").main-nav-lp__link Производство
       li.main-nav-lp__item
-        a(href="#").main-nav-lp__link Отзывы
+        a(href="#reviews").main-nav-lp__link Отзывы
 
 block content
   section.section
@@ -31,7 +31,7 @@ block content
         .lp-banner__notice
           sup *
           | При оформлении заказа до 01.08.2019 доставка в пределах КАД + 10км 
-        button.btn.btn--green.btn--sm.btn--wide Получить расчет
+        a(href="#form-request-one").btn.btn--green.btn--sm.btn--wide Получить расчет
   
   section.section
     h2.title Почему Центр каменных столешниц?
@@ -79,7 +79,7 @@ block content
   
   section.section
     .container
-      .form-request
+      #form-request-one.form-request
         .columns
           .col-xl-5.is-hidden-max-xl
             .form-request__img
@@ -118,7 +118,7 @@ block content
                 +field-actions()
                   +btn('получить расчёт', 'green, wide, sm', true)
   
-  section.section
+  section#catalog.section
     h2.title Изготовим столешницу из материалов:
     .container-fluid
       .lp-materials
@@ -275,7 +275,7 @@ block content
             span Долговечность
             | столешница прослужит вам и вашей семье долгие годы, сохраняя свой первозданный вид
   
-  section.section
+  #example-price.section.section
     h2.title Примеры стоимости столешниц 
     .container
       .example-price
@@ -362,29 +362,53 @@ block content
     .container-half.container-half--narrow
       .columns
         .col-xs-4.col-lg-2
-          img(src="img/edge_e2.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_e2.png", alt="").h-align-center
+            span E2
         .col-xs-4.col-lg-2
-          img(src="img/edge_e10.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_e10.png", alt="").h-align-center
+            span E10
         .col-xs-4.col-lg-2
-          img(src="img/edge_a.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_a.png", alt="").h-align-center
+            span A
         .col-xs-4.col-lg-2
-          img(src="img/edge_v.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_v.png", alt="").h-align-center
+            span V
         .col-xs-4.col-lg-2
-          img(src="img/edge_t.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_t.png", alt="").h-align-center
+            span T
         .col-xs-4.col-lg-2
-          img(src="img/edge_h.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_h.png", alt="").h-align-center
+            span H
         .col-xs-4.col-lg-2
-          img(src="img/edge_d.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_d.png", alt="").h-align-center
+            span D
         .col-xs-4.col-lg-2
-          img(src="img/edge_q.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_q.png", alt="").h-align-center
+            span Q
         .col-xs-4.col-lg-2
-          img(src="img/edge_o.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_o.png", alt="").h-align-center
+            span O
         .col-xs-4.col-lg-2
-          img(src="img/edge_f.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_f.png", alt="").h-align-center
+            span F
         .col-xs-4.col-lg-2
-          img(src="img/edge_l.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_l.png", alt="").h-align-center
+            span L
         .col-xs-4.col-lg-2
-          img(src="img/edge_h2.png", alt="").h-align-center
+          .example-edge
+            img(src="img/edge_h2.png", alt="").h-align-center
+            span H2
 
   section.section
     h2.title Мойки и раковины
@@ -475,30 +499,9 @@ block content
                       ])
                 +field-actions()
                   +btn('получить расчёт', 'green, wide, sm', true)
-  section.section
-    h2.title собственное производство столешниц из камня
+  section#production.section
+    h2.title Собственное производство столешниц из камня
     .container
-      //- .columns
-      //-   .col-sm-12.col-md-7
-      //-     .columns
-      //-       .col-sm-4
-      //-         img(src="img/lp-about-box-1.jpg", alt="")
-      //-       .col-sm-4
-      //-         img(src="img/lp-about-box-2.jpg", alt="")
-      //-       .col-sm-4
-      //-         img(src="img/lp-about-box-3.jpg", alt="")
-      //-   .col-sm-12.col-md-5
-      //-     p
-      //-       | &nbsp;&nbsp;&nbsp;&nbsp; ГК «Master Stone» основана в 2010 году в результате слияния нескольких компаний, специализирующихся  в области работы с натуральным и искусственным камнем. Головной офис компании находится в Санкт-Петербурге.
-      //-       br
-      //-       | &nbsp;&nbsp;&nbsp;&nbsp; В компании работают высококлассные специалисты с большим опытом работы. Компания имеет собственное производство, оснащенное современным высокотехнологичным оборудованием по обработке камня, конструкторский и технологический отделы, подразделение  аппаратно- цифровых замеров, монтажные, транспортные и сервисные подразделения.
-      //-       br
-      //-       | &nbsp;&nbsp;&nbsp;&nbsp; За истекший период, компания  выполнила большое количество проектов и приобрела отличную репутацию специалисты
-
-      //-     p &nbsp;&nbsp;&nbsp;&nbsp; Всем бобра!
-      //-     p.text-center
-      //-       button.btn.btn--blue-dark.btn--sm.btn--wide Узнать больше
-
       .about-box
         .about-box__images
           .about-box__images-inner
@@ -522,6 +525,7 @@ block content
       
 
   section.section
+    h2.title Примеры работ под ключ
     .container-fluid
       .js-example-work.example-work
         .example-work__item
@@ -546,7 +550,8 @@ block content
           a(data-fancybox="images" href="https://source.unsplash.com/lSXpV8bDeMA/1536x2304")
             img(src="img/example-work-4.jpg", alt="")
 
-  section.section
+  section#reviews.section
+    h2.title Отзывы
     .container
       .js-reviews.reviews(data-slick='{"slidesToShow": 1, "slidesToScroll": 1}' class=allMods)&attributes(attributes)
         .reviews__item
